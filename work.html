@@ -43,14 +43,20 @@
           block.appendChild(img);
         }
 
-        // テキスト（配列 or 単文 両対応）
+        // 見出し
+        if (section.heading) {
+          const h3 = document.createElement("h3");
+          h3.textContent = section.heading;
+          block.appendChild(h3);
+        }
+
+        // 本文（text[] を1段落にまとめる）
         if (Array.isArray(section.text)) {
-          section.text.forEach(t => {
-            const p = document.createElement("p");
-            p.textContent = t;
-            block.appendChild(p);
-          });
+          const p = document.createElement("p");
+          p.textContent = section.text.join("");
+          block.appendChild(p);
         } else if (section.text) {
+          // 単文が来た場合の保険
           const p = document.createElement("p");
           p.textContent = section.text;
           block.appendChild(p);

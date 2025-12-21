@@ -23,7 +23,10 @@ h3{
 p{
   font-family:Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 15px;
+  text-align: left;
+  line-height: 30px;
+  margin-bottom: 70px;
 }
 
 #title{
