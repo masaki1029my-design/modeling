@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/common.css">
+  <title>modeling</title>
+</head>
+<body>
+  <div class="wrapper">
+  <h1>記録用サイト</h1>
+  <h3>２０２５年　１２月</h3>
+  <div id="gallery" class="gallery"></div>
+  </div>
+
+  <!-- 作品データ -->
+  <script src="data.js"></script>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+
+    works.forEach(work => {
+      const card = document.createElement("a");  
+      card.href = `work.html?id=${work.id}`;  
+      card.className = "card";
+
+      card.innerHTML = `
+        <h3>${work.title}</h3>
+      `;
+
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+
+  <div class="work-page">
+    <h1 id="title"></h1>
+    <div id="sections"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // URL パラメータから id を取得
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("id"));
+
+    // id に一致する作品データを取得
+    const work = works.find(w => w.id === id);
+
+    if (!work) {
+      document.body.innerHTML = "<p>作品が見つかりません。</p>";
+    } else {
+      // タイトル
+      document.getElementById("title").textContent = work.title;
+
+      const sectionsContainer = document.getElementById("sections");
+
+      work.sections.forEach(section => {
+        const block = document.createElement("div");
+        block.className = "section";
+
+        // 画像
+        if (section.image) {
+          const img = document.createElement("img");
+          img.src = section.image;
+          img.alt = work.title;
+          img.className = "work-image";
+          block.appendChild(img);
+        }
+
+        // テキスト（配列 or 単文 両対応）
+        if (Array.isArray(section.text)) {
+          section.text.forEach(t => {
+            const p = document.createElement("p");
+            p.textContent = t;
+            block.appendChild(p);
+          });
+        } else if (section.text) {
+          const p = document.createElement("p");
+          p.textContent = section.text;
+          block.appendChild(p);
+        }
+
+        sectionsContainer.appendChild(block);
+      });
+    }
+  </script>
+
+</body>
+</html>
