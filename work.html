@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>作品詳細</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_02.css">
   <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
@@ -34,32 +34,79 @@
         const block = document.createElement("div");
         block.className = "section";
 
-        // 画像
-        if (section.image) {
-          const img = document.createElement("img");
-          img.src = section.image;
-          img.alt = work.title;
-          img.className = "work-image";
-          block.appendChild(img);
+        // ===== 横並び指定がある場合 =====
+        const isSideLayout = section.layout === "side";
+
+        let mediaWrapper;
+        let textWrapper;
+
+        if (isSideLayout) {
+          block.classList.add("section-side");
+
+          mediaWrapper = document.createElement("div");
+          mediaWrapper.className = "section-media";
+
+          textWrapper = document.createElement("div");
+          textWrapper.className = "section-content";
         }
 
-        // 見出し
+        // ===== 画像 =====
+        if (Array.isArray(section.images)) {
+          const imageGroup = document.createElement("div");
+          imageGroup.className = "image-group";
+
+          section.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = work.title;
+            img.className = "work-image";
+            imageGroup.appendChild(img);
+          });
+
+          if (isSideLayout) {
+            mediaWrapper.appendChild(imageGroup);
+          } else {
+            block.appendChild(imageGroup);
+          }
+        }
+
+        // ===== 見出し =====
         if (section.heading) {
           const h3 = document.createElement("h3");
           h3.textContent = section.heading;
-          block.appendChild(h3);
+
+          if (isSideLayout) {
+            textWrapper.appendChild(h3);
+          } else {
+            block.appendChild(h3);
+          }
         }
 
-        // 本文（text[] を1段落にまとめる）
+        // ===== 本文（text[] を1段落にまとめる） =====
         if (Array.isArray(section.text)) {
           const p = document.createElement("p");
           p.textContent = section.text.join("");
-          block.appendChild(p);
+
+          if (isSideLayout) {
+            textWrapper.appendChild(p);
+          } else {
+            block.appendChild(p);
+          }
         } else if (section.text) {
-          // 単文が来た場合の保険
           const p = document.createElement("p");
           p.textContent = section.text;
-          block.appendChild(p);
+
+          if (isSideLayout) {
+            textWrapper.appendChild(p);
+          } else {
+            block.appendChild(p);
+          }
+        }
+
+        // ===== 横並び時の組み立て =====
+        if (isSideLayout) {
+          block.appendChild(mediaWrapper);
+          block.appendChild(textWrapper);
         }
 
         sectionsContainer.appendChild(block);
