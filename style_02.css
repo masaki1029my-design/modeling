@@ -1,8 +1,9 @@
 .work-page{
   width: 900px;
-  height: 100vh;
+  height: 10000px;
   margin: 0 auto;
   background-color: #222;
+  opacity: 0.95;
 }
 .image-group {
   display: flex;
@@ -34,7 +35,7 @@ p{
 .work-image {
   margin: 0 auto;
   max-width: 100%;
-  width: 320px;
+  width: 600px;
   border-radius: 4px;
 }
 
