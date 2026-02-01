@@ -3,10 +3,6 @@ body{
   margin: 0 auto;
 }
 
-.title.open::after {
-  transform: rotate(90deg);
-}
-
 li{
   padding: 8px;
   margin-left: 20px; 
@@ -14,9 +10,56 @@ li{
 
 .title{
   border-left: 10px solid tomato;
-  background-color: #eee8aa;
+  background-color: whitesmoke;
   color: black;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   padding-left: 10px;
   width: 200px;
   margin-left: 30px;
 }
+
+h2{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-bottom: 2px solid tomato;
+  border-left: 15px solid tomato;
+  padding-left: 10px;
+}
+
+.title.open::after {
+  transform: rotate(90deg);
+}
+
+.contents a {
+  color: #111;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+
+.contents a:hover {
+  color: tomato;
+  /*background-color: tomato;*/
+}
+
+.backhome{
+  margin-top: 100px;
+  text-align: center;
+}
+
+.backhome a {
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.2s;
+  background-color: tomato
+}
+
+
+.backhome a:hover {
+  background-color: orangered;
+  /*background-color: tomato;*/
+}
+
