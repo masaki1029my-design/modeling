@@ -1,5 +1,42 @@
 #concept{
+  margin-top: 10px;
   text-align: justify;
   margin-left: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+h3{
+  margin-top: 50px;
+  width: 200px;
+  font-size: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-bottom: 2px solid tomato;
+  border-left: 10px solid tomato;
+}
+
+img{
+  width: 800px;
+  margin-left:30px;
+}
+
+#comparison{
+  display: flex;
+}
+
+#comparison img{
+  width: 385px;
+}
+
+.small_title{
+  margin-top: 10px;
+  width: 250px;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 30px;
+  padding-left: 10px;
+  border-bottom: 2px solid tomato;
+  border-left: 10px solid tomato;
 }
