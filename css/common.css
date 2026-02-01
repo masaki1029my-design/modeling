@@ -19,12 +19,12 @@ li{
   margin-left: 30px;
 }
 
-h2{
-  font-size: 30px;
+h1{
+  padding-bottom: 15px;
+  font-size: 50px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border-bottom: 2px solid tomato;
-  border-left: 15px solid tomato;
-  padding-left: 10px;
+  text-align: center;
 }
 
 .title.open::after {
