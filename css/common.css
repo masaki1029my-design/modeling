@@ -1,59 +1,22 @@
-body {
-  width: 900px;
+body{
+  width: 850px;
   margin: 0 auto;
-  padding: 0 auto;
-  font-family: sans-serif;
-  color: whitesmoke;
-  display: flex;
-  justify-content: center; /* 画面中央に寄せる */
-  text-align: center;
-}
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  /*背景画像*/
-  background-color: whitesmoke;
-  background-size: cover;
-  background-position: center;
-
-  opacity: 0.4; /* ← ここで透明度調整 */
-  z-index: -1;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.title.open::after {
+  transform: rotate(90deg);
 }
 
-a:hover {
-  opacity: 0.8;
-  border: 2px solid whitesmoke;
-  background-color: brown;
-}
-header {
-  padding: 20px;
-  background: white;
-  border-bottom: 1px solid #ddd;
+li{
+  padding: 8px;
+  margin-left: 20px; 
 }
 
-footer {
-  margin-top: 40px;
-  padding: 20px;
-  text-align: center;
-  color: #666;
-}
-.card {
-  display: block;
-  background: dimgray;
-  border: 1px solid #ddd;
-  padding: 9px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  transition: 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
+.title{
+  border-left: 10px solid tomato;
+  background-color: #eee8aa;
+  color: black;
+  padding-left: 10px;
+  width: 200px;
+  margin-left: 30px;
 }

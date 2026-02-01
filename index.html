@@ -2,35 +2,36 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="style_01.css">
-  <link rel="stylesheet" href="css/common.css">
-  <title>modeling</title>
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="css/index.css"><!--個別スタイル-->
+  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
 </head>
-<body>
-  <div class="wrapper">
-  <h1>記録Webサイト</h1>
-  <!--<h3>２０２６年　１月</h3>-->
-  <h3>２０２6年　１月</h3>
-  <div id="gallery" class="gallery"></div>
-  </div>
+<script src="jquery.js"></script>
+<script>
+  $(function() {
+    $('.contents').hide();//contents隠す
 
-  <!-- 作品データ -->
-  <script src="data.js"></script>
-
-  <script>
-    const gallery = document.getElementById("gallery");
-
-    works.forEach(work => {
-      const card = document.createElement("a");  
-      card.href = `work.html?id=${work.id}`;  
-      card.className = "card";
-
-      card.innerHTML = `
-        <h3>${work.title}</h3>
-      `;
-
-      gallery.appendChild(card);
+    $('.title').on('click', function() {//$('title')がクリックされた時
+      $(this)//=title
+      .toggleClass('open')
+      .next('.contents')//titleの次=contentsを呼ぶ
+      .slideToggle(250);//toggle250(ms)
     });
-  </script>
+  });
+</script>
+
+<body>
+  <div class="month">
+    <h2>2026年</h2>
+  <h3 class="title">2月</h3>
+
+  <ul class="contents">
+    <li><a href="work_02.html">造形作品「盲目の鳥竜」</a></li>
+  </ul>
+  <h3 class="title">1月</h3>
+  <ul class="contents">
+    <li><a href="#">3DCG作品「価値あるものは価値なきものから」</a></li>
+  </ul>
+</div>
 </body>
-</html>
+
