@@ -6,18 +6,18 @@
   font-size: 16px;
 }
 
-h2{
-  font-size: 30px;
+.l{
+  font-size: 35px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border-bottom: 2px solid tomato;
   border-left: 15px solid tomato;
   padding-left: 10px;
 }
 
-h3{
+.m{
   margin-top: 50px;
   width: 200px;
-  font-size: 20px;
+  font-size: 23px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-left: 10px;
   padding-left: 10px;
