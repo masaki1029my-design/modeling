@@ -1,40 +1,19 @@
 body{
   width: 850px;
   margin: 0 auto;
+  background-color: black;
 }
 
 li{
+  color: whitesmoke;
   padding: 8px;
   margin-left: 20px; 
   font-size: 20px;
 }
 
-.title{
-  font-size: 25px;
-  border-left: 10px solid tomato;
-  background-color: whitesmoke;
-  color: black;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  padding-left: 10px;
-  width: 200px;
-  margin-left: 30px;
-}
-
-h1{
-  padding-bottom: 15px;
-  font-size: 50px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  border-bottom: 2px solid tomato;
-  text-align: center;
-}
-
-.title.open::after {
-  transform: rotate(90deg);
-}
-
 .contents a {
-  font-size: 24px;
-  color: #111;
+  font-size: 20px;
+  color: whitesmoke;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-decoration: none;
   display: inline-block;
@@ -56,11 +35,13 @@ h1{
 .backhome a {
   color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 25px;
+  font-size: 18px;
   text-decoration: none;
   padding: 15px;
   transition: color 0.2s;
-  background-color: tomato
+  background-color: black;
+  border-bottom:2px solid white ;
+  border-top:2px solid white ;
 }
 
 

@@ -1,8 +1,66 @@
+h1{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /*border-bottom: 2px solid white;*/
+  border-left: 15px solid white;
+  border-right: 15px solid white;
+  color: white;
+  text-align: center;
+  background-color: black;
+}
+
 h2{
   width:250px ;
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  border-bottom: 2px solid tomato;
-  border-left: 15px solid tomato;
+  border-bottom: 0;
+  border-left: 15px solid white;
   padding-left: 10px;
+  color: whitesmoke;
+}
+
+.title{
+  font-size: 25px;
+  border-bottom: 1px solid tomato;
+  background-color: black;
+  color: whitesmoke;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  padding-left: 10px;
+  width: 100px;
+  margin-left: 30px;
+}
+
+.title.open::after {
+  transform: rotate(90deg);
+}
+
+.sub{
+  color: tomato;
+  font-size: 15px;
+}
+
+p{
+  width: 300px;
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid white;
+}
+
+#news{
+  width: 600px;
+  margin-top: 10px;
+  text-align: justify;
+  margin: 0 auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13px;
+  line-height: 37px;
+  color: whitesmoke;
 }
