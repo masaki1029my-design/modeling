@@ -1,10 +1,10 @@
 #concept{
-  width: 600px;
+  width: 750px;
   margin-top: 10px;
   text-align: justify;
   margin: 0 auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 37px;
   color: whitesmoke;
 }
@@ -28,7 +28,7 @@ img{
   border-left: 10px solid gray;
 }*/
 
-.l{
+.l1{
   width:850px ;
   text-align: center;
   font-size: 30px;
@@ -56,4 +56,16 @@ img{
 
 .sub{
   font-size: 20px;
+}
+
+.l2{
+  width:850px ;
+  text-align: center;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-bottom:2px solid tomato;
+  padding: 0;
+  padding-bottom: 13px;
+  margin-top: 300px;
+  color: whitesmoke;
 }
