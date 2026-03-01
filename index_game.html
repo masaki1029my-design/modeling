@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Tactics Game - System Menu Integration</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #1a1a1a; color: white; margin: 0; overflow: hidden; }
+        
+        /* システムメニューのスタイル */
+        #system-menu-root {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 3000;
+        }
+        #menu-trigger {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        #menu-trigger:hover { background: #333; }
+        
+        #system-options {
+            display: none;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #fff;
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            min-width: 150px;
+        }
+        .sys-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+        }
+        .sys-btn:hover:not(:disabled) { background: #444; color: #4fc3f7; }
+        .sys-btn:disabled { color: #555; cursor: not-allowed; }
+
+        /* ホーム画面のスタイル */
+        #home-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, #2c3e50 0%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 1s;
+        }
+        #home-title {
+            font-size: 5rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            margin-bottom: 50px;
+            letter-spacing: 5px;
+        }
+        #press-any-key {
+            font-size: 1.5rem;
+            animation: slow-blink 2s infinite ease-in-out;
+            color: #bdc3c7;
+        }
+        @keyframes slow-blink {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        #ui-layer { margin: 10px; text-align: center; height: 60px; z-index: 100; }
+        #turn-display { font-weight: bold; font-size: 1.2rem; padding: 5px; margin-bottom: 5px; border-radius: 4px; transition: 0.3s; }
+        .player-turn { background-color: #1976d2; }
+        .enemy-turn { background-color: #d32f2f; }
+
+        #controls-guide {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            border: 1px solid #444;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        #viewport {
+            width: 100vw;
+            height: 80vh;
+            overflow: auto;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            background: #000;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(16, minmax(60px, 1fr));
+            grid-template-rows: repeat(16, minmax(60px, 1fr));
+            gap: 1px;
+            background-color: #333;
+            width: 100%;
+            min-width: 960px;
+        }
+
+        .tile {
+            aspect-ratio: 1 / 1;
+            background-color: #388e3c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            position: relative;
+            background-size: cover;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .tile.movable { 
+            background-image: url('game_img/highlight_move.png'); 
+            animation: pulse 1.5s infinite ease-in-out; 
+        }
+        .tile.attackable { 
+            background-image: url('game_img/highlight_attack.png'); 
+            animation: pulse 1s infinite ease-in-out; 
+        }
+        .tile.healable { background-color: #4caf50; box-shadow: inset 0 0 15px #81c784; animation: pulse 1.5s infinite ease-in-out; }
+        
+        .tile.obstacle { 
+            background-image: url('game_img/wood.png'); 
+            cursor: not-allowed; 
+        }
+        .tile.rock { 
+            background-color: transparent; 
+            cursor: not-allowed; 
+        }
+        .tile.rock-master::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(200% + 1px);
+            height: calc(200% + 1px);
+            background-image: url('game_img/brock.png');
+            background-size: 100% 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .tile:hover:not(.obstacle):not(.rock) { filter: brightness(1.2); }
+
+        .unit {
+            width: 80%;
+            height: 80%;
+            border-radius: 8px;
+            border: 2px solid white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            pointer-events: none;
+            position: relative;
+            z-index: 20;
+        }
+        .player-unit { background-color: #ef5350; }
+        .enemy-unit { background-color: #7b1fa2; }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .damaged { animation: blink 0.2s linear 3; }
+        .dead { animation: blink 0.3s linear 3; opacity: 0; transition: opacity 0.9s; }
+
+        .overhead-bars {
+            position: absolute;
+            top: -18px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .hp-bar-small { width: 100%; height: 4px; background: #444; border: 1px solid #000; border-radius: 2px; overflow: hidden; }
+        .hp-fill-small { height: 100%; background: #ff1744; transition: width 0.3s; }
+        .sp-bar-small { width: 100%; height: 4px; background: #444; border: 1px solid #000; border-radius: 2px; overflow: hidden; }
+        .sp-fill-small { height: 100%; background: #2196f3; transition: width 0.3s; }
+
+        .selected-tile { border: 3px solid yellow !important; z-index: 30; }
+
+        #command-menu, #skill-menu, #action-menu, #equip-menu {
+            position: fixed;
+            display: none;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #fff;
+            padding: 10px;
+            z-index: 1000;
+            border-radius: 8px;
+            min-width: 160px;
+        }
+
+        .status-container { margin-bottom: 10px; font-size: 12px; border-bottom: 1px solid #555; padding-bottom: 8px; }
+        .status-label { margin-bottom: 2px; display: flex; justify-content: space-between; }
+        .bar-bg { width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden; margin-bottom: 5px; border: 1px solid #555; }
+        .hp-fill { height: 100%; background: #4caf50; width: 100%; }
+        .sp-fill { height: 100%; background: #2196f3; width: 100%; }
+
+        .menu-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .menu-btn:disabled { color: #555; cursor: not-allowed; }
+        .menu-btn.focused { background: #1976d2 !important; color: white; }
+        .menu-btn:hover:not(:disabled) { background: #444; color: #4fc3f7; }
+
+        .equip-mark { color: yellow; font-weight: bold; margin-right: 8px; width: 12px; }
+    </style>
+</head>
+<body>
+
+    <div id="system-menu-root">
+        <button id="menu-trigger" onclick="toggleSystemMenu()">MENU (Space)</button>
+        <div id="system-options">
+            <button id="btn-back-title" class="sys-btn" onclick="confirmBackTitle()">タイトルに戻る</button>
+            <button class="sys-btn" onclick="backToWorkPage()">作品ページに戻る</button>
+        </div>
+    </div>
+
+    <div id="home-screen">
+        <div id="home-title">タクティスゲーム</div>
+        <div id="press-any-key">Press any key</div>
+    </div>
+
+    <div id="controls-guide">
+        左クリック：キャラクター選択<br>
+        ↑↓：コマンド選択<br>
+        Enter：決定<br>
+        z：コマンドキャンセル
+    </div>
+
+    <div id="ui-layer">
+        <div id="turn-display" class="player-turn">PLAYER TURN</div>
+        <div id="status-text">ユニットをクリックしてください</div>
+    </div>
+
+    <div id="viewport">
+        <div id="game-board"></div>
+    </div>
+
+    <div id="command-menu">
+        <div class="status-container">
+            <div class="status-label"><span>HP</span><span id="hp-val">100 / 100</span></div>
+            <div class="bar-bg"><div id="hp-bar" class="hp-fill"></div></div>
+            <div class="status-label"><span>STAMINA</span><span id="sp-val">100 / 100</span></div>
+            <div class="bar-bg"><div id="sp-bar" class="sp-fill"></div></div>
+        </div>
+        <button id="move-btn" class="menu-btn" onclick="startMove()">移動</button>
+        <button id="attack-btn" class="menu-btn" onclick="startAttack()">攻撃</button>
+        <button id="skill-btn" class="menu-btn" onclick="openSkillMenu()">スキル</button>
+        <button id="action-btn" class="menu-btn" onclick="openActionMenu()">アクション</button>
+        <button id="equip-btn" class="menu-btn" onclick="openEquipMenu()">装備確認</button>
+        <hr style="border:0.5px solid #555; width: 100%;">
+        <button id="cancel-btn" class="menu-btn" onclick="cancelMenu()">キャンセル</button>
+    </div>
+
+    <div id="skill-menu">
+        <div style="font-size: 10px; color: #aaa; margin-bottom: 5px;">[Z]で戻る</div>
+        <button id="skill-power-btn" class="menu-btn" onclick="startSkill('強斬り')">強斬り (SP10)</button>
+        <hr style="border:0.5px solid #555; width: 100%;">
+        <button id="skill-back-btn" class="menu-btn" onclick="backToCommand()">戻る</button>
+    </div>
+
+    <div id="action-menu">
+        <div style="font-size: 10px; color: #aaa; margin-bottom: 5px;">[Z]で戻る</div>
+        <button id="item-heal-btn" class="menu-btn" onclick="startHeal()">薬草 (HP+40)</button>
+        <button id="end-turn-btn" class="menu-btn" onclick="confirmEndTurn()">ターン終了</button>
+        <hr style="border:0.5px solid #555; width: 100%;">
+        <button id="action-back-btn" class="menu-btn" onclick="backToCommand()">戻る</button>
+    </div>
+
+    <div id="equip-menu">
+        <div style="font-size: 10px; color: #aaa; margin-bottom: 5px;">[Z]で戻る</div>
+        <button class="menu-btn" onclick="changeEquip('木のつるぎ')"><span class="equip-mark" id="mark-木のつるぎ"></span>木のつるぎ (x1.1)</button>
+        <button class="menu-btn" onclick="changeEquip('鉄のつるぎ')"><span class="equip-mark" id="mark-鉄のつるぎ"></span>鉄のつるぎ (x1.2)</button>
+        <button class="menu-btn" onclick="changeEquip('はがねのつるぎ')"><span class="equip-mark" id="mark-はがねのつるぎ"></span>はがねのつるぎ (x1.4)</button>
+        <hr style="border:0.5px solid #555; width: 100%;">
+        <button id="equip-back-btn" class="menu-btn" onclick="backToCommand()">戻る</button>
+    </div>
+
+    <script>
+        const boardSize = 16;
+        const boardElement = document.getElementById('game-board');
+        const statusText = document.getElementById('status-text');
+        const turnDisplay = document.getElementById('turn-display');
+        const menu = document.getElementById('command-menu');
+        const skillMenu = document.getElementById('skill-menu');
+        const actionMenu = document.getElementById('action-menu');
+        const equipMenu = document.getElementById('equip-menu');
+        const viewport = document.getElementById('viewport');
+        const homeScreen = document.getElementById('home-screen');
+        const sysOptions = document.getElementById('system-options');
+        const btnBackTitle = document.getElementById('btn-back-title');
+
+        let playerUnit = { x: 2, y: 2, moveRange: 4, hp: 100, maxHp: 100, sp: 100, maxSp: 100, id: 'player' };
+        let playerInventory = { weapon: '木のつるぎ' };
+        let enemies = [
+            { id: 1, x: 13, y: 2, moveRange: 5, hp: 100, maxHp: 100, attackRange: 2 },
+            { id: 2, x: 13, y: 13, moveRange: 5, hp: 100, maxHp: 100, attackRange: 2 },
+            { id: 3, x: 2, y: 13, moveRange: 5, hp: 100, maxHp: 100, attackRange: 2 }
+        ];
+        
+        let obstacles = [];
+        let isMovingMode = false;
+        let isAttackMode = false;
+        let isSkillMode = false;
+        let isHealMode = false;
+        let hasMovedInTurn = false;
+        let isPlayerSelected = false;
+        let currentTurn = 'player';
+        let lastMenuPos = { x: 0, y: 0 };
+        let currentFocusedMenu = null;
+        let focusedBtnIdx = 0;
+        let isTextTyping = false;
+        let isGameStarted = false;
+
+        const dropItems = ["魔力の欠片", "丈夫な革", "鋭い牙", "壊れた鎧", "古びたコイン"];
+
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        async function typeMessage(text) {
+            isTextTyping = true;
+            statusText.textContent = "";
+            for (let char of text) {
+                statusText.textContent += char;
+                await sleep(50);
+            }
+            isTextTyping = false;
+        }
+
+        function getAttackMultiplier() {
+            if (playerInventory.weapon === '木のつるぎ') return 1.1;
+            if (playerInventory.weapon === '鉄のつるぎ') return 1.2;
+            if (playerInventory.weapon === 'はがねのつるぎ') return 1.4;
+            return 1.0;
+        }
+
+        function init() {
+            boardElement.innerHTML = '';
+            generateObstacles();
+            for (let y = 0; y < boardSize; y++) {
+                for (let x = 0; x < boardSize; x++) {
+                    const tile = document.createElement('div');
+                    tile.classList.add('tile');
+                    tile.id = `tile-${x}-${y}`;
+                    tile.dataset.x = x;
+                    tile.dataset.y = y;
+                    const obs = obstacles.find(o => o.x === x && o.y === y);
+                    if (obs) {
+                        tile.classList.add(obs.type);
+                        if (obs.isMaster) tile.classList.add('rock-master');
+                    }
+                    tile.onclick = (e) => handleTileClick(e, x, y);
+                    boardElement.appendChild(tile);
+                }
+            }
+            renderUnits();
+            updateSystemMenuState();
+        }
+
+        function generateObstacles() {
+            obstacles = [];
+            for (let i = 0; i < 3; i++) placeRandomObstacle(2);
+            for (let i = 0; i < 5; i++) placeRandomObstacle(1);
+        }
+
+        function placeRandomObstacle(size) {
+            let placed = false; let attempts = 0;
+            while (!placed && attempts < 100) {
+                const rx = Math.floor(Math.random() * (boardSize - size));
+                const ry = Math.floor(Math.random() * (boardSize - size));
+                let canPlace = true;
+                for (let dy = -1; dy <= size; dy++) {
+                    for (let dx = -1; dx <= size; dx++) {
+                        const tx = rx + dx; const ty = ry + dy;
+                        if (obstacles.some(o => o.x === tx && o.y === ty)) canPlace = false;
+                        if (enemies.some(e => e.x === tx && e.y === ty)) canPlace = false;
+                        if (playerUnit.x === tx && playerUnit.y === ty) canPlace = false;
+                    }
+                }
+                if (canPlace) {
+                    for (let y = 0; y < size; y++) {
+                        for (let x = 0; x < size; x++) {
+                            const isMaster = (size === 2 && x === 0 && y === 0);
+                            obstacles.push({ 
+                                x: rx + x, 
+                                y: ry + y, 
+                                type: size === 2 ? 'rock' : 'obstacle',
+                                isMaster: isMaster
+                            });
+                        }
+                    }
+                    placed = true;
+                }
+                attempts++;
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            // スペースキーでシステムメニュー開閉
+            if (e.code === 'Space') {
+                e.preventDefault();
+                toggleSystemMenu();
+                return;
+            }
+
+            if (!isGameStarted) {
+                // システムメニューが開いていない時のみPress any keyを有効にする
+                if (sysOptions.style.display !== 'flex') startGame();
+                return;
+            }
+
+            if (isTextTyping) return;
+            if (e.key.toLowerCase() === 'z') {
+                if (skillMenu.style.display === 'flex' || actionMenu.style.display === 'flex' || equipMenu.style.display === 'flex') backToCommand();
+                else if (isSkillMode || isHealMode) { isSkillMode = false; isHealMode = false; clearHighlights(); openAdaptiveMenu(isSkillMode ? skillMenu : actionMenu, lastMenuPos.x, lastMenuPos.y); }
+                else if (isMovingMode) cancelMove(); 
+                else if (isAttackMode) cancelAttack();
+                else cancelMenu();
+                return;
+            }
+            if (currentFocusedMenu && currentFocusedMenu.style.display === 'flex') {
+                const btns = Array.from(currentFocusedMenu.querySelectorAll('.menu-btn:not(:disabled)'));
+                if (e.key === 'ArrowDown') { e.preventDefault(); focusedBtnIdx = (focusedBtnIdx + 1) % btns.length; updateBtnFocus(btns); }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); focusedBtnIdx = (focusedBtnIdx - 1 + btns.length) % btns.length; updateBtnFocus(btns); }
+                else if (e.key === 'Enter') { e.preventDefault(); btns[focusedBtnIdx].click(); }
+            }
+        });
+
+        // システムメニュー制御
+        function toggleSystemMenu() {
+            const isVisible = sysOptions.style.display === 'flex';
+            sysOptions.style.display = isVisible ? 'none' : 'flex';
+        }
+
+        function updateSystemMenuState() {
+            btnBackTitle.disabled = !isGameStarted;
+        }
+
+        function confirmBackTitle() {
+            if (confirm("ホーム画面に戻りますか？進行状況はリセットされます。")) {
+                location.reload(); // 簡易的に初期化するためリロード
+            }
+        }
+
+        function backToWorkPage() {
+            window.location.href = 'work_03.html';
+        }
+
+        function startGame() {
+            isGameStarted = true;
+            homeScreen.style.opacity = '0';
+            updateSystemMenuState();
+            setTimeout(() => {
+                homeScreen.style.display = 'none';
+                focusCamera(playerUnit.x, playerUnit.y);
+                typeMessage("ユニットを選択してください");
+            }, 1000);
+        }
+
+        function updateBtnFocus(btns) {
+            btns.forEach((btn, idx) => {
+                if (idx === focusedBtnIdx) btn.classList.add('focused');
+                else btn.classList.remove('focused');
+            });
+        }
+
+        function renderUnits() {
+            document.querySelectorAll('.unit').forEach(u => u.remove());
+            if (playerUnit.hp > 0) {
+                const pTile = document.getElementById(`tile-${playerUnit.x}-${playerUnit.y}`);
+                const pEl = document.createElement('div');
+                pEl.classList.add('unit', 'player-unit');
+                pEl.id = 'unit-player';
+                const pBars = document.createElement('div');
+                pBars.classList.add('overhead-bars');
+                pBars.style.display = isPlayerSelected ? 'none' : 'flex';
+                pBars.innerHTML = `<div class="hp-bar-small"><div class="hp-fill-small" style="width:${(playerUnit.hp/playerUnit.maxHp*100)}%; background:#4caf50;"></div></div><div class="sp-bar-small"><div class="sp-fill-small" style="width:${(playerUnit.sp/playerUnit.maxSp*100)}%;"></div></div>`;
+                pEl.appendChild(pBars);
+                pTile.appendChild(pEl);
+            }
+            enemies.forEach(enemy => {
+                if (enemy.hp > 0 || enemy.isDying) {
+                    const eTile = document.getElementById(`tile-${enemy.x}-${enemy.y}`);
+                    const eEl = document.createElement('div');
+                    eEl.classList.add('unit', 'enemy-unit');
+                    eEl.id = `unit-enemy-${enemy.id}`;
+                    if (enemy.isDying) eEl.classList.add('dead');
+                    const eBars = document.createElement('div');
+                    eBars.classList.add('overhead-bars');
+                    eBars.innerHTML = `<div class="hp-bar-small"><div class="hp-fill-small" style="width:${(enemy.hp/enemy.maxHp*100)}%;"></div></div>`;
+                    eEl.appendChild(eBars);
+                    eTile.appendChild(eEl);
+                }
+            });
+        }
+
+        function handleTileClick(e, x, y) {
+            if (!isGameStarted || currentTurn !== 'player' || playerUnit.hp <= 0 || isTextTyping) return;
+            // システムメニューが開いている時は盤面クリックを無視
+            if (sysOptions.style.display === 'flex') return;
+
+            const isObs = obstacles.some(o => o.x === x && o.y === y);
+            if (isMovingMode) {
+                const isOccupied = enemies.some(en => en.hp > 0 && en.x === x && en.y === y) || isObs;
+                const dist = Math.abs(x - playerUnit.x) + Math.abs(y - playerUnit.y);
+                if (dist <= playerUnit.moveRange && !isOccupied) { playerUnit.x = x; playerUnit.y = y; endMove(); } else { cancelMove(); }
+                return;
+            }
+            if (isAttackMode || isSkillMode) {
+                const targetEnemy = enemies.find(en => en.hp > 0 && en.x === x && en.y === y);
+                if (targetEnemy) {
+                    const dist = Math.abs(x - playerUnit.x) + Math.abs(y - playerUnit.y);
+                    const multiplier = getAttackMultiplier();
+                    if (isAttackMode && dist <= 1) executeAttack(Math.floor(30 * multiplier), targetEnemy);
+                    else if (isSkillMode && dist <= 2) { playerUnit.sp -= 10; executeAttack(Math.floor(36 * multiplier), targetEnemy); }
+                } else { cancelAttack(); }
+                return;
+            }
+            if (isHealMode) { if (x === playerUnit.x && y === playerUnit.y) executeHeal(); else { isHealMode = false; clearHighlights(); openAdaptiveMenu(actionMenu, lastMenuPos.x, lastMenuPos.y); } return; }
+            if (x === playerUnit.x && y === playerUnit.y) {
+                isPlayerSelected = true; updatePlayerStatusUI(); checkActionPossible();
+                lastMenuPos = { x: e.clientX, y: e.clientY };
+                openAdaptiveMenu(menu, e.clientX, e.clientY);
+                document.getElementById(`tile-${x}-${y}`).classList.add('selected-tile');
+                renderUnits();
+            } else { cancelMenu(); }
+        }
+
+        function focusCamera(x, y) {
+            const tile = document.getElementById(`tile-${x}-${y}`);
+            if (tile) tile.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }
+
+        async function applyDamageEffect(targetId) {
+            const id = targetId === 'player' ? 'unit-player' : `unit-enemy-${targetId}`;
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('damaged');
+                await sleep(600);
+                el.classList.remove('damaged');
+            }
+        }
+
+        function updatePlayerStatusUI() {
+            document.getElementById('hp-val').textContent = `${playerUnit.hp} / ${playerUnit.maxHp}`;
+            document.getElementById('hp-bar').style.width = (playerUnit.hp / playerUnit.maxHp * 100) + "%";
+            document.getElementById('sp-val').textContent = `${playerUnit.sp} / ${playerUnit.maxSp}`;
+            document.getElementById('sp-bar').style.width = (playerUnit.sp / playerUnit.maxSp * 100) + "%";
+        }
+
+        function checkActionPossible() {
+            const hasEnemyInRange = enemies.some(en => en.hp > 0 && (Math.abs(playerUnit.x - en.x) + Math.abs(playerUnit.y - en.y)) <= 1);
+            document.getElementById('attack-btn').disabled = !hasEnemyInRange;
+            document.getElementById('skill-power-btn').disabled = playerUnit.sp < 10;
+            document.getElementById('move-btn').disabled = hasMovedInTurn;
+        }
+
+        async function switchTurn() {
+            isPlayerSelected = false;
+            if (currentTurn === 'player') {
+                currentTurn = 'enemy'; hasMovedInTurn = false;
+                turnDisplay.textContent = "ENEMY TURN"; turnDisplay.className = "enemy-turn";
+                await typeMessage("敵たちが行動中...");
+                enemyTurnSequential(0);
+            } else {
+                currentTurn = 'player'; hasMovedInTurn = false;
+                turnDisplay.textContent = "PLAYER TURN"; turnDisplay.className = "player-turn";
+                await typeMessage("ユニットを選択してください");
+                focusCamera(playerUnit.x, playerUnit.y);
+            }
+        }
+
+        function enemyTurnSequential(index) {
+            if (index >= enemies.length) { setTimeout(switchTurn, 500); return; }
+            const enemy = enemies[index];
+            if (enemy.hp <= 0) { enemyTurnSequential(index + 1); return; }
+            focusCamera(enemy.x, enemy.y);
+            setTimeout(async () => {
+                const getDist = (ex, ey, px, py) => Math.abs(px - ex) + Math.abs(py - ey);
+                if (getDist(enemy.x, enemy.y, playerUnit.x, playerUnit.y) <= enemy.attackRange) {
+                    await executeEnemyAttack(enemy);
+                    enemyTurnSequential(index + 1);
+                    return;
+                }
+                const dice = Math.random();
+                let nextX = enemy.x; let nextY = enemy.y;
+                const isBlocked = (tx, ty) => obstacles.some(o => o.x === tx && o.y === ty) || (tx === playerUnit.x && ty === playerUnit.y) || enemies.some(en => en.id !== enemy.id && en.hp > 0 && en.x === tx && en.y === ty);
+                if (dice < 0.8) {
+                    let bestDist = getDist(enemy.x, enemy.y, playerUnit.x, playerUnit.y);
+                    let range = dice < 0.6 ? 1 : enemy.moveRange;
+                    for (let my = -range; my <= range; my++) {
+                        for (let mx = -range; mx <= range; mx++) {
+                            let tx = enemy.x + mx; let ty = enemy.y + my;
+                            if (tx >= 0 && tx < boardSize && ty >= 0 && ty < boardSize && (Math.abs(mx) + Math.abs(my)) <= range) {
+                                if (!isBlocked(tx, ty)) {
+                                    let d = getDist(tx, ty, playerUnit.x, playerUnit.y);
+                                    if (d < bestDist) { bestDist = d; nextX = tx; nextY = ty; }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
+                    const randDir = dirs[Math.floor(Math.random() * dirs.length)];
+                    let tx = enemy.x + randDir.x; let ty = enemy.y + randDir.y;
+                    if (tx >= 0 && tx < boardSize && ty >= 0 && ty < boardSize && !isBlocked(tx, ty)) { nextX = tx; nextY = ty; }
+                }
+                enemy.x = nextX; enemy.y = nextY;
+                renderUnits();
+                focusCamera(enemy.x, enemy.y);
+                setTimeout(async () => {
+                    if (getDist(enemy.x, enemy.y, playerUnit.x, playerUnit.y) <= enemy.attackRange) {
+                        await executeEnemyAttack(enemy);
+                        enemyTurnSequential(index + 1);
+                    } else { enemyTurnSequential(index + 1); }
+                }, 400);
+            }, 600);
+        }
+
+        async function executeEnemyAttack(enemy) {
+            await typeMessage(`敵${enemy.id}の攻撃！`);
+            playerUnit.hp = Math.max(0, playerUnit.hp - 15);
+            await applyDamageEffect('player');
+            renderUnits();
+            await typeMessage(`プレイヤーに15のダメージ！`);
+            await sleep(2000);
+            if (playerUnit.hp <= 0) alert("GAME OVER...");
+        }
+
+        async function executeAttack(damage, target) {
+            await typeMessage(`プレイヤーの攻撃！`);
+            target.hp = Math.max(0, target.hp - damage);
+            await applyDamageEffect(target.id);
+            renderUnits();
+            await typeMessage(`敵${target.id}に${damage}ダメージ！`);
+            await sleep(2000);
+            
+            isAttackMode = false; isSkillMode = false;
+            clearHighlights(); cancelMenu();
+            
+            if (target.hp <= 0) {
+                target.isDying = true;
+                renderUnits();
+                await sleep(900);
+                const item = dropItems[Math.floor(Math.random() * dropItems.length)];
+                await typeMessage(`敵を撃破！`);
+                await sleep(1000);
+                await typeMessage(`「${item}」を手に入れた！`);
+                target.isDying = false;
+                renderUnits();
+                await sleep(2000);
+            }
+            switchTurn();
+        }
+
+        function openAdaptiveMenu(targetMenu, px, py) {
+            targetMenu.style.display = 'flex';
+            currentFocusedMenu = targetMenu;
+            focusedBtnIdx = 0;
+            const btns = Array.from(targetMenu.querySelectorAll('.menu-btn:not(:disabled)'));
+            updateBtnFocus(btns);
+            const menuWidth = 160; const menuHeight = targetMenu.offsetHeight || 220; 
+            let left = px + 15; let top = py + 15;
+            if (left + menuWidth > window.innerWidth) left = px - menuWidth - 15;
+            if (top + menuHeight > window.innerHeight) top = py - menuHeight - 15;
+            targetMenu.style.left = `${Math.max(10, left)}px`; targetMenu.style.top = `${Math.max(10, top)}px`;
+            
+            if (targetMenu === equipMenu) updateEquipMarks();
+        }
+
+        function updateEquipMarks() {
+            ['木のつるぎ', '鉄のつるぎ', 'はがねのつるぎ'].forEach(w => {
+                const mark = document.getElementById(`mark-${w}`);
+                mark.textContent = (playerInventory.weapon === w) ? 'E' : '';
+            });
+        }
+
+        function changeEquip(weaponName) {
+            playerInventory.weapon = weaponName;
+            updateEquipMarks();
+            typeMessage(`${weaponName}を装備しました。`);
+        }
+
+        function cancelMenu() {
+            isPlayerSelected = false; currentFocusedMenu = null;
+            menu.style.display = 'none'; skillMenu.style.display = 'none'; actionMenu.style.display = 'none'; equipMenu.style.display = 'none';
+            document.querySelectorAll('.tile').forEach(t => t.classList.remove('selected-tile'));
+            renderUnits();
+        }
+
+        function backToCommand() { skillMenu.style.display = 'none'; actionMenu.style.display = 'none'; equipMenu.style.display = 'none'; openAdaptiveMenu(menu, lastMenuPos.x, lastMenuPos.y); typeMessage("コマンドを選択..."); }
+        function openSkillMenu() { menu.style.display = 'none'; openAdaptiveMenu(skillMenu, lastMenuPos.x, lastMenuPos.y); typeMessage("スキルを選択してください"); }
+        function openActionMenu() { menu.style.display = 'none'; openAdaptiveMenu(actionMenu, lastMenuPos.x, lastMenuPos.y); typeMessage("アクションを選択してください"); }
+        function openEquipMenu() { menu.style.display = 'none'; openAdaptiveMenu(equipMenu, lastMenuPos.x, lastMenuPos.y); typeMessage("装備を確認してください"); }
+        function startSkill(name) { cancelMenu(); isSkillMode = true; typeMessage(`${name}：対象を選択（Zで戻る）`); showSkillRange(2); }
+        function startHeal() { cancelMenu(); isHealMode = true; typeMessage("薬草：対象を選択（Zで戻る）"); clearHighlights(); document.getElementById(`tile-${playerUnit.x}-${playerUnit.y}`).classList.add('healable'); }
+        async function executeHeal() { 
+            playerUnit.hp = Math.min(playerUnit.maxHp, playerUnit.hp + 40); 
+            await typeMessage("薬草を使用！"); 
+            await applyDamageEffect('player');
+            renderUnits();
+            await typeMessage("体力が40回復しました。"); 
+            isHealMode = false; clearHighlights(); 
+            await sleep(2000);
+            switchTurn(); 
+        }
+        function confirmEndTurn() { if (confirm("ターンを終了しますか？")) { cancelMenu(); switchTurn(); } }
+        function showSkillRange(range) { clearHighlights(); document.querySelectorAll('.tile').forEach(tile => { const dist = Math.abs(parseInt(tile.dataset.x) - playerUnit.x) + Math.abs(parseInt(tile.dataset.y) - playerUnit.y); if (dist <= range && dist > 0) tile.classList.add('attackable'); }); }
+        function startMove() { if (hasMovedInTurn) return; cancelMenu(); isMovingMode = true; typeMessage("移動先を選択"); showMovableRange(); }
+        function endMove() { isMovingMode = false; hasMovedInTurn = true; clearHighlights(); cancelMenu(); typeMessage("移動完了。アクションを選択してください"); }
+        function cancelMove() { isMovingMode = false; clearHighlights(); cancelMenu(); }
+        function startAttack() { cancelMenu(); isAttackMode = true; typeMessage("対象を選択"); showAttackRange(); }
+        function showAttackRange() { clearHighlights(); [ {x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1} ].forEach(c => { const t = document.getElementById(`tile-${playerUnit.x+c.x}-${playerUnit.y+c.y}`); if (t && !obstacles.some(o => o.x === (playerUnit.x+c.x) && o.y === (playerUnit.y+c.y))) t.classList.add('attackable'); }); }
+        function cancelAttack() { isAttackMode = false; isSkillMode = false; clearHighlights(); cancelMenu(); typeMessage("キャンセルしました"); }
+        function showMovableRange() { document.querySelectorAll('.tile').forEach(tile => { const tx = parseInt(tile.dataset.x); const ty = parseInt(tile.dataset.y); const dist = Math.abs(tx - playerUnit.x) + Math.abs(ty - playerUnit.y); const isObs = obstacles.some(o => o.x === tx && o.y === ty); const isOccupied = enemies.some(en => en.hp > 0 && en.x === tx && en.y === ty); if (dist <= playerUnit.moveRange && dist > 0 && !isOccupied && !isObs) tile.classList.add('movable'); }); }
+        function clearHighlights() { document.querySelectorAll('.tile').forEach(t => { 
+            t.classList.remove('movable', 'attackable', 'healable'); 
+        }); }
+
+        init();
+    </script>
+</body>
+</html>

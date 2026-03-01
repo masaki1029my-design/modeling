@@ -69,3 +69,32 @@ img{
   margin-top: 300px;
   color: whitesmoke;
 }
+
+.play{
+  margin-top: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.play a {
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 15px;
+  transition: color 0.2s;
+  background-color: black;
+  border-bottom:2px solid white ;
+  border-top:2px solid white ;
+}
+
+
+.play a:hover {
+  background-color: orangered;
+  /*background-color: tomato;*/
+}
+
+.sub{
+  color: tomato;
+  font-size: 15px;
+}
