@@ -56,6 +56,7 @@ img{
 
 .sub{
   font-size: 20px;
+  color: whitesmoke;
 }
 
 .l2{
@@ -74,6 +75,7 @@ img{
   margin-top: 50px;
   text-align: center;
   margin-bottom: 50px;
+  color: whitesmoke;
 }
 
 .play a {
@@ -94,7 +96,7 @@ img{
   /*background-color: tomato;*/
 }
 
-.sub{
+/*.sub{
   color: tomato;
   font-size: 15px;
-}
+}*/
