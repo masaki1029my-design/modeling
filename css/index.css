@@ -54,17 +54,6 @@ h2{
   border-bottom: 1px solid white;
 }
 
-#rule{
-  width: 750px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 15px;
-  line-height: 37px;
-  color: whitesmoke;
-}
-
 .red{
   color: tomato;
 }
