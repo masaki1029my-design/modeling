@@ -1,7 +1,7 @@
 body{
   width: 850px;
   margin: 0 auto;
-  background-color: black;
+  background-color: #333333;
 }
 
 li{
@@ -39,7 +39,7 @@ li{
   text-decoration: none;
   padding: 15px;
   transition: color 0.2s;
-  background-color: black;
+  background-color: #333333;
   border-bottom:2px solid white ;
   border-top:2px solid white ;
 }

@@ -29,14 +29,17 @@ img{
 }*/
 
 .l1{
+  height: 60px;
   width:850px ;
   text-align: center;
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  border-bottom:2px solid tomato;
+  /*border-bottom:2px solid tomato;*/
   padding: 0;
   padding-bottom: 13px;
-  color: whitesmoke;
+  padding-top: 20px;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .m{
@@ -56,19 +59,22 @@ img{
 
 .sub{
   font-size: 20px;
-  color: whitesmoke;
+  color: black;
 }
 
 .l2{
+  height: 60px;
   width:850px ;
   text-align: center;
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  border-bottom:2px solid tomato;
+  /*order-bottom:2px solid tomato;*/
   padding: 0;
   padding-bottom: 13px;
+  padding-top: 20px;
   margin-top: 300px;
-  color: whitesmoke;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .play{
@@ -100,3 +106,19 @@ img{
   color: tomato;
   font-size: 15px;
 }*/
+
+.site_link a {
+  font-size: 15px;
+  color: whitesmoke;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 0;
+  transition: color 0.2s;
+  /*border-bottom: 1px solid whitesmoke;*/
+}
+
+.site_link a:hover {
+  color: tomato;
+  /*background-color: tomato;*/
+}

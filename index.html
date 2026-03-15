@@ -9,26 +9,45 @@
 <script src="jquery.js"></script>
 <script>
   $(function() {
-    //$('.contents').hide();//contents隠す
-
-    $('.title').on('click', function() {//$('title')がクリックされた時
-      $(this)//=title
+    // 1. アコーディオンの既存処理
+    $('.title').on('click', function() {
+      $(this)
       .toggleClass('open')
-      .next('.contents')//titleの次=contentsを呼ぶ
-      .slideToggle(250);//toggle250(ms)
+      .next('.contents')
+      .slideToggle(250);
+    });
+
+    // 2. パスワード制限の追加処理
+    $('a[href="work_04.html"]').on('click', function(e) {
+      e.preventDefault(); // ページ遷移を一旦止める
+      
+      var password = prompt("閲覧にはパスワードが必要です。作者以外のアクセスを禁じます。");
+      var collect = "masaki20051029my"; // ←ここに設定したいパスワードを入力してください
+
+      if (password === collect) {
+        location.href = $(this).attr('href'); // 正解ならリンク先へ
+      } else {
+        alert("パスワードが違います。"); // 不正解なら何もしない
+      }
     });
   });
 </script>
 
 <body>
-  <h1>作品閲覧サイト</h1>
-  <p class="major">作品一覧</p>
+  <h1>作品閲覧サイト <span class="eng">- Portfolio website -</span></h1>
+  <!--<p class="major">作品一覧</p>-->
+  <br>
+  <br>
   <div class="month">
-    <h2>２０２６年</h2>
+    <h2>２０２６</h2>
+  <h3 class="title">４月</h3>
+  <ul class="contents">
+    <li><a href=".html">「No image」||<span class="sub"></span></a></li>
+  </ul>
   <h3 class="title">３月</h3>
   <ul class="contents">
-    <li><a href="work_05.html">「　ドットイラスト変換サイト　」　;||　<span class="sub">>>アップデート</span></a></li>
-    <li><a href="work_04.html">「　広報冊子ヘッダーデザイン　」　>>　<span class="sub">>>閲覧禁止</span></a></li>  
+    <li><a href="work_05.html">「　ドット絵制作サイト　」　;||　<span class="sub">>>アップデート</span></a></li>
+    <li><a href="work_04.html">「　広報冊子ヘッダデザイン　」　>>　<span class="sub">>>閲覧禁止</span></a></li>  
     <li><a href="work_03.html">「　陸生頭足類のデザイン　/　造形　」　>><span class="sub"></span></a></li>    
     <li><a href="work_02.html">「　鳥竜の再デザイン　/　再造形　」　>><span class="sub"></span></a></li>
   </ul>
@@ -40,5 +59,19 @@
   <br>
   <br>
 </div>
+<div class="month">
+    <h2>２０２５</h2>
+  <h3 class="title">XX月</h3>
+  <ul class="contents">
+    <li><a href=".html">「No image」||<span class="sub"></span></a></li>
+  </ul>
+  <br>
+  <br>
+  <br>
+</div>
+  <br>
+  <br>
+  <br>
+
 </body>
 
