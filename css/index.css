@@ -24,9 +24,9 @@ h2{
 .title{
   font-size: 25px;
   /*border-bottom: 10px solid black;*/
-  border-left: 20px solid black;
-  background-color: whitesmoke;
-  color: black;
+  border: 5px solid whitesmoke;
+  background-color: #333333;
+  color: whitesmoke;
   font-family:Georgia, 'Times New Roman', Times, serif;
   padding-left: 10px;
   width: 100px;
