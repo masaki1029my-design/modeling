@@ -8,6 +8,47 @@
   <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
   <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
 </head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  var currentSlide = 0;
+  var slides = $('.slideshow img');
+  var totalSlides = slides.length;
+  
+  // 初回表示の更新
+  updateNumber();
+  showSlide(currentSlide);
+  
+  $('#prev-btn').on('click', function() {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = totalSlides - 1;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  $('#next-btn').on('click', function() {
+    currentSlide++;
+    if (currentSlide >= totalSlides) {
+      currentSlide = 0;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  function showSlide(index) {
+    slides.hide();
+    slides.eq(index).show();
+  }
+
+  // 表示されている数字を書き換える関数
+  function updateNumber() {
+    // インデックスは0から始まるので +1 する
+    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
+  }
+});
+  </script>
 <body>
   <p class="l1">「　鳥竜の再デザイン　/<span class="sub">　Redesign of Bird Wyvern　</span>」</p>
   <p class="m">デザインコンセプト（再）</p>
@@ -28,17 +69,19 @@
     本作は、前作のスカルプトモデルをベースに、生物としてのリアリティを追求しリデザインした鳥竜の最新モデルです。
     前述した最も大きな変更点である尻尾は、新たなコンセプトに基づき骨格から抜本的に再造形。全身のディテールもリデザインに合わせ、一節一節まで緻密な再調整を施しました。特にこだわったのは、長い年月を生き抜いた証である「甲殻のひび割れ」「古傷」「羽の筋」の表現です。
     これらの掘りをあえて深く設計することで、デジタル上の視覚効果に留まらず、立体物として出力した際にその質感や「使い古された甲殻」の確かな手触りを感じられる、実体感のある造形を目指しました。また、リメッシュの解像度を極限まで高めることで、微細な皮膚の質感や生物的な脈動までもが、手に取るように伝わる仕上がりとなっています。
+  </div>  
+  <div class="slideshow">
+    <img src="img/front_site.png" alt="写真1">
+    <img src="img/right_site.png" alt="写真2">
+    <img src="img/back_site.png" alt="写真3">
+    <img src="img/left_site.png" alt="写真4">
   </div>
-  <img src="img/bd01_new.png" alt="image01">
+  <div class="button">
+  <button id="prev-btn">◀︎　</button>
+  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/4</span>
+  <button id="next-btn">▶︎　</button>
+  </div>
   <div id="concept">
   </div>
-  <!--<p class="m">再出力品（光造形）</p>
-  <div id="concept">
-    近日更新予定・・・
-  </div>-->
-  <div class="slider-container">
-  <div class="slider-inner">
-  </div>
-</div>
   <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
 </body>
