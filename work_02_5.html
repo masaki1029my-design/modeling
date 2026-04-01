@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
+  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
+</head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  var currentSlide = 0;
+  var slides = $('.slideshow img');
+  var totalSlides = slides.length;
+  
+  // 初回表示の更新
+  updateNumber();
+  showSlide(currentSlide);
+  
+  $('#prev-btn').on('click', function() {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = totalSlides - 1;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  $('#next-btn').on('click', function() {
+    currentSlide++;
+    if (currentSlide >= totalSlides) {
+      currentSlide = 0;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  function showSlide(index) {
+    slides.hide();
+    slides.eq(index).show();
+  }
+
+  // 表示されている数字を書き換える関数
+  function updateNumber() {
+    // インデックスは0から始まるので +1 する
+    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
+  }
+});
+  </script>
+<body>
+  <p class="l1">「　鳥竜の造形　/<span class="sub">　Bird Wyvern sculpture　</span>」</p>
+  <p class="m">デザイン・工夫</p>
+  <div id="concept">
+    本作品は、猛禽類のような大型鳥類のシルエットをベースに、随所に爬虫類の質感を織り交ぜた、独自の進化を辿った生物としてデザインしました。
+    最大の特徴は、通常は翼である部位が強靭な前脚へと変貌を遂げている点にあります。
+    この前脚は、鷲や鷹の翼のような美しい羽を備えつつ、その骨格はワニやトカゲを彷彿とさせる力強い造形に仕上げ、陸上と上空の両方に適応した進化の過程を表現しました。
+    また、後脚は猛禽類特有の鋭さを活かしつつ、さらに「掴む」という機能に特化させることで、竜であり鳥でもあるという特異な存在感を強調しています。
+    空から大地へ、あるいは大地から空へと境界を越えていく、竜と鳥の狭間に位置する生命の鼓動や、そのダイナミックな進化の息吹を感じていただければ幸いです。
+  </div>  
+  <div class="slideshow">
+    <img src="img/original_front_site.png" alt="写真1">
+    <img src="img/original_right_site.png" alt="写真2">
+    <img src="img/original_back_site.png" alt="写真3">
+    <img src="img/original_left_site.png" alt="写真4">
+  </div>
+  <div class="button">
+  <button id="prev-btn">◀︎　</button>
+  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/4</span>
+  <button id="next-btn">▶︎　</button>
+  </div>
+  <div id="concept">
+  </div>
+  <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
+</body>
