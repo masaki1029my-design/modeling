@@ -72,3 +72,28 @@ h2{
   line-height: 37px;
   color: whitesmoke;
 }*/
+
+#news{
+  width: 750px;
+  margin-top: 10px;
+  text-align: justify;
+  margin: 0 auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  line-height: 37px;
+  color: whitesmoke;
+}
+.l_news{
+  width:300px ;
+  text-align: center;
+  font-size: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-bottom: 1px solid white;
+  border-right:0px ;
+  border-left:0px ;
+  padding-bottom: 13px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: 80px;
+  color: whitesmoke;
+}

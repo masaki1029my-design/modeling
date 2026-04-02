@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
+  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
+</head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  var currentSlide = 0;
+  var slides = $('.slideshow img');
+  var totalSlides = slides.length;
+  
+  // 初回表示の更新
+  updateNumber();
+  showSlide(currentSlide);
+  
+  $('#prev-btn').on('click', function() {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = totalSlides - 1;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  $('#next-btn').on('click', function() {
+    currentSlide++;
+    if (currentSlide >= totalSlides) {
+      currentSlide = 0;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  function showSlide(index) {
+    slides.hide();
+    slides.eq(index).show();
+  }
+
+  // 表示されている数字を書き換える関数
+  function updateNumber() {
+    // インデックスは0から始まるので +1 する
+    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
+  }
+});
+  </script>
+<body>
+  <p class="l1">「　鷲 ヘッドモデル　/<span class="sub">　Head Model of Eagle　</span>」</p>
+  <p class="m">造形：工夫</p>
+  <div id="concept">
+    初めての造形作品として制作した本作品では、細部の質感表現に徹底してこだわりました。
+    特に試行錯誤を重ねたのは、鷲特有の頭部付近における毛並みの再現です。
+    立体物としていかに自然な流れを生み出すかを追求した結果、グレイストリップ（ブラシ）を用いることで、羽毛一本一本の繊細な重なりや筋を表現する手法へと至りました。
+    また、顔周りの皮膚と首元の羽毛では、生体としての質感が根本から異なるため、それぞれの差異を丁寧に描き分けることでリアリティを追求しています。
+    さらに嘴（くちばし）の造形においても、より硬質で鋭い質感が伝わるよう細部まで作り込みました。
+    初制作ながらも、生物としての説得力と細部への情熱を詰め込んだ造形を、ぜひご覧ください。
+  </div>  
+  <div class="slideshow">
+    <img src="img/eagle_front_site.png" alt="写真1">
+    <img src="img/eagle_right_site.png" alt="写真2">
+    <img src="img/eagle_back_site.png" alt="写真3">
+    <img src="img/eagle_left_site.png" alt="写真4">
+  </div>
+  <div class="button">
+  <button id="prev-btn">◀︎　</button>
+  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/4</span>
+  <button id="next-btn">▶︎　</button>
+  </div>
+  <p class="m">下地塗り：試作</p>
+  <div id="concept">
+    実際に教授の指導のもと、光造形３Dプリンターを用いて立体物として出力しました。
+    その後、サーフェイサーを吹きかけ、下地塗りを行いました。
+    今回は、試作品ということでブラックとグレイの２色でそれぞれ塗装してみました。
+    （個人的にはグレイカラーの方が造形が際立って見やすいと思います。）
+  </div>  
+      <img src="img/eagle_headmodel.png" alt="写真1">
+  <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
+</body>
