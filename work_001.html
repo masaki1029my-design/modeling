@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
+  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
+</head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  var currentSlide = 0;
+  var slides = $('.slideshow img');
+  var totalSlides = slides.length;
+  
+  // 初回表示の更新
+  updateNumber();
+  showSlide(currentSlide);
+  
+  $('#prev-btn').on('click', function() {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = totalSlides - 1;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  $('#next-btn').on('click', function() {
+    currentSlide++;
+    if (currentSlide >= totalSlides) {
+      currentSlide = 0;
+    }
+    showSlide(currentSlide);
+    updateNumber(); // 数字を更新
+  });
+  
+  function showSlide(index) {
+    slides.hide();
+    slides.eq(index).show();
+  }
+
+  // 表示されている数字を書き換える関数
+  function updateNumber() {
+    // インデックスは0から始まるので +1 する
+    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
+  }
+});
+  </script>
+<body>
+  <p class="l1">「　パターングラフィクス試作　/<span class="sub">　Pattern Design Prototype　</span>」</p>
+  <p class="m">デザインコンセプト</p>
+  <div id="concept">
+    本誌作品は、「音が私たちに送るモノ」ということをコンセプトに制作しました。
+    音は、私たちに様々な情報を与えてくれます。
+    その目に見えない無意識下で発生している現象をパターングラフィックスを用いて、可視化することを目指しました。
+  </div>  
+  <div class="slideshow">
+    <img src="img/patgra01.png" alt="写真1">
+    <img src="img/paper.png" alt="写真2">
+  </div>
+  <div class="button">
+  <button id="prev-btn">◀︎　</button>
+  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/2</span>
+  <button id="next-btn">▶︎　</button>
+  </div>
+  <p class="m">試作について</p>
+  <div id="concept">
+    この試作のパターングラフィックスについてですが、実際には二段階目の試作品となります。
+    一段階目の試作品は、現在の試作品と大まかな形状は変化してはいませんが、色彩においては全く異なるものでした。
+    色数もそこまでなく、シンプルなものでした。
+    しかし、制作を重ねていくうちに音から得られる視覚情報というのは、もっと色鮮やかなものだということに行きつきました。
+    よって、現在の試作品のように色鮮やかなデザインに仕上がりました。
+  </div>  
+  <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
+</body>
