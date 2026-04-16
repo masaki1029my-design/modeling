@@ -6,16 +6,46 @@
   <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
   <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
 </head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  $('.slideshow-wrapper').each(function() {
+    var $wrapper = $(this);
+    var $slides = $wrapper.find('.slideshow img');
+    var $number = $wrapper.find('.slide-number');
+    var total = $slides.length;
+    var current = 0;
+
+    function show() {
+      $slides.hide().eq(current).show();
+      $number.text((current + 1) + ' / ' + total);
+    }
+
+    $wrapper.find('.prev-btn').on('click', function() {
+      current = (current - 1 + total) % total;
+      show();
+    });
+
+    $wrapper.find('.next-btn').on('click', function() {
+      current = (current + 1) % total;
+      show();
+    });
+
+    // 初期表示
+    show();
+  });
+});
+  </script>
 <body>
   <p class="l1">「価値あるものは、価値なきものから」</p>
-  <p class="m">Concept</p>
-  <img src="img/galactabird_final.png" alt="galactabird_finalpng">
+  <p class="m">コンセプト</p>
   <div id="concept">
     ガラクタやゴミは、何も価値のないもの・役目を終えたもの。
     私たちはそう決めつけてはいないだろうか。
     本作品は、”生物の誕生”と”ガラクタから新たな価値の創生”を重ねて表現することをコンセプトとしている。
   </div>
-  <p class="m">Idea</p>
+    <img src="img/galactabird_final.png" alt="galactabird_finalpng">
+  <p class="m">アイデア</p>
   <div id="concept">
     本作品の主軸となる鳥は、猛禽類などの大型の鳥類をモチーフとしている。
     しかし、ただの鳥ではなく、それはあらゆるガラクタで成り立った生命。
@@ -29,23 +59,28 @@
     ガラクタの「堕ちる」と鳥の「羽ばたく」というイメージは、うまく対比になっているのではないか
     と考えたためでもあり、鳥がモチーフの有力候補となった。
   </div>  
-    <p class="m">Supplement</p>
+    <p class="m">制作の背景</p>
   <div id="concept">
     本作品は、Maya2023という3DCGソフトを利用して制作した。
     この作品を作る際に、何度も修正を重ねた。
-    最初は、ガラクタでできた鳥が大空を飛ぶという構図であった。
-  </div>  
-  <img src="img/finalimage.png" alt="galactabird_finalpng">  
-  <div id="concept">
+    最初は、ガラクタでできた鳥が大空を飛ぶという構図であった。（1枚目）
     しかし、作っていく中で初めから大空を飛んでいてはガラクタから生命が
     成り立っていく過程が見えづらいと考えたため、鳥をあえて地に立たせ、翼を大きく広げ、
     これから羽ばたこうとする構図に切り替えた。
     また、テクスチャ部分も統一感がありすぎるため、より自然さを表現するために
-    部位毎に割り振りを行った。
+    部位毎に割り振りを行った。（2枚目）
+    さらに、光の当て方・テクスチャ・カメラの位置・背景などの再度見直しなどを行い、現在の最終版に至る。（3枚目）
   </div>  
-  <img src="img/galactabird.png" alt="galactabird_finalpng">  
-  <div id="concept">
-    さらに、光の当て方・テクスチャ・カメラの位置・背景などの再度見直しなどを行い、現在の最終版に至る。
-  </div>  
+<div class="slideshow-wrapper" data-target="slide1">
+  <div class="slideshow" id="slide1">
+    <img src="img/finalimage.png" alt="1">
+    <img src="img/galactabird.png" alt="2">
+    <img src="img/galactabird_final.png" alt="3">
+  </div>
+  <div class="button">
+    <button class="prev-btn">◀︎</button>
+    <span class="slide-number"></span>
+    <button class="next-btn">▶︎</button>
+  </div>
   <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
 </body>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,42 +9,31 @@
 <script src="jquery.js"></script>
   <script>
 $(function() {
-  var currentSlide = 0;
-  var slides = $('.slideshow img');
-  var totalSlides = slides.length;
-  
-  // 初回表示の更新
-  updateNumber();
-  showSlide(currentSlide);
-  
-  $('#prev-btn').on('click', function() {
-    currentSlide--;
-    if (currentSlide < 0) {
-      currentSlide = totalSlides - 1;
-    }
-    showSlide(currentSlide);
-    updateNumber(); // 数字を更新
-  });
-  
-  $('#next-btn').on('click', function() {
-    currentSlide++;
-    if (currentSlide >= totalSlides) {
-      currentSlide = 0;
-    }
-    showSlide(currentSlide);
-    updateNumber(); // 数字を更新
-  });
-  
-  function showSlide(index) {
-    slides.hide();
-    slides.eq(index).show();
-  }
+  $('.slideshow-wrapper').each(function() {
+    var $wrapper = $(this);
+    var $slides = $wrapper.find('.slideshow img');
+    var $number = $wrapper.find('.slide-number');
+    var total = $slides.length;
+    var current = 0;
 
-  // 表示されている数字を書き換える関数
-  function updateNumber() {
-    // インデックスは0から始まるので +1 する
-    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
-  }
+    function show() {
+      $slides.hide().eq(current).show();
+      $number.text((current + 1) + ' / ' + total);
+    }
+
+    $wrapper.find('.prev-btn').on('click', function() {
+      current = (current - 1 + total) % total;
+      show();
+    });
+
+    $wrapper.find('.next-btn').on('click', function() {
+      current = (current + 1) % total;
+      show();
+    });
+
+    // 初期表示
+    show();
+  });
 });
   </script>
 <body>
@@ -70,23 +57,33 @@ $(function() {
     前述した最も大きな変更点である尻尾は、新たなコンセプトに基づき骨格から抜本的に再造形。全身のディテールもリデザインに合わせ、一節一節まで緻密な再調整を施しました。特にこだわったのは、長い年月を生き抜いた証である「甲殻のひび割れ」「古傷」「羽の筋」の表現です。
     これらの掘りをあえて深く設計することで、デジタル上の視覚効果に留まらず、立体物として出力した際にその質感や「使い古された甲殻」の確かな手触りを感じられる、実体感のある造形を目指しました。また、リメッシュの解像度を極限まで高めることで、微細な皮膚の質感や生物的な脈動までもが、手に取るように伝わる仕上がりとなっています。
   </div>  
-  <div class="slideshow">
-    <img src="img/front_site.png" alt="写真1">
-    <img src="img/right_site.png" alt="写真2">
-    <img src="img/back_site.png" alt="写真3">
-    <img src="img/left_site.png" alt="写真4">
+<div class="slideshow-wrapper" data-target="slide1">
+  <div class="slideshow" id="slide1">
+    <img src="img/front_site.png" alt="1">
+    <img src="img/right_site.png" alt="2">
+    <img src="img/back_site.png" alt="3">
+    <img src="img/left_site.png" alt="4">
   </div>
   <div class="button">
-  <button id="prev-btn">◀︎　</button>
-  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/2</span>
-  <button id="next-btn">▶︎　</button>
+    <button class="prev-btn">◀︎</button>
+    <span class="slide-number"></span>
+    <button class="next-btn">▶︎</button>
   </div>
-  <p class="m">彩色見本（下地）</p>
+</div>  <p class="m">彩色見本（下地）</p>
   <div id="concept">
     M教授の協力のもと、彩色見本（下地段階）を制作しました。
     現物の参考になればと思います。
   </div>
-    <img src="img/birdwyvern_01_true.png" alt="写真1">
-    <img src="img/birdwyvern_02_true.png" alt="写真2">
+<div class="slideshow-wrapper" data-target="slide2">
+  <div class="slideshow" id="slide2">
+    <img src="img/birdwyvern_01_true.png" alt="1">
+    <img src="img/birdwyvern_02_true.png" alt="2">
+  </div>
+  <div class="button">
+    <button class="prev-btn">◀︎</button>
+    <span class="slide-number"></span>
+    <button class="next-btn">▶︎</button>
+  </div>
+</div>
   <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
 </body>

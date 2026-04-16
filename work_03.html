@@ -6,6 +6,37 @@
   <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
   <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
 </head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  $('.slideshow-wrapper').each(function() {
+    var $wrapper = $(this);
+    var $slides = $wrapper.find('.slideshow img');
+    var $number = $wrapper.find('.slide-number');
+    var total = $slides.length;
+    var current = 0;
+
+    function show() {
+      $slides.hide().eq(current).show();
+      $number.text((current + 1) + ' / ' + total);
+    }
+
+    $wrapper.find('.prev-btn').on('click', function() {
+      current = (current - 1 + total) % total;
+      show();
+    });
+
+    $wrapper.find('.next-btn').on('click', function() {
+      current = (current + 1) % total;
+      show();
+    });
+
+    // 初期表示
+    show();
+  });
+});
+  </script>
+
 <body>
   <p class="l1">「　陸生頭足類のデザイン　/<span class="sub">　Dsigan of Terrestrial Cephalopod　</span>」</p>
   <p class="m">デザインコンセプト</p>
@@ -30,9 +61,16 @@
     その印象をさらに強く引き出したデザインに仕上げようと考え、アイデアスケッチを行ないました。<br>
     そして、上がったデザインの中から以下のデザインに決定しました。
   </div>
-  <img src="img/design_sketch02_oc.png" alt="image02">
-  <img src="img/design_sketch03_oc.png" alt="image02">
-  <img src="img/design_sketch04_oc.png" alt="image02">
+<div class="slideshow-wrapper" data-target="slide1">
+  <div class="slideshow" id="slide1">
+    <img src="img/design_sketch03_oc.png" alt="1">
+    <img src="img/design_sketch02_oc.png" alt="2">
+  </div>
+  <div class="button">
+    <button class="prev-btn">◀︎</button>
+    <span class="slide-number"></span>
+    <button class="next-btn">▶︎</button>
+  </div>
   <div id="concept">
     ＜　デザイン案０２　＞<br>
     このデザイン案は、エイリアンのような異質な雰囲気を重視したデザインになっています。

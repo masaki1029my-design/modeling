@@ -11,42 +11,31 @@
 <script src="jquery.js"></script>
   <script>
 $(function() {
-  var currentSlide = 0;
-  var slides = $('.slideshow img');
-  var totalSlides = slides.length;
-  
-  // 初回表示の更新
-  updateNumber();
-  showSlide(currentSlide);
-  
-  $('#prev-btn').on('click', function() {
-    currentSlide--;
-    if (currentSlide < 0) {
-      currentSlide = totalSlides - 1;
-    }
-    showSlide(currentSlide);
-    updateNumber(); // 数字を更新
-  });
-  
-  $('#next-btn').on('click', function() {
-    currentSlide++;
-    if (currentSlide >= totalSlides) {
-      currentSlide = 0;
-    }
-    showSlide(currentSlide);
-    updateNumber(); // 数字を更新
-  });
-  
-  function showSlide(index) {
-    slides.hide();
-    slides.eq(index).show();
-  }
+  $('.slideshow-wrapper').each(function() {
+    var $wrapper = $(this);
+    var $slides = $wrapper.find('.slideshow img');
+    var $number = $wrapper.find('.slide-number');
+    var total = $slides.length;
+    var current = 0;
 
-  // 表示されている数字を書き換える関数
-  function updateNumber() {
-    // インデックスは0から始まるので +1 する
-    $('#slide-number').text((currentSlide + 1) + ' / ' + totalSlides);
-  }
+    function show() {
+      $slides.hide().eq(current).show();
+      $number.text((current + 1) + ' / ' + total);
+    }
+
+    $wrapper.find('.prev-btn').on('click', function() {
+      current = (current - 1 + total) % total;
+      show();
+    });
+
+    $wrapper.find('.next-btn').on('click', function() {
+      current = (current + 1) % total;
+      show();
+    });
+
+    // 初期表示
+    show();
+  });
 });
   </script>
 <body>
@@ -60,16 +49,17 @@ $(function() {
     さらに嘴（くちばし）の造形においても、より硬質で鋭い質感が伝わるよう細部まで作り込みました。
     初制作ながらも、生物としての説得力と細部への情熱を詰め込んだ造形を、ぜひご覧ください。
   </div>  
-  <div class="slideshow">
-    <img src="img/eagle_front_site.png" alt="写真1">
-    <img src="img/eagle_right_site.png" alt="写真2">
-    <img src="img/eagle_back_site.png" alt="写真3">
-    <img src="img/eagle_left_site.png" alt="写真4">
+<div class="slideshow-wrapper" data-target="slide1">
+  <div class="slideshow" id="slide1">
+    <img src="img/eagle_front_site.png" alt="1">
+    <img src="img/eagle_right_site.png" alt="2">
+    <img src="img/eagle_back_site.png" alt="3">
+    <img src="img/eagle_left_site.png" alt="4">
   </div>
   <div class="button">
-  <button id="prev-btn">◀︎　</button>
-  <span id="slide-number" style="margin-left:25px; font-weight:bold;">1/4</span>
-  <button id="next-btn">▶︎　</button>
+    <button class="prev-btn">◀︎</button>
+    <span class="slide-number"></span>
+    <button class="next-btn">▶︎</button>
   </div>
   <p class="m">下地塗り：試作</p>
   <div id="concept">
