@@ -140,23 +140,26 @@ img{
   margin: 0 auto;
   padding-top: 1px;
   letter-spacing: 1.5em;
+  font-size: 20px;
 }
 
-#prev-btn{
+.prev-btn{
   background-color: #333333;
   color: whitesmoke;
   font-size: 30px;
+  width: 70px;
 }
-#next-btn{
+.next-btn{
   background-color: #333333;
   color: whitesmoke;
   font-size: 30px;
+  width: 70px;
 }
-#prev-btn:hover{
+.prev-btn:hover{
   background-color: #333333;
   color: whitesmoke;
 }
-#next-btn:hover{
+.next-btn:hover{
   background-color: #333333;
   color: whitesmoke;
 }
