@@ -4,7 +4,7 @@ h1{
   font-size: 50px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   /*border-bottom: 8px solid tomato;*/
-  color: black;
+  color: #333333;
   text-align: center;
   background-color: whitesmoke;
 }
@@ -14,19 +14,19 @@ h2{
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   border-bottom: 0;
-  border-left: 15px solid whitesmoke;
-  border-bottom: 5px solid whitesmoke;
+  border-left: 15px solid #333333;
+  border-bottom: 5px solid #333333;
   padding-left: 10px;
   /*background-color: whitesmoke;*/
-  color: whitesmoke;
+  color: #333333;
 }
 
 .title{
   font-size: 25px;
   /*border-bottom: 10px solid black;*/
-  border: 5px solid whitesmoke;
-  background-color: #333333;
-  color: whitesmoke;
+  border: 2px solid #333333;
+  background-color: whitesmoke;
+  color: #333333;
   font-family:Georgia, 'Times New Roman', Times, serif;
   padding-left: 10px;
   width: 100px;
@@ -48,7 +48,7 @@ h2{
 
 .major{
   width: 300px;
-  color: white;
+  color: #333333;
   text-align: center;
   margin: 0 auto;
   margin-top: 100px;
@@ -56,7 +56,7 @@ h2{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 35px;
   padding-bottom: 13px;
-  border-bottom: 7px solid white;
+  border-bottom: 7px solid #333333;
 }
 
 .red{
@@ -81,7 +81,7 @@ h2{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
   line-height: 37px;
-  color: whitesmoke;
+  color: #333333;
 }
 .l_news{
   width:300px ;
@@ -95,5 +95,5 @@ h2{
   margin: 0 auto;
   margin-bottom: 30px;
   margin-top: 80px;
-  color: whitesmoke;
+  color: #333333;
 }

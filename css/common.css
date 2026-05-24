@@ -1,11 +1,11 @@
 body{
   width: 850px;
   margin: 0 auto;
-  background-color: #333333;
+  background-color: whitesmoke;
 }
 
 li{
-  color: whitesmoke;
+  color: #333333;
   padding: 8px;
   margin-left: 20px; 
   font-size: 20px;
@@ -13,7 +13,7 @@ li{
 
 .contents a {
   font-size: 20px;
-  color: whitesmoke;
+  color: #333333;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-decoration: none;
   display: inline-block;

@@ -3,8 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>作品詳細</title>
-  <link rel="stylesheet" href="css/works.css"><!--個別スタイル-->
-  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
+  <link rel="stylesheet" href="css/works.css"><link rel="stylesheet" href="css/common.css"><style>
+    /* --- 画像を横並び＋画面中央寄せにするスタイル --- */
+    #concept {
+      display: flex;           /* 横並びにする */
+      flex-wrap: wrap;         /* 画面幅が狭いときは折り返す */
+      justify-content: center; /* 【重要】横方向の中央寄せ */
+      align-items: center;     /* 縦方向の中央寄せ */
+      gap: 20px;               /* 画像と画像の間のすき間 */
+      max-width: 1200px;       /* 横に広がりすぎないための最大幅（サイトに合わせて調整してください） */
+      margin: 0 auto;          /* 【重要】#concept 自体を画面中央に配置 */
+      padding: 20px 0;         /* 上下の余白 */
+    }
+    #concept img {
+      max-width: 45%;          /* 2枚が綺麗に中央で横並びになるサイズに微調整 */
+      height: auto;            /* 縦横比を維持 */
+      cursor: zoom-in;         /* クリックできることがわかるようにカーソルを虫眼鏡に */
+    }
+
+    /* 拡大表示（モーダル）用の追加スタイル */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+    .modal-overlay img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <script src="jquery.js"></script>
   <script>
@@ -34,58 +71,38 @@ $(function() {
     // 初期表示
     show();
   });
+
+  // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
+  $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+
+  // #concept 内の画像がクリックされた時の処理
+  $('#concept img').on('click', function() {
+    var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
+    $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
+    $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
+  });
+
+  // 拡大画面（背景または画像）がクリックされたら閉じる処理
+  $('.modal-overlay').on('click', function() {
+    $(this).fadeOut(200);
+  });
 });
   </script>
 <body>
-  <p class="l1">「　鳥竜の再デザイン　/<span class="sub">　Redesign of Bird Wyvern　</span>」</p>
-  <p class="m">デザインコンセプト（再）</p>
-  <div id="concept">
-  「猛禽×爬虫類」のハイブリッド、そして「盲目」という二つの軸から生まれたクリーチャーです。
-  デザインの核としたのは、欠落が生む強さ。視覚を失った代わりに手にしたであろう強靭な四肢と、地に根付くような力強いシルエットを追求しました。鳥類特有の流麗な羽毛の間に、爬虫類を彷彿とさせる鱗や節々のディテールを配し、異形としての説得力を持たせています。
-  また、視覚的なコントラストを強調するため、生命のエネルギーが溢れる胴体や翼に対し、頭部には「閉鎖性」を凝縮。負の側面を象徴するその特異な頭部デザインが、この個体の不気味さと神聖さを際立たせています。
+  <p class="l1">【 猛禽竜デザイン /<span class="sub"> Redesign of Bird Wyvern </span>】</p>
+  <div id="midashi">
+    コンセプト<br>
+    『 猛禽類と爬虫類の間をいく新たな生物 』
   </div>  
-  <p class="m">前作からのリデザイン</p>
   <div id="concept">
-    今作では、前作で抱いていた「生物学的・デザイン的な不十分さ」を徹底的に見つめ直すことから始めました。
-    最大の変化は、尾部の再設計です。旧バージョンではボリューム不足ゆえに全体のシルエットが偏っていましたが、今作では飛行設定に基づき、十分な羽毛と質量を持たせたデザインへと刷新。これにより、飛行生物としての説得力と全身の造形バランスを両立させています。
-    そして、あえて主要な部位の形状は維持しつつも、ディテールと質感の密度を極限まで追求。さらに、将来的な立体出力と着色を見据えた正確なカラー設計を行い、生息環境や生態設定までをも再定義しました。「ただの造形物」ではなく、「自然界に実在し得る生命体」としての再構成を試みた意欲作です。
-    <img src="img/birdwyvern_image01.png" alt="1">
-    ※生成AI（Google Gemini）を活用し、実際のイメージ画像を出力した。
+  <p class="m">［　デザインの工夫　］</p>
+    基本的な骨格は、爬虫類を基にしつつ、所々に鷲や鷹などの猛禽類のような特徴が見られる
+    生物に仕上げました。また、色彩の面でも白頭鷲を思わせるようなカラーリングにしています。
+    猛禽竜という馴染みのない生物でありながら、どこか現実味のある生物としてデザインすること
+    を特に意識しました。
+    <img src="img/bd_color_site01.png" alt="1">
+    <img src="img/bd_color_site02.png" alt="2">
   </div>
-  <p class="l2">「　鳥竜の再造形　/<span class="sub">　Bird Wyvern Resculpture　</span>」</p>
-  <p class="m">再造形：工夫・改修</p>
-  <div id="concept">
-    本作は、前作のスカルプトモデルをベースに、生物としてのリアリティを追求しリデザインした鳥竜の最新モデルです。
-    前述した最も大きな変更点である尻尾は、新たなコンセプトに基づき骨格から抜本的に再造形。全身のディテールもリデザインに合わせ、一節一節まで緻密な再調整を施しました。特にこだわったのは、長い年月を生き抜いた証である「甲殻のひび割れ」「古傷」「羽の筋」の表現です。
-    これらの掘りをあえて深く設計することで、デジタル上の視覚効果に留まらず、立体物として出力した際にその質感や「使い古された甲殻」の確かな手触りを感じられる、実体感のある造形を目指しました。また、リメッシュの解像度を極限まで高めることで、微細な皮膚の質感や生物的な脈動までもが、手に取るように伝わる仕上がりとなっています。
-  </div>  
-<div class="slideshow-wrapper" data-target="slide1">
-  <div class="slideshow" id="slide1">
-    <img src="img/front_site.png" alt="1">
-    <img src="img/right_site.png" alt="2">
-    <img src="img/back_site.png" alt="3">
-    <img src="img/left_site.png" alt="4">
-  </div>
-  <div class="button">
-    <button class="prev-btn">◀︎</button>
-    <span class="slide-number"></span>
-    <button class="next-btn">▶︎</button>
-  </div>
-</div>  <p class="m">彩色見本（下地）</p>
-  <div id="concept">
-    M教授の協力のもと、彩色見本（下地段階）を制作しました。
-    現物の参考になればと思います。
-  </div>
-<div class="slideshow-wrapper" data-target="slide2">
-  <div class="slideshow" id="slide2">
-    <img src="img/birdwyvern_01_true.png" alt="1">
-    <img src="img/birdwyvern_02_true.png" alt="2">
-  </div>
-  <div class="button">
-    <button class="prev-btn">◀︎</button>
-    <span class="slide-number"></span>
-    <button class="next-btn">▶︎</button>
-  </div>
-</div>
   <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
 </body>
+</html>
