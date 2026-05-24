@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>作品詳細</title>
-  <link rel="stylesheet" href="css/index.css"><!--個別スタイル-->
-  <link rel="stylesheet" href="css/common.css"><!--共有スタイル-->
+  <link rel="stylesheet" href="css/index.css"><link rel="stylesheet" href="css/common.css"><style>
+    /* サイトを開いた初期状態でアコーディオンの中身を非表示（格納）にする */
+    .contents {
+      display: none;
+    }
+  </style>
 </head>
 <script src="jquery.js"></script>
 <script>
@@ -34,10 +38,9 @@
 </script>
 
 <body>
-  <h1>作品閲覧サイト <span class="eng">- Portfolio website -</span></h1>
-  <!--<p class="major">作品一覧</p>-->
-  <p class="l_news">はじめに</p>
+  <h1>【 作品閲覧サイト <span class="eng">- Portfolio website -</span> 】</h1>
   <div id="news">
+  <p class="l_news">はじめに</p>
     本サイトは、私がこれまでに制作してきた作品を皆さんに閲覧していただくためのものです。
     作品毎に制作過程や制作時のコメントも残しています。また、Instagram等のSNSでの作品投稿も行なっているので、ぜひ見ていただければ幸いです。
     （作品の中には、都合上一定の期間を経ないと閲覧できないものもあります。）
@@ -45,37 +48,34 @@
   <br>
   <br>
   <div class="month">
-    <h2>２０２６</h2>
-  <h3 class="title">４/５月</h3>
+    <h2>2026 - WORKS</h2>
+  <h3 class="title">『 サクッと制作01 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_02.html">「　盲目の猛禽竜　」　:||　<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">「 ハクスラゲー 」 <span class="sub"></span></a></li>
   </ul>
-  <!--<h3 class="title">４月</h3>
+  <h3 class="title">『 陸生頭足類 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_05.html">「　奇々怪怪　/　造形　」　||<span class="sub"></span></a></li>
-    <li><a href="work_03.html">「　陸生蛸のデザイン　/　造形　」　>><span class="sub"></span></a></li>    
-  </ul>-->
-  <h3 class="title">３/４月</h3>
-  <ul class="contents">
-    <li><a href="work_04.html">「　広報冊子ヘッダデザイン　」　:||　<span class="sub">-　閲覧禁止　-</span></a></li>  
-    <li><a href="work_02_5.html">「　猛禽竜の試作　」　:||　<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">「 陸生蛸のデザイン 」 <span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">「 陸生蛸の造形 」 <span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">「 陸生蛸フィギュア 」 <span class="sub"></span></a></li>
   </ul>
-  <h3 class="title">１月</h3>
+  <h3 class="title">『 猛禽竜 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_01_5.html">「　鷲 ヘッドモデル　/　造形　」　:||　<span class="sub"></span></a></li>
-    <li><a href="work_01.html">「　価値あるものは価値なきものから　」　:||<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">「 猛禽竜のデザイン 」 <span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern02.html"> "「 猛禽竜の造形 」 <span class="sub"></span>"</a></li>
+    <li><a href="work_birdwyvern03.html">「 猛禽竜フィギュア 」 <span class="sub"></span></a></li>
   </ul>
-  <br>
-  <br>
-  <br>
-</div>
-<div class="month">
-    <h2>２０２４</h2>
-  <h3 class="title">XX月</h3>
+  <h3 class="title">『 広報冊子のヘッダデザイン 』 ⏹</h3>
   <ul class="contents">
-    <li><a href=".html">「　パターングラフィクス完成版　」　:||　<span class="sub">-開設中-</span></a></li>
-    <li><a href="work_001.html">「　パターングラフィクス試作　」　:||　<span class="sub"></span></a></li>
-    <li><a href=".html">「　ポストカード　/　イラスト０１　」　:||　<span class="sub">-開設中-</span></a></li>
+    <li><a href="work_04.html">「 広報冊子ヘッダデザイン 」 <span class="sub">- 閲覧禁止 -</span></a></li>  
+  </ul>
+  <h3 class="title">『 鷲のヘッドフィギュア 』 ⏸</h3>
+  <ul class="contents">
+    <li><a href="work_01_5.html">「 鷲 ヘッドモデル 」 <span class="sub"></span></a></li>
+  </ul>
+  <h3 class="title">『 価値あるのものは価値なきものから 』 ⏹</h3>
+  <ul class="contents">
+    <li><a href="work_01.html">「 価値あるものは価値なきものから 」 :||<span class="sub"></span></a></li>
   </ul>
   <br>
   <br>
@@ -84,6 +84,5 @@
   <br>
   <br>
   <br>
-
 </body>
-
+</html>
