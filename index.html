@@ -13,6 +13,14 @@
 <script src="jquery.js"></script>
 <script>
   $(function() {
+    // --- ここから初期状態で特定のメニューを開く処理 ---
+    // 「陸生頭足類」と「猛禽竜」のタイトルを特定して、その次にある.contentsを最初から表示する
+    $('.title:contains("陸生頭足類"), .title:contains("猛禽竜")')
+      .addClass('open')   // 開いている状態のクラス（CSS用）を付与
+      .next('.contents')  // 次の.contentsを選択
+      .show();            // 最初から表示状態にする
+    // --- ここまで ---
+
     // 1. アコーディオンの既存処理
     $('.title').on('click', function() {
       $(this)
@@ -49,33 +57,31 @@
   <br>
   <div class="month">
     <h2>2026 - WORKS</h2>
-  <h3 class="title">『 サクッと制作01 』 ▶︎</h3>
-  <ul class="contents">
-    <li><a href="work_birdwyvern01.html">「 ハクスラゲー 」 <span class="sub"></span></a></li>
-  </ul>
   <h3 class="title">『 陸生頭足類 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_birdwyvern01.html">「 陸生蛸のデザイン 」 <span class="sub"></span></a></li>
-    <li><a href="work_birdwyvern01.html">「 陸生蛸の造形 」 <span class="sub"></span></a></li>
-    <li><a href="work_birdwyvern01.html">「 陸生蛸フィギュア 」 <span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">陸生蛸のデザイン<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">陸生蛸の造形<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">陸生蛸フィギュア<span class="sub"></span></a></li>
   </ul>
   <h3 class="title">『 猛禽竜 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_birdwyvern01.html">「 猛禽竜のデザイン 」 <span class="sub"></span></a></li>
-    <li><a href="work_birdwyvern02.html"> "「 猛禽竜の造形 」 <span class="sub"></span>"</a></li>
-    <li><a href="work_birdwyvern03.html">「 猛禽竜フィギュア 」 <span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern01.html">猛禽竜のデザイン<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern02.html">猛禽竜の造形<span class="sub"></span></a></li>
+    <li><a href="work_birdwyvern03.html">猛禽竜フィギュア<span class="sub"></span></a></li>
   </ul>
-  <h3 class="title">『 広報冊子のヘッダデザイン 』 ⏹</h3>
+  <h3 class="title">『 広報冊子のヘッダデザイン 』</h3>
   <ul class="contents">
-    <li><a href="work_04.html">「 広報冊子ヘッダデザイン 」 <span class="sub">- 閲覧禁止 -</span></a></li>  
+    <li><a href="work_04.html">広報冊子ヘッダデザイン<span class="sub">- 閲覧禁止 -</span></a></li>  
   </ul>
-  <h3 class="title">『 鷲のヘッドフィギュア 』 ⏸</h3>
+  <h3 class="title">『 鷲のヘッドフィギュア 』 ▶︎</h3>
   <ul class="contents">
-    <li><a href="work_01_5.html">「 鷲 ヘッドモデル 」 <span class="sub"></span></a></li>
+    <li><a href="work_washihead01.html">鷲の頭部の造形<span class="sub"></span></a></li>
+    <li><a href="work_washihead02.html">フィギュア塗装<span class="sub"></span></a></li>
   </ul>
-  <h3 class="title">『 価値あるのものは価値なきものから 』 ⏹</h3>
+  <h3 class="title">『 価値あるのものは価値なきものから 』</h3>
   <ul class="contents">
-    <li><a href="work_01.html">「 価値あるものは価値なきものから 」 :||<span class="sub"></span></a></li>
+    <li><a href="work_garactabird02.html">制作プロセス<span class="sub"></span></a></li>
+    <li><a href="work_garactabird01.html">作品概要<span class="sub"></span></a></li>
   </ul>
   <br>
   <br>
