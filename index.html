@@ -4,32 +4,57 @@
   <meta charset="UTF-8">
   <title>作品詳細</title>
   <link rel="stylesheet" href="css/index.css"><link rel="stylesheet" href="css/common.css"><style>
-    /* サイトを開いた初期状態でアコーディオンの中身を非表示（格納）にする */
+    /* --- リンクの枠（カード）デザインの調整 --- */
     .contents {
-      display: none;
+      list-style: none; /* リストの点を消す */
+      padding: 0;
+      margin: 30px 0;   /* 見出しを消した分、上下の余白を少し広めに */
+      display: flex;    /* カードを横並びにする */
+      flex-wrap: wrap;  /* 画面幅に応じて折り返す */
+      gap: 30px;        /* カード同士のすき間を1.5倍に合わせて広く */
+    }
+    .contents li {
+      width: 350px; /* 【1.5倍サイズ】1列に2枚並ぶサイズに拡大 */
+      min-width: 280px;        /* 極端に小さくなるのを防ぐ */
+    }
+    .contents li a {
+      display: block;              /* 枠全体をクリックできるようにする */
+      text-decoration: none;       /* 文字の下線を消す */
+      color: #333;                 /* 文字の色 */
+      border: 1px solid #ccc;      /* 枠線 */
+      border-radius: 8px;          /* 枠の角を丸くする */
+      overflow: hidden;            /* はみ出た画像を丸角に合わせる */
+      background: #fff;            /* 背景色 */
+      transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
+    }
+    /* マウスを乗せたときの動き */
+    .contents li a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    /* カード内の画像 */
+    .contents li a img {
+      width: 300px;   
+      height: 168.75px;            /* 【1.5倍サイズ】画像の高さも1.5倍ほどに拡大 */
+      object-fit: cover;           /* 縦横比を崩さずにトリミング */
+      display: block;
+      margin: 0 auto;   
+      margin-top: 15px;           /* 【重要】画像自体をカード内の横中央に配置 */
+    }
+    /* カード内のテキストエリア */
+    .contents li a .work-title {
+      padding: 18px;               /* 文字まわりの余白も拡大 */
+      font-size: 16px;             /* 文字を少し大きく */
+      line-height: 1.4;
+      text-align: center;          /* 文字を中央寄せ */
+      font-weight: bold;
     }
   </style>
 </head>
 <script src="jquery.js"></script>
 <script>
   $(function() {
-    // --- ここから初期状態で特定のメニューを開く処理 ---
-    // 「陸生頭足類」と「猛禽竜」のタイトルを特定して、その次にある.contentsを最初から表示する
-    $('.title:contains("空統べる二対の眼"), .title:contains("地を這う猛禽竜"), .title:contains("彩とイロトリ")')
-      .addClass('open')   // 開いている状態のクラス（CSS用）を付与
-      .next('.contents')  // 次の.contentsを選択
-      .show();            // 最初から表示状態にする
-    // --- ここまで ---
-
-    // 1. アコーディオンの既存処理
-    $('.title').on('click', function() {
-      $(this)
-      .toggleClass('open')
-      .next('.contents')
-      .slideToggle(250);
-    });
-
-    // 2. パスワード制限の追加処理
+    // 1. パスワード制限の処理（既存のまま維持）
     $('a[href="work_04.html"]').on('click', function(e) {
       e.preventDefault(); // ページ遷移を一旦止める
       
@@ -46,7 +71,7 @@
 </script>
 
 <body>
-  <h1>【 作品閲覧サイト <span class="eng">- Portfolio website -</span> 】</h1>
+  <h1>【 - Portfolio Website - <span class="eng"></span> 】</h1>
   <div id="news">
   <p class="l_news">はじめに</p>
     本サイトは、私がこれまでに制作してきた作品を皆さんに閲覧していただくためのものです。
@@ -56,39 +81,39 @@
   <br>
   <br>
   <div class="month">
-    <h2>2026 - WORKS</h2>
-  <h3 class="title">『 彩とイロトリ 』 ▶︎　（鋭意製作中）</h3>
-  <ul class="contents">
-    <li><a href="">彩トリのデザイン<span class="sub"></span></a></li>
-    <li><a href="">彩トリの造形<span class="sub"></span></a></li>
-    <li><a href="">彩トリフィギュア<span class="sub"></span></a></li>
-  </ul>
+    <h2>[　- WORKS -　]</h2>
 
-  <h3 class="title">『 空統べる二対の眼 』 ▶︎　（鋭意製作中）</h3>
   <ul class="contents">
-    <li><a href="work_skybird01.html">双眼鷲のデザイン<span class="sub"></span></a></li>
-    <li><a href="work_skybird02.html">双眼鷲の造形<span class="sub"></span></a></li>
-    <li><a href="work_skybird03.html">双眼鷲フィギュア<span class="sub"></span></a></li>
-  </ul>
-  <h3 class="title">『 地を這う猛禽竜 』 ▶︎　（塗装中）</h3>
-  <ul class="contents">
-    <li><a href="work_birdwyvern01.html">猛禽竜のデザイン<span class="sub"></span></a></li>
-    <li><a href="work_birdwyvern02.html">猛禽竜の造形<span class="sub"></span></a></li>
-    <li><a href="work_birdwyvern03.html">猛禽竜フィギュア<span class="sub"></span></a></li>
-  </ul>
-  <h3 class="title">『 広報冊子のヘッダデザイン 』</h3>
-  <ul class="contents">
-    <li><a href="work_04.html">広報冊子ヘッダデザイン<span class="sub">- 閲覧禁止 -</span></a></li>  
-  </ul>
-  <h3 class="title">『 鷲のヘッドフィギュア 』 ▶︎</h3>
-  <ul class="contents">
-    <li><a href="work_washihead01.html">鷲の頭部の造形<span class="sub"></span></a></li>
-    <li><a href="work_washihead02.html">フィギュア塗装<span class="sub"></span></a></li>
-  </ul>
-  <h3 class="title">『 価値あるのものは価値なきものから 』</h3>
-  <ul class="contents">
-    <li><a href="work_garactabird02.html">制作プロセス<span class="sub"></span></a></li>
-    <li><a href="work_garactabird01.html">作品概要<span class="sub"></span></a></li>
+    <li>
+      <a href="eagle.html">
+        <img src="" alt="No image">
+        <div class="work-title">【　異大なる頂点　】<span class="sub"></span></div>
+      </a>
+    </li>
+    <li>
+      <a href="octopus.html">
+        <img src="" alt="No image">
+        <div class="work-title">【　陸に生きる蛸　】<span class="sub"></span></div>
+      </a>
+    </li>
+    <li>
+      <a href="ground-dwellingraptor.html">
+        <img src="img/eagle_wyvern.png" alt="No image">
+        <div class="work-title">【　地を這う猛禽竜　】<span class="sub"></span></div>
+      </a>
+    </li>
+    <li>
+      <a href="eaglehead.html">
+        <img src="img/eagle_headmodel.png" alt="No image">
+        <div class="work-title">【　鷲ヘッドフィギュア　】<span class="sub"></span></div>
+      </a>
+    </li>
+    <li>
+      <a href="garactabird.html">
+        <img src="img/galactabird.png" alt="No image">
+        <div class="work-title">【　価値なきものからの創生　】<span class="sub"></span></div>
+      </a>
+    </li>
   </ul>
   <br>
   <br>
