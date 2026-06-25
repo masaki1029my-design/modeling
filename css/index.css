@@ -2,10 +2,11 @@ body{
   width: 850px;
   margin: 0 auto;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+    linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
     url("../img/poster_birdwyvern.png");
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1{
@@ -36,6 +37,10 @@ li{
 .sub{
   color: tomato;
   font-size: 15px;
+}
+
+.kaitei{
+  color: cornflowerblue;
 }
 
 .eng{
