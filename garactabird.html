@@ -4,16 +4,55 @@
   <meta charset="UTF-8">
   <title>作品詳細</title>
   <link rel="stylesheet" href="css/works.css"><link rel="stylesheet" href="css/common.css"><style>
+    /* --- 追加：目次（ナビゲーション）のスタイル --- */
+    .table-of-contents {
+      max-width: 750px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #f9f9f9; /* 背景色（お好みに合わせて調整してください） */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      text-align: center;
+    }
+    .table-of-contents p {
+      margin-top: 0;
+      font-weight: bold;
+    }
+    .table-of-contents ul {
+      list-style-type: none;
+      padding-left: 0;
+      flex-wrap: wrap;
+      gap: 15px;
+      text-align: left;
+    }
+    .table-of-contents a {
+      color:cornflowerblue;
+      text-decoration: none;
+      font-size: 14px;
+      padding-left: 293px;
+    }
+    .table-of-contents a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- 追加：ページ内リンクで移動した際、少し滑らかに動かす --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* --- 画像を横並び＋画面中央寄せにするスタイル --- */
-    #concept {
+    /* idからclassに変更しました */
+    .concept-section {
       display: flex;           /* 横並びにする */
       flex-wrap: wrap;         /* 画面幅が狭いときは折り返す */
       justify-content: center; /* 【重要】横方向の中央寄せ */
       align-items: center;     /* 縦方向の中央寄せ */
       gap: 20px;               /* 画像と画像の間のすき間 */   
-      margin: 0 auto;          /* 【重要】#concept 自体を画面中央に配置 */
+      margin: 40px auto;       /* 各項目の間隔を少し広げました */
     }
-    #concept img {
+    .concept-section img {
       max-width: 100%;          /* 2枚が綺麗に中央で横並びになるサイズに微調整 */
       height: auto;            /* 縦横比を維持 */
       cursor: zoom-in;         /* クリックできることがわかるようにカーソルを虫眼鏡に */
@@ -73,8 +112,8 @@ $(function() {
   // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
   $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
 
-  // #concept 内の画像がクリックされた時の処理
-  $('#concept img').on('click', function() {
+  // .concept-section 内の画像がクリックされた時の処理（class指定に変更）
+  $('.concept-section img').on('click', function() {
     var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
     $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
     $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
@@ -92,15 +131,28 @@ $(function() {
     コンセプト<br>
     『 価値のないもので生命を表現する 』
   </div>  
-  <div id="concept">
-  <p class="m">［　作品の概要　］</p>
+
+  <!-- 【追加】目次エリア -->
+  <div class="table-of-contents">
+    <p>目次</p>
+    <ul>
+      <li><a href="#work">fase01：作品概要</a></li>
+      <li><a href="#idea">fase02：アイデア</a></li>
+      <li><a href="#work02">fase03：制作裏話</a></li>
+    </ul>
+  </div>
+
+  <!-- 各項目に固有の id と共通の class を設定しました -->
+  <div id="work" class="concept-section">
+  <p class="m">fase01：［ 作品概要 ］</p>
     ガラクタやゴミは、何も価値のないもの・役目を終えたものである。
     私たちはそう心の底で価値を推測っていないでしょうか。
     本作品は、”ガラクタから新たな価値の創生”を”生物の誕生”という事象に重ねることで表現した作品です。
     <img src="img/galactabird_final.png" alt="1">
   </div>
-  <div id="concept">
-  <p class="m">［　アイデア　］</p>
+
+  <div id="idea" class="concept-section">
+  <p class="m">fase02：［ アイデア ］</p>
     本作品の主軸となるガラクタでできた鳥は、猛禽類などの大型の鳥類をモチーフとしています。
     見ての通り、ただの鳥ではなくあらゆるガラクタで構成された生命の塊です。
     見方・考え方一つでどうしようもないものもどうしようのあるものに変換できるという
@@ -113,8 +165,9 @@ $(function() {
     ガラクタの「堕ちる」と鳥の「羽ばたく」というイメージは、うまく上昇と下降の対比になっているのではないか
     と考えたためでもあり、鳥がモチーフの有力候補でした。
   </div>
-  <div id="concept">
-  <p class="m">［　制作の裏話　］</p>
+
+  <div id="work02" class="concept-section">
+  <p class="m">fase03：［ 制作裏話 ］</p>
     本作品は、Maya2023を用いて制作しました。
     この作品の制作では、何度も修正を重ねた部分が多々ありました。
     初期の構想では、ガラクタでできた鳥が大空を飛ぶという構図を考えていました。（1枚目）

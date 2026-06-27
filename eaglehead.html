@@ -4,16 +4,55 @@
   <meta charset="UTF-8">
   <title>作品詳細</title>
   <link rel="stylesheet" href="css/works.css"><link rel="stylesheet" href="css/common.css"><style>
+    /* --- 追加：目次（ナビゲーション）のスタイル --- */
+    .table-of-contents {
+      max-width: 750px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #f9f9f9; /* 背景色（お好みに合わせて調整してください） */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      text-align: center;
+    }
+    .table-of-contents p {
+      margin-top: 0;
+      font-weight: bold;
+    }
+    .table-of-contents ul {
+      list-style-type: none;
+      padding-left: 0;
+      flex-wrap: wrap;
+      gap: 15px;
+      text-align: left;
+    }
+    .table-of-contents a {
+      color:cornflowerblue;
+      text-decoration: none;
+      font-size: 14px;
+      padding-left: 285px;
+    }
+    .table-of-contents a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- 追加：ページ内リンクで移動した際、少し滑らかに動かす --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* --- 画像を横並び＋画面中央寄せにするスタイル --- */
-    #concept {
+    /* idからclassに変更しました */
+    .concept-section {
       display: flex;           /* 横並びにする */
       flex-wrap: wrap;         /* 画面幅が狭いときは折り返す */
       justify-content: center; /* 【重要】横方向の中央寄せ */
       align-items: center;     /* 縦方向の中央寄せ */
       gap: 20px;               /* 画像と画像の間のすき間 */   
-      margin: 0 auto;          /* 【重要】#concept 自体を画面中央に配置 */
+      margin: 40px auto;       /* 各項目の間隔を少し広げました */
     }
-    #concept img {
+    .concept-section img {
       max-width: 100%;          /* 2枚が綺麗に中央で横並びになるサイズに微調整 */
       height: auto;            /* 縦横比を維持 */
       cursor: zoom-in;         /* クリックできることがわかるようにカーソルを虫眼鏡に */
@@ -73,8 +112,8 @@ $(function() {
   // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
   $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
 
-  // #concept 内の画像がクリックされた時の処理
-  $('#concept img').on('click', function() {
+  // .concept-section 内の画像がクリックされた時の処理（class指定に変更）
+  $('.concept-section img').on('click', function() {
     var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
     $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
     $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
@@ -87,13 +126,25 @@ $(function() {
 });
   </script>
 <body>
-  <p class="l1">【 鷲のヘッドフィギュア<span class="sub"> </span>】</p>
+  <p class="l1">【 鷲ヘッドモデル /<span class="sub"> Eagle Head-model </span>】</p>
   <div id="midashi">
-    目標<br>
+    コンセプト<br>
     『 手軽に楽しめるヘッドモデル 』
   </div>  
-  <div id="concept">
-  <p class="m">［　造形の工夫　］</p>
+
+  <!-- 【追加】目次エリア -->
+  <div class="table-of-contents">
+    <p>目次</p>
+    <ul>
+      <li><a href="#modeling">fase01：造形の工夫</a></li>
+      <li><a href="#painting">fase02：下地塗装</a></li>
+      <li><a href="#painting02">fase03：本塗装</a></li>
+    </ul>
+  </div>
+
+  <!-- 各項目に固有の id と共通の class を設定しました -->
+  <div id="modeling" class="concept-section">
+  <p class="m">fase01：［ 造形の工夫 ］</p>
     初めての造形作品として制作した本作品では、細部の質感表現に徹底してこだわりました。
     特に試行錯誤を重ねたのは、鷲特有の頭部付近における毛並みの再現です。
     立体物としていかに自然な流れを生み出すかを追求した結果、グレイストリップ（ブラシ）を用いることで、羽毛一本一本の繊細な重なりや筋を表現する手法へと至りました。
@@ -105,19 +156,22 @@ $(function() {
     <img src="img/eagle_right_site.png" alt="1">
     <img src="img/eagle_left_site.png" alt="1">
   </div>
-  <div id="concept">
-  <p class="m">［　下地塗装　］</p>
+
+  <div id="painting" class="concept-section">
+  <p class="m">fase02：［ 下地塗装 ］</p>
     実際に教授の指導のもと、光造形３Dプリンターを用いて立体物として出力しました。
     その後、サーフェイサーを吹きかけ、下地塗りを行いました。
     今回は、試作品ということでブラックとグレイの２色でそれぞれ塗装してみました。
     （個人的にはグレイカラーの方が造形が際立って見やすいと思います。）
     <img src="img/eagle_headmodel.png" alt="1">
   </div>
-  <div id="concept">
-  <p class="m">［　本塗装　］</p>
+
+  <div id="painting02" class="concept-section">
+  <p class="m">fase03：［ 本塗装 ］</p>
   本塗装に関する情報は、今月更新・投稿予定です。続報をお待ちください。
   <img src="img" alt="1">
   </div>
+
   <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
 </body>
 </html>
