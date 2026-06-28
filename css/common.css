@@ -29,9 +29,11 @@ li{
 .backhome a {
   color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
+  font-size: 30px;
   text-decoration: none;
-  padding: 15px;
+  padding: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   transition: color 0.2s;
   background-color: #333333;
   border-bottom:2px solid white ;
