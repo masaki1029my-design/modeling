@@ -1,8 +1,8 @@
 body{
   width: 850px;
   margin: 0 auto;
-  background-image:url("../img/poster_birdwyvern_true.png");
-  background-position: center -140px;
+  background-color: whitesmoke;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
