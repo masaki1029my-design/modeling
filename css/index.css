@@ -1,5 +1,5 @@
 body{
-  width: 850px;
+  width: 900px;
   margin: 0 auto;
   background-color: whitesmoke;
   background-position: center;
@@ -42,7 +42,7 @@ li{
 }
 
 .shisaku{
-  color: #333333;
+  color: cornflowerblue;
 }
 
 .eng{
