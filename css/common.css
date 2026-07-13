@@ -36,13 +36,17 @@ li{
   padding-right: 50px;
   transition: color 0.2s;
   background-color: #333333;
-  border-bottom:2px solid white ;
-  border-top:2px solid white ;
+  border: 1px solid #333;
+  border-radius: 20px;
 }
 
 
 .backhome a:hover {
   background-color: orangered;
   /*background-color: tomato;*/
+}
+
+.line{
+  border-top:  3px dashed #333333;
 }
 

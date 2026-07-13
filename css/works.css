@@ -17,6 +17,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #design{
@@ -32,6 +34,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #modeling{
@@ -47,6 +51,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #prototype{
@@ -62,6 +68,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #rendering{
@@ -77,6 +85,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #output{
@@ -92,6 +102,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #painting{
@@ -107,6 +119,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #painting02{
@@ -122,6 +136,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #work{
@@ -137,6 +153,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 #work02{
@@ -152,6 +170,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 
@@ -168,6 +188,8 @@ body{
   align-items: center;
   justify-content: center;
   background-color: white;
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
 }
 
 
@@ -201,6 +223,7 @@ img{
   padding-top: 20px;
   background-color: whitesmoke;
   margin: 0 auto;
+  margin-top: 20px;
   color: black;
 }
 
