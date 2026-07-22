@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="../css/works.css"><link rel="stylesheet" href="../css/common.css"><style>
+    /* --- 追加：目次（ナビゲーション）のスタイル --- */
+    .table-of-contents {
+      max-width: 750px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #f9f9f9; /* 背景色（お好みに合わせて調整してください） */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      text-align: center;
+    }
+    .table-of-contents p {
+      margin-top: 0;
+      font-weight: bold;
+    }
+    .table-of-contents ul {
+      list-style-type: none;
+      padding-left: 0;
+      flex-wrap: wrap;
+      font-size: 14px;
+      gap: 15px;
+      text-align: center;
+      display: flex;
+    }
+    .table-of-contents a {
+      color:cornflowerblue;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .table-of-contents a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- 追加：ページ内リンクで移動した際、少し滑らかに動かす --- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* --- 画像を横並び＋画面中央寄せにするスタイル --- */
+    /* idからclassに変更しました */
+    .concept-section {
+      display: flex;           /* 横並びにする */
+      flex-wrap: wrap;         /* 画面幅が狭いときは折り返す */
+      justify-content: center; /* 【重要】横方向の中央寄せ */
+      align-items: center;     /* 縦方向の中央寄せ */
+      gap: 20px;               /* 画像と画像の間のすき間 */   
+      margin: 40px auto;       /* 各項目の間隔を少し広げました */
+    }
+    .concept-section img {
+      max-width: 100%;          /* 2枚が綺麗に中央で横並びになるサイズに微調整 */
+      height: auto;            /* 縦横比を維持 */
+      cursor: zoom-in;         /* クリックできることがわかるようにカーソルを虫眼鏡に */
+    }
+
+    /* 拡大表示（モーダル）用の追加スタイル */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+    .modal-overlay img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<script src="jquery.js"></script>
+  <script>
+$(function() {
+  $('.slideshow-wrapper').each(function() {
+    var $wrapper = $(this);
+    var $slides = $wrapper.find('.slideshow img');
+    var $number = $wrapper.find('.slide-number');
+    var total = $slides.length;
+    var current = 0;
+
+    function show() {
+      $slides.hide().eq(current).show();
+      $number.text((current + 1) + ' / ' + total);
+    }
+
+    $wrapper.find('.prev-btn').on('click', function() {
+      current = (current - 1 + total) % total;
+      show();
+    });
+
+    $wrapper.find('.next-btn').on('click', function() {
+      current = (current + 1) % total;
+      show();
+    });
+
+    // 初期表示
+    show();
+  });
+
+  // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
+  $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+
+  // .concept-section 内の画像がクリックされた時の処理（class指定に変更）
+  $('.concept-section img').on('click', function() {
+    var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
+    $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
+    $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
+  });
+
+  // 拡大画面（背景または画像）がクリックされたら閉じる処理
+  $('.modal-overlay').on('click', function() {
+    $(this).fadeOut(200);
+  });
+});
+  </script>
+<body>
+  <p class="l1">【　出立つ猛禽竜　<span class="sub"></span>】</p>
+  <p class="lines"></p>
+  <br>
+  <!--<div id="midashi">
+    コンセプト<br>
+    『 猛禽類と爬虫類の間をいく新たな生物 』
+  </div>  
+  <div class="table-of-contents">
+    <p>目次</p>
+    <ul>
+      <li><a href="#design">・fase01：リデザイン</a></li>
+      <li><a href="#modeling">・fase02：再造形</a></li>
+      <li><a href="#rendering">・fase03：レンダリング</a></li>
+      <li><a href="#output">・fase04：光造形3Dプリンターによる出力</a></li>
+      <li><a href="#painting">・fase05：出力後の処理（塗装）</a></li>
+    </ul>
+  </div>
+-->
+  <!-- 各項目に固有の id と共通の class を設定しました -->
+  <div id="design" class="concept-section">
+  <p class="m">【　- デザイン -　】</p>
+    基本的な骨格は、爬虫類を基にしつつ、所々に鷲や鷹などの猛禽類のような特徴が見られる
+    生物に仕上げました。また、色彩の面でも白頭鷲を想起させるようなカラーリングにしています。
+    猛禽竜という馴染みのない生物でありながら、どこか現実味のある生物としてデザインすること
+    を特に意識しました。
+    <img src="../img/concept_art.png" alt="concept art">
+    <img src="../img/color_setting.png" alt="color setting">
+  </div>
+
+<br>
+<br>
+
+  <div id="modeling" class="concept-section">
+  <p class="m">【　- 造形 -　】</p>
+  デザイン決定案に倣い、生物としての体の作りを意識しながら造形に取り組みました。
+  試作版のモデルを基に作り直す部分は作り直し、変更のない部位に関してはさらに質感の向上を図りました。
+    <img src="../img/modeling.png" alt="1">
+  </div>
+
+<br>
+<br>
+
+  <div id="rendering" class="concept-section">
+  <p class="m">【　- イメージレンダリング -　】</p>
+  blenderで制作した3Dデータを使用し、実際に3Dプリンターを用いた出力を行なった。
+  出力に用いた3Dプリンターは、ELEGOOのSaturn4です。
+  また、出力後には実際の出力時のイメージを明確にするため、教授の協力のもとイメージ画像をKeyShotを用いてレンダリングしました。
+  </div>
+
+<br>
+<br>
+
+  <div id="output" class="concept-section">
+  <p class="m">【　- ３Dプリント -　】</p>
+  現在、鋭意製作中です。更新をお待ちください。
+  </div>
+
+<br>
+<br>
+
+<!--  <div id="painting" class="concept-section">
+  <p class="m">【　- 塗装仕上げ -　】</p>
+  塗装に関する情報は、今月更新・投稿予定です。続報をお待ちください。
+    <img src="img/noImage.png" alt="1">
+  </div>-->
+
+  <p class="backhome"><a href="../index.html">ホームへ戻る</a></p>
+</body>
+</html>
