@@ -1,11 +1,15 @@
 html{
+-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  background-color: whitesmoke;
+  background-color: #333333;
   min-height: 100vh;
 }
 
 body{
+-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   width: 900px;
   margin: 0 auto;
   padding: 0;
@@ -21,12 +25,12 @@ li{
   font-size: 20px;
 }
 
-h1{
+h1 {
+  margin-top: 0; /* ← これを追加してブラウザの初期マージンを消す */
   padding-top: 15px;
   padding-bottom: 40px;
   font-size: 50px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  /*border-bottom: 8px solid tomato;*/
   color: #333333;
   text-align: center;
   border-bottom: solid 5px #333333;
@@ -54,7 +58,7 @@ h1{
 }
 
 .backhome a {
-  color: white;
+  color: #333333;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 30px;
   text-decoration: none;
@@ -62,14 +66,15 @@ h1{
   padding-left: 50px;
   padding-right: 50px;
   transition: color 0.2s;
-  background-color: olivedrab;
+  background-color: tan;
   border: 3px solid #333;
   border-radius: 20px;
 }
 
 
 .backhome a:hover {
-  background-color: olive;
+  color:whitesmoke;
+  background-color: orange;
   border: 3px solid white;
   /*background-color: tomato;*/
 }
