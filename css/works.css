@@ -1,7 +1,21 @@
-body{
-  width: 850px;
+#concept{
+  width: 710px;
+  margin-top: 10px;
+  text-align: justify;
   margin: 0 auto;
-  background-color: whitesmoke;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  line-height: 37px;
+  padding-top: 10px;
+  padding-left:30px;
+  padding-right:30px;
+  padding-bottom:30px;
+  color: #333333;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px; 
+  border: 3px solid gray; 
 }
 
 #design{
@@ -131,17 +145,6 @@ img{
   margin-top: 30px;
 }
 
-/*.small_title{
-  margin-top: 10px;
-  width: 250px;
-  font-size: 16px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  margin-left: 30px;
-  padding-left: 10px;
-  border-bottom: 2px solid gray;
-  border-left: 10px solid gray;
-}*/
-
 .l1{
   height: 60px;
   width:750px ;
@@ -243,18 +246,4 @@ img{
   font-family:Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding-bottom: 40px;
-}
-
-#midashi{
-  width: 750px;
-  margin-top: 10px;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 0px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 30px;
-  line-height: 60px;
-  color: #333333;
-  border: 4px solid black;
-  padding: 10px;
 }

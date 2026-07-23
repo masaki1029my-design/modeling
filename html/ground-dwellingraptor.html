@@ -81,7 +81,7 @@
     }
   </style>
 </head>
-<script src="jquery.js"></script>
+<script src="../jquery.js"></script>
   <script>
 $(function() {
   $('.slideshow-wrapper').each(function() {
@@ -111,41 +111,38 @@ $(function() {
   });
 
   // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
-  $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+// 1. bodyが存在しない対策として、生成時に追加するように変更
+  if ($('.modal-overlay').length === 0) {
+    $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+  }
 
-  // .concept-section 内の画像がクリックされた時の処理（class指定に変更）
-  $('.concept-section img').on('click', function() {
-    var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
-    $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
-    $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
+  // 2. イベント委譲（$(document).on）を使ってクリックイベントを確実に拾う
+  $(document).on('click', '.concept-section img', function() {
+    var imgSrc = $(this).attr('src');
+    $('.modal-overlay img').attr('src', imgSrc);
+    $('.modal-overlay').fadeIn(200).css('display', 'flex');
   });
 
-  // 拡大画面（背景または画像）がクリックされたら閉じる処理
-  $('.modal-overlay').on('click', function() {
+  // 3. 閉じる処理も同様に記述
+  $(document).on('click', '.modal-overlay', function() {
     $(this).fadeOut(200);
   });
 });
   </script>
 <body>
-  <p class="l1">【　出立つ猛禽竜　<span class="sub"></span>】</p>
-  <p class="lines"></p>
+  <h1>
+    作品名：【 出立つ猛禽竜 】
+  </h1>
   <br>
-  <!--<div id="midashi">
-    コンセプト<br>
-    『 猛禽類と爬虫類の間をいく新たな生物 』
-  </div>  
-  <div class="table-of-contents">
-    <p>目次</p>
-    <ul>
-      <li><a href="#design">・fase01：リデザイン</a></li>
-      <li><a href="#modeling">・fase02：再造形</a></li>
-      <li><a href="#rendering">・fase03：レンダリング</a></li>
-      <li><a href="#output">・fase04：光造形3Dプリンターによる出力</a></li>
-      <li><a href="#painting">・fase05：出力後の処理（塗装）</a></li>
-    </ul>
+  <div id="concept" class="concept-section">
+  <p class="m">【　- コンセプトとテーマ -　】</p>
+    この作品のコンセプトは、「 猛禽類が爬虫類へと進化の歩みを進めたらーーー」という進化におけるifの物語です。
+    また、「 強靭な生物 」をテーマとして制作に臨みました。
   </div>
--->
-  <!-- 各項目に固有の id と共通の class を設定しました -->
+
+  <br>
+  <br>
+
   <div id="design" class="concept-section">
   <p class="m">【　- デザイン -　】</p>
     基本的な骨格は、爬虫類を基にしつつ、所々に鷲や鷹などの猛禽類のような特徴が見られる
@@ -171,9 +168,9 @@ $(function() {
 
   <div id="rendering" class="concept-section">
   <p class="m">【　- イメージレンダリング -　】</p>
-  blenderで制作した3Dデータを使用し、実際に3Dプリンターを用いた出力を行なった。
-  出力に用いた3Dプリンターは、ELEGOOのSaturn4です。
-  また、出力後には実際の出力時のイメージを明確にするため、教授の協力のもとイメージ画像をKeyShotを用いてレンダリングしました。
+  blenderで制作した3Dデータを使用し、実際に3Dプリンターを用いた出力を行おうと考えました。。
+  そのため、実際の出力時のイメージを明確にするため、教授の協力のもとイメージ画像をKeyShotを用いてレンダリングしました。
+    <img src="../img/redering.png" alt="1">
   </div>
 
 <br>
@@ -181,7 +178,15 @@ $(function() {
 
   <div id="output" class="concept-section">
   <p class="m">【　- ３Dプリント -　】</p>
-  現在、鋭意製作中です。更新をお待ちください。
+  光造形3Dプリンターを用いての印刷を行うにあたり、出力用のデータを作成しました。
+  データ作成は、chituboxというスライサーソフトを用いて行いました。
+  以下図のように、一度に全てのパーツを出力することは難しいため、2つのフェーズに分けての出力を想定したデータを作成しました。
+    <img src="../img/ready.png" alt="1">
+  上記の図のようにプリント用データの作成後、3Dプリンターでの出力を行ないました。
+  今回はelegooのSaturn4という3Dプリンターを使用し、出力しました。
+  また、使用したレジンはSK本舗から販売されている水洗いレジンです。
+  実際の出力した後の様子が以下の図の通りである。（更新中です。続報をお待ちください。）
+    <img src="../img/noImage.png" alt="1">
   </div>
 
 <br>

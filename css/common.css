@@ -1,8 +1,35 @@
+html{
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+  min-height: 100vh;
+}
+
+body{
+  width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("../img/background.png");
+  background-position: center;
+}
+
+
 li{
   color: #333333;
   padding: 8px;
   margin-left: 20px; 
   font-size: 20px;
+}
+
+h1{
+  padding-top: 15px;
+  padding-bottom: 40px;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /*border-bottom: 8px solid tomato;*/
+  color: #333333;
+  text-align: center;
+  border-bottom: solid 5px #333333;
 }
 
 .contents a {
@@ -35,14 +62,15 @@ li{
   padding-left: 50px;
   padding-right: 50px;
   transition: color 0.2s;
-  background-color: #333333;
-  border: 1px solid #333;
+  background-color: olivedrab;
+  border: 3px solid #333;
   border-radius: 20px;
 }
 
 
 .backhome a:hover {
-  background-color: orangered;
+  background-color: olive;
+  border: 3px solid white;
   /*background-color: tomato;*/
 }
 
