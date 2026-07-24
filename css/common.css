@@ -134,4 +134,38 @@ h1 {
     font-size: 18px !important;
     padding: 15px 25px !important;
   }
+
+/* ==========================================
+     index.html（トップページ）用のスマホ調整
+     ========================================== */
+
+  /* 1. 「はじめに」枠（#news）のスマホ最適化 */
+  #news {
+    width: 90% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+  }
+
+  .l_news {
+    width: 100% !important;       /* 300px固定から100%に変更 */
+    font-size: 20px !important;   /* タイトルを少し小さく */
+  }
+
+  /* 2. 作品カード一覧（.contents）のスマホ最適化 */
+  .contents {
+    justify-content: center !important; /* カードを中央寄せ */
+  }
+
+  .contents li {
+    width: 90% !important;        /* 400px固定から90%に変更してスマホ1列表示にする */
+    min-width: unset !important;
+  }
+
+  .contents li a img {
+    width: 100% !important;       /* カード幅に合わせて画像も収める */
+    height: auto !important;
+  }
 }
