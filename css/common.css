@@ -88,3 +88,50 @@ h1 {
   border-top:  2px solid #333333;
 }
 
+/* ==========================================
+   スマートフォン用の表示調整（画面幅768px以下）
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. タイトル（h1）の文字サイズをスマホ用に自動縮小 */
+  h1 {
+    font-size: 24px !important;    /* 50pxから24pxに縮小 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    word-break: break-word;        /* はみ出さずに自然に改行する */
+  }
+
+  /* 2. 小見出し（.m）や本文のテキストサイズ調整 */
+  .m {
+    font-size: 20px !important;    /* 25pxから20pxに微調整 */
+    width: 100% !important;
+  }
+
+  .l1 {
+    font-size: 22px !important;
+    height: auto !important;
+  }
+
+  /* 3. コンテンツ枠（#concept, #design 等）のテキストと改行調整 */
+  .concept-section {
+    font-size: 15px !important;    /* 本文を少し小さくして読みやすく */
+    line-height: 1.8 !important;   /* 行間を適切に */
+    word-break: break-word;        /* 単語や長文の枠外突き出しを防ぐ */
+    overflow-wrap: break-word;
+    padding: 15px !important;      /* 枠内の余白をスマホ用に調整 */
+  }
+
+  /* 4. 画像が枠からはみ出ないようにする */
+  .concept-section img {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* 5. ホームへ戻るボタンのサイズ調整 */
+  .backhome a {
+    font-size: 18px !important;
+    padding: 15px 25px !important;
+  }
+}
