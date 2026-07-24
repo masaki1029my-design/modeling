@@ -2,41 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>作品詳細</title>
-  <link rel="stylesheet" href="css/works.css"><link rel="stylesheet" href="css/common.css"><style>
-    /* --- 追加：目次（ナビゲーション）のスタイル --- */
-    .table-of-contents {
-      max-width: 750px;
-      margin: 20px auto;
-      padding: 15px;
-      background-color: #f9f9f9; /* 背景色（お好みに合わせて調整してください） */
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family:Georgia, 'Times New Roman', Times, serif;
-      font-size: 20px;
-      text-align: center;
-    }
-    .table-of-contents p {
-      margin-top: 0;
-      font-weight: bold;
-    }
-    .table-of-contents ul {
-      list-style-type: none;
-      padding-left: 0;
-      flex-wrap: wrap;
-      font-size: 14px;
-      gap: 15px;
-      text-align: center;
-      display: flex;
-    }
-    .table-of-contents a {
-      color:cornflowerblue;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .table-of-contents a:hover {
-      text-decoration: underline;
-    }
+  <link rel="stylesheet" href="../css/works.css"><link rel="stylesheet" href="../css/common.css"><style>
 
     /* --- 追加：ページ内リンクで移動した際、少し滑らかに動かす --- */
     html {
@@ -81,7 +49,7 @@
     }
   </style>
 </head>
-<script src="jquery.js"></script>
+<script src="../jquery.js"></script>
   <script>
 $(function() {
   $('.slideshow-wrapper').each(function() {
@@ -111,93 +79,101 @@ $(function() {
   });
 
   // 拡大画像を表示するためのコンテナを本体（body）の最後に追加
-  $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+// 1. bodyが存在しない対策として、生成時に追加するように変更
+  if ($('.modal-overlay').length === 0) {
+    $('body').append('<div class="modal-overlay"><img src="" alt="拡大画像"></div>');
+  }
 
-  // .concept-section 内の画像がクリックされた時の処理（class指定に変更）
-  $('.concept-section img').on('click', function() {
-    var imgSrc = $(this).attr('src'); // クリックされた画像のURLを取得
-    $('.modal-overlay img').attr('src', imgSrc); // 拡大用コンテナに画像を設定
-    $('.modal-overlay').fadeIn(200).css('display', 'flex'); // スムーズに表示
+  // 2. イベント委譲（$(document).on）を使ってクリックイベントを確実に拾う
+  $(document).on('click', '.concept-section img', function() {
+    var imgSrc = $(this).attr('src');
+    $('.modal-overlay img').attr('src', imgSrc);
+    $('.modal-overlay').fadeIn(200).css('display', 'flex');
   });
 
-  // 拡大画面（背景または画像）がクリックされたら閉じる処理
-  $('.modal-overlay').on('click', function() {
+  // 3. 閉じる処理も同様に記述
+  $(document).on('click', '.modal-overlay', function() {
     $(this).fadeOut(200);
   });
 });
   </script>
 <body>
-  <p class="l1">【 陸に生きる蛸 改訂版 /<span class="sub"> Land-dwelling Octopus </span>】</p>
-  <p class="line"></p>
+  <h1>
+    作品名：【 陸に生きた蛸 】
+  </h1>
   <br>
-  <div id="midashi">
-    コンセプト<br>
-    『 陸上へと進出した頭足類 × 大樹 』
-  </div>  
-
-  <!-- 【追加】目次エリア -->
-  <div class="table-of-contents">
-    <p>目次</p>
-    <ul>
-      <li><a href="#design">・fase01：デザインについて</a></li>
-      <li><a href="#prototype">・fase02：造形について</a></li>
-      <li><a href="#rendering">・fase03：レンダリング</a></li>
-      <li><a href="#output">・fase04：出力と下地塗装</a></li>
-      <li><a href="#painting">・fase05：本塗装</a></li>
-    </ul>
+  <div id="concept" class="concept-section">
+  <p class="m">【　- コンセプトとテーマ -　】</p>
+    本作品のコンセプトは、「 水生生物・頭足類である蛸がもし、陸上の生活に適応したらどうなるか 」という進化におけるifの物語です。
+    また、今回のモチーフは蛸（頭足類）ということで、「 生き物としての異質さと自然の生命を感じられるような生物 」をテーマとして制作に臨みました。
   </div>
 
-  <!-- 各項目に固有の id と共通の class を設定しました -->
+  <br>
+  <br>
+
   <div id="design" class="concept-section">
-  <p class="m">fase01：［ デザインについて ］</p>
-  デザインについては、改訂前と概ね変わりません。
-  しかし、細かいディテールを見直し、テーマを忠実に表現するために部位を新たに追加するなどの
-  改善を行いました。
-  頭部に追加されたヒゲのような部位は、大樹の根を表現しており、試作段階では私の技術の問題でできなかった表現でしたが、
-  今回出力時の強度の問題などを考慮しつつ、実現することができました。
-  頭部の角のような甲殻と髭の形状が、一本の大樹のように見えるようにシルエットを工夫しました。
-    <img src="img/noImage.png" alt="1">
+  <p class="m">【　- デザイン -　】</p>
+    まず、既存の蛸の姿勢から考え直しました。
+    陸上では主に頭は前方を向き、歩行のために足元が見えなければなりません。
+    そのため、既存の蛸よりも上体を起こした姿勢にし、
+    また、8つの触腕の先端の表面や裏には吸盤に代わり、爪が発達しており陸上でのスムーズな移動を可能にしています。
+    <img src="../img/noImage.png" alt="concept art">
+    外見は自然界の大樹を想起させるような頭部の形状とエイリアンのような不気味さを思わせる顔
+    をイメージし、デザインしました。
+    <img src="../img/noImage.png" alt="color setting">
   </div>
 
 <br>
+<br>
 
-  <div id="prototype" class="concept-section">
-  <p class="m">fase02：［ 造形について ］</p>
-  造形に関しては、改訂前のデータを基にしつつ、新規デザイン案を見ながら、
-  形づくりました。
-  また、全体的に左右対称の不自然さを無くすため角の形状をクラブブラシを用いて、
-  左右非対称の形状に変形させました。
-    <img src="img/octopus_front_new.png" alt="2">
-    <img src="img/octopus_left_new.png" alt="3">
-    <img src="img/octopus_back_new.png" alt="4">
-    <img src="img/octopus_right_new.png" alt="5">
+  <div id="modeling" class="concept-section">
+  <p class="m">【　- 造形 -　】</p>
+  デザインに基づいて、造形を行なっていきました。
+  今回は触腕の表現がこの作品の要ともなってくるため、特に力を入れて造形しました。
+  触腕特有のうねる動きや意志を持ったような動きが感じ取れるようなものに仕上げました。
+    <img src="../img/noImage.png" alt="1">
   </div>
 
+<br>
 <br>
 
   <div id="rendering" class="concept-section">
-  <p class="m">fase03：［ レンダリング ］</p>
-  教授の協力のもと、KeyShotを用いてイメージ画像のレンダリングを行いました。
-  
-    <img src="img/octopus_package.png" alt="1">
-    <img src="img/octopus_paint.png" alt="1">
+  <p class="m">【　- イメージレンダリング -　】</p>
+  blenderで制作した3Dデータを使用し、実際に3Dプリンターを用いた出力を行おうと考えました。
+  そのため、実際の出力時のイメージを明確にするため、教授の協力のもとイメージ画像をKeyShotを用いてレンダリングしました。
+    <img src="../img/noImage.png" alt="1">
   </div>
 
+<br>
 <br>
 
   <div id="output" class="concept-section">
-  <p class="m">fase04：［ 出力と下地塗装 ］</p>
-  今月末更新予定です。続報をお待ちください。
-    <img src="img/noImage.png" alt="1">
+  <p class="m">【　- ３Dプリント -　】</p>
+  光造形3Dプリンターを用いての印刷を行うにあたり、出力用のデータを作成しました。
+  データ作成は、chituboxというスライサーソフトを用いて行いました。
+  以下図のように、一度に全てのパーツを出力することは難しいため、2つのフェーズに分けての出力を想定したデータを作成しました。
+  基本的にパーツの分割は触腕8本と胴体・頭といった具合に分割を行いました。
+    <img src="../img/noImage.png" alt="1">
+  上記の図のようにプリント用データの作成後、3Dプリンターでの出力を行ないました。
+  今回はelegooのSaturn4という3Dプリンターを使用し、出力しました。
+  また、使用したレジンはSK本舗から販売されている水洗いレジンです。
+  実際の出力した後の様子が以下の図の通りです。（更新中です。続報をお待ちください。）
+    <img src="../img/noImage.png" alt="1">
   </div>
 
 <br>
+<br>
 
-  <div id="painting" class="concept-section">
-  <p class="m">fase05：［ 本塗装 ］</p>
-  出力に関する情報は、今月更新・投稿予定です。続報をお待ちください。
+<!--  <div id="painting" class="concept-section">
+  <p class="m">【　- 塗装仕上げ -　】</p>
+  塗装に関する情報は、今月更新・投稿予定です。続報をお待ちください。
     <img src="img/noImage.png" alt="1">
-  </div>
-  <p class="backhome"><a href="index.html">ホームへ戻る</a></p>
+  </div>-->
+
+  <p class="backhome"><a href="../index.html">ホームへ戻る</a></p>
+
+  <br>
+  <br>
+  <br>
 </body>
 </html>

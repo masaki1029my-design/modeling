@@ -1,141 +1,22 @@
-#concept{
-  width: 710px;
-  margin-top: 10px;
+/* #concept, #design, #modeling などの指定部分 */
+#concept, #design, #modeling, #rendering, #output, #painting, #painting02 {
+  /* width: 710px; ← これを下記2行に変更 */
+  max-width: 710px;
+  width: 90%; /* スマホ表示時に左右に少し余白を作る */
+  
+  margin: 10px auto;
   text-align: justify;
-  margin: 0 auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
   line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
+  padding: 10px 20px 30px 20px; /* パディングも少し調整 */
+  color: whitesmoke;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid gray; 
-}
-
-#design{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
+  background-color: #333333;
   border-radius: 5px; 
   border: 3px solid #ccc; 
-}
-
-#modeling{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid #ccc; 
-}
-
-#rendering{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid #ccc; 
-}
-
-#output{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid #ccc; 
-}
-
-#painting{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid #ccc; 
-}
-
-#painting02{
-  width: 710px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  line-height: 37px;
-  padding-top: 10px;
-  padding-left:30px;
-  padding-right:30px;
-  padding-bottom:30px;
-  color: #333333;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px; 
-  border: 3px solid #ccc; 
+  box-sizing: border-box; /* 枠線を含めたサイズ計算にする */
 }
 
 
@@ -145,33 +26,30 @@ img{
   margin-top: 30px;
 }
 
-.l1{
-  height: 60px;
-  width:750px ;
+.l1 {
+  height: auto; /* 高さを固定せず自動に */
+  max-width: 750px;
+  width: 100%;
   text-align: center;
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 1000;
-  /*border-bottom:2px solid #333333;*/
-  padding: 0;
-  padding-bottom: 13px;
-  padding-top: 20px;
+  padding: 20px 0 13px 0;
   background-color: whitesmoke;
-  margin: 0 auto;
-  margin-top: 20px;
-  color: black;
+  margin: 20px auto 0 auto;
+  color: #333333;
+  box-sizing: border-box;
 }
 
-.m{
-  width:500px ;
+.m {
+  max-width: 500px;
+  width: 100%;
   text-align: center;
   font-size: 25px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-bottom: 8px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  margin-top: 30px;
-  color: #333333;
+  margin: 30px auto 10px auto;
+  color: whitesmoke;
 }
 
 .sub{
