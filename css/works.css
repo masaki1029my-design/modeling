@@ -9,7 +9,7 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
   line-height: 37px;
-  padding: 10px 20px 30px 20px; /* パディングも少し調整 */
+  padding: 10px 20px 60px 20px; /* パディングも少し調整 */
   color: whitesmoke;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,7 @@ img{
   text-align: center;
   font-size: 25px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  padding-bottom: 8px;
+  padding-bottom: 0px;
   margin: 30px auto 10px auto;
   color: whitesmoke;
 }
