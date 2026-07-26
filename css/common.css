@@ -101,6 +101,13 @@ h1 {
     word-break: break-word;        /* はみ出さずに自然に改行する */
   }
 
+  h2 {
+    font-size: 20px !important;    /* 50pxから20pxに縮小 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    word-break: break-word;        /* はみ出さずに自然に改行する */
+  }
+
   /* 2. 小見出し（.m）や本文のテキストサイズ調整 */
   .m {
     font-size: 20px !important;    /* 25pxから20pxに微調整 */
@@ -118,7 +125,7 @@ h1 {
     line-height: 1.8 !important;   /* 行間を適切に */
     word-break: break-word;        /* 単語や長文の枠外突き出しを防ぐ */
     overflow-wrap: break-word;
-    padding: 15px !important;      /* 枠内の余白をスマホ用に調整 */
+    padding: 5px 15px 30px 15px !important;      /* 枠内の余白をスマホ用に調整 */
   }
 
   /* 4. 画像が枠からはみ出ないようにする */
