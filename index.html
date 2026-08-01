@@ -7,26 +7,32 @@
   <link rel="stylesheet" href="css/index.css"><link rel="stylesheet" href="css/common.css">
   <style>
     /* --- リンクの枠（カード）デザインの調整 --- */
-    .contents {
-      list-style: none; /* リストの点を消す */
-      padding: 0;
-      margin: 30px 0;   /* 見出しを消した分、上下の余白を少し広めに */
-      display: flex;    /* カードを横並びにする */
-      flex-wrap: wrap;  /* 画面幅に応じて折り返す */
-      gap: 10px;        /* カード同士のすき間を1.5倍に合わせて広く */
-    }
-    .contents li {
-      width: 400px; /* 【1.5倍サイズ】1列に2枚並ぶサイズに拡大 */
-      min-width: 280px;        /* 極端に小さくなるのを防ぐ */
-    }
+/* --- リンクの枠（カード）デザインの調整 --- */
+.contents {
+  list-style: none; /* リストの点を消す */
+  padding: 0;
+  margin: 0 auto;
+  max-width: 950px;
+  width: 100%;
+  justify-content: center;
+  display: flex;    /* カードを横並びにする */
+  flex-wrap: wrap;  /* 画面幅に応じて折り返す */
+}
+
+.contents li {
+  width: 100%;
+  max-width: 900px;
+  min-width: 280px;        /* 極端に小さくなるのを防ぐ */
+    margin: 0 auto;
+}
     .contents li a {
       display: block;              /* 枠全体をクリックできるようにする */
       text-decoration: none;       /* 文字の下線を消す */
-      color: whitesmoke;                 /* 文字の色 */
+      color: #333333;                 /* 文字の色 */
       border: 3px solid grey;      /* 枠線 */
-      border-radius: 10px;          /* 枠の角を丸くする */
+      border-radius: 5px;          /* 枠の角を丸くする */
       overflow: hidden;            /* はみ出た画像を丸角に合わせる */
-      background: #333;            /* 背景色 */
+      background-color: #333333;
       transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
     }
     /* マウスを乗せたときの動き */
@@ -45,33 +51,27 @@
     }
     /* カード内のテキストエリア */
     .contents li a .work-title {
-      padding: 18px;               /* 文字まわりの余白も拡大 */
-      font-size: 16px;             /* 文字を少し大きく */
+      padding: 80px 80px 80px 0px;               /* 文字まわりの余白も拡大 */
+      font-size: 25px;             /* 文字を少し大きく */
       line-height: 1.9;
+            background-image: url("img/title_standard.png");         /* 背景色 */
       text-align: center;          /* 文字を中央寄せ */
       font-weight: bold;
     }
+    /* カード内のテキストエリア */
+    .contents li a .work-title01 {
+      padding: 80px 80px 80px 0px;               /* 文字まわりの余白も拡大 */
+      font-size: 25px;             /* 文字を少し大きく */
+      line-height: 1.9;
+            background-image: url("img/title_headmodel.png");         /* 背景色 */
+      text-align: center;          /* 文字を中央寄せ */
+      font-weight: bold;
+    }
+    .catch{
+      font-size: 20px;
+    }
   </style>
 </head>
-<script src="jquery.js"></script>
-<script>
-  $(function() {
-    // 1. パスワード制限の処理（既存のまま維持）
-    $('a[href="work_04.html"]').on('click', function(e) {
-      e.preventDefault(); // ページ遷移を一旦止める
-      
-      var password = prompt("閲覧にはパスワードが必要です。作者以外のアクセスを禁じます。");
-      var collect = "masaki20051029my"; // ←ここに設定したいパスワードを入力してください
-
-      if (password === collect) {
-        location.href = $(this).attr('href'); // 正解ならリンク先へ
-      } else {
-        alert("パスワードが違います。"); // 不正解なら何もしない
-      }
-    });
-  });
-</script>
-
 <body>
   <h1>【 - ヨシキの造形工房 - <span class="eng"></span> 】</h1>
   <br>
@@ -86,46 +86,21 @@
   <br>
   <br>
   <div class="month">
-    <h2>【　- 造形作品一覧 -　】</h2>
+    <h2>-　作品ジャンル一覧　-</h2>
 
-  <ul class="contents">
+  <ul class="contents">    
     <li>
-      <a href="">
-        <img src="img/noImage.png" alt="No image">
-        <div class="work-title">【　Coming Soon・・・　<span class="kaitei"></span>】
-          <br>制作年月：2026
-          <br>販売予定価格：未定
+      <a href="standard_model.html">
+        <div class="work-title">スタンダードフィギュア　/　Standard model
+          <br><span class="catch">〜　ハイクオリティと手軽さを両立させたフィギュア　〜</span>
         </div>
       </a>
     </li>
 
     <li>
-      <a href="html/eagle_head.html">
-        <img src="img/hawk_image_old.png" alt="No image">
-        <div class="work-title">【　鷲 - ヘッドモデル　<span class="kaitei"></span>】
-          <br>制作年月：2026.07
-          <br>販売予定価格：300円
-        </div>
-      </a>
-    </li>
-
-
-    <li>
-      <a href="html/new_octopus.html">
-        <img src="img/octpus_full.png" alt="No image">
-        <div class="work-title">【　陸に生きた蛸　<span class="kaitei"></span>】
-          <br>制作年月：2026.06
-          <br>販売予定価格：800円
-        </div>
-      </a>
-    </li>
-
-    <li>
-      <a href="html/ground-dwellingraptor.html">
-        <img src="img/bw_image_01.png" alt="No image">
-        <div class="work-title">【　出立つ猛禽竜　<span class="kaitei"></span>】
-          <br>制作年月：2026.03
-          <br>販売予定価格：1000円
+      <a href="head_model.html">
+        <div class="work-title01">ヘッドモデルフィギュア　/　Head model
+          <br><span class="catch">〜　手軽さを重視したフィギュア　〜</span>
         </div>
       </a>
     </li>
