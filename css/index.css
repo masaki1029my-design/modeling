@@ -188,7 +188,6 @@ li{
 
   .contents li {
     width: 90% !important;          /* カードの幅 */
-    font-size: 15px;
     max-width: 400px !important;    /* 大きくなりすぎない上限 */
     margin-left: auto !important;   /* 左右の余白を auto にして */
     margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
@@ -200,19 +199,30 @@ li{
     height: auto !important;
   }
 
-  /* 追加：スマホ表示時のカード背景画像＆テキスト最適化 */
-  .contents li a .work-title,
-  .contents li a .work-title01 {
-    padding: 40px 15px !important;   /* スマホ用に上下左右の余白を縮小 */
-    font-size: 18px !important;      /* 文字サイズを小さくして枠内に収める */
-    line-height: 1.6 !important;
-    background-size: cover !important; /* スマホの枠幅に合わせて画像を伸縮 */
+/* 3. スマホ表示時の背景画像とテキストエリアの強制保持 */
+  .contents li a .work-title {
+    background-image: url("../img/title_standard.png") !important;
+    background-size: cover !important;
     background-position: center !important;
+    background-repeat: no-repeat !important;
+    padding: 50px 15px !important; /* スマホ用に余白を調整 */
+    min-height: 150px !important;  /* 高さを確保して画像の消失を防ぐ */
+    box-sizing: border-box !important;
+  }
+
+  .contents li a .work-title01 {
+    background-image: url("../img/title_headmodel.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    padding: 50px 15px !important; /* スマホ用に余白を調整 */
+    min-height: 150px !important;  /* 高さを確保して画像の消失を防ぐ */
+    box-sizing: border-box !important;
   }
 
   .catch {
-    font-size: 14px !important;      /* キャッチコピーもスマホ用に縮小 */
-    display: block;                  /* 確実に改行させる */
+    font-size: 14px !important;
+    display: block;
     margin-top: 5px;
   }
 }
