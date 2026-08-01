@@ -87,3 +87,46 @@ li{
   padding-bottom: 30px;
   font-weight: bold;
 }
+
+/* ==========================================
+   スマートフォン用の表示調整（画面幅768px以下）
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. 「はじめに」枠（#news）のスマホ最適化 */
+  #news {
+    width: 90% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+  }
+
+  .l_news {
+    width: 100% !important;       /* 300px固定から100%に変更 */
+    font-size: 20px !important;   /* タイトルを少し小さく */
+  }
+
+  /* 2. 作品カード一覧（.contents）のスマホ最適化 */
+  .contents {
+    padding-left: 0 !important;      /* リスト特有の左余白を完全にリセット */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-content: center !important; /* 全体を画面中央に寄せる */
+    width: 100% !important;
+  }
+
+  .contents li {
+    width: 90% !important;          /* カードの幅 */
+    max-width: 400px !important;    /* 大きくなりすぎない上限 */
+    margin-left: auto !important;   /* 左右の余白を auto にして */
+    margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
+    padding: 0 !important;          /* 外枠の不要な余白をカット */
+  }
+
+  .contents li a img {
+    width: 100% !important;         /* 画像もカード幅いっぱいに収める */
+    height: auto !important;
+  }
+}

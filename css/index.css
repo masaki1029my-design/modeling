@@ -87,3 +87,132 @@ li{
   padding-bottom: 30px;
   font-weight: bold;
 }
+
+    /* --- リンクの枠（カード）デザインの調整 --- */
+/* --- リンクの枠（カード）デザインの調整 --- */
+.contents {
+  list-style: none; /* リストの点を消す */
+  padding: 0;
+  margin: 0 auto;
+  max-width: 950px;
+  width: 100%;
+  justify-content: center;
+  display: flex;    /* カードを横並びにする */
+  flex-wrap: wrap;  /* 画面幅に応じて折り返す */
+}
+
+.contents li {
+  width: 100%;
+  max-width: 900px;
+  min-width: 280px;        /* 極端に小さくなるのを防ぐ */
+    margin: 0 auto;
+}
+    .contents li a {
+      display: block;              /* 枠全体をクリックできるようにする */
+      text-decoration: none;       /* 文字の下線を消す */
+      color: #333333;                 /* 文字の色 */
+      border: 3px solid grey;      /* 枠線 */
+      border-radius: 5px;          /* 枠の角を丸くする */
+      overflow: hidden;            /* はみ出た画像を丸角に合わせる */
+      background-color: #333333;
+      transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
+    }
+    /* マウスを乗せたときの動き */
+    .contents li a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    /* カード内の画像 */
+    .contents li a img {
+      width: 300px;   
+      height: 168.75px;            /* 【1.5倍サイズ】画像の高さも1.5倍ほどに拡大 */
+      object-fit: cover;           /* 縦横比を崩さずにトリミング */
+      display: block;
+      margin: 0 auto;   
+      margin-top: 15px;           /* 【重要】画像自体をカード内の横中央に配置 */
+    }
+ /* カード内のテキストエリア（共通修正） */
+.contents li a .work-title {
+  padding: 60px 20px;            /* 左右の余白を均等に */
+  font-size: 25px;
+  line-height: 1.9;
+  background-image: url("../img/title_standard.png");
+  background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
+  background-position: center;   /* 追加：背景画像を中央寄せ */
+  text-align: center;
+  font-weight: bold;
+}
+
+.contents li a .work-title01 {
+  padding: 60px 20px;            /* 左右の余白を均等に */
+  font-size: 25px;
+  line-height: 1.9;
+  background-image: url("../img/title_headmodel.png");
+  background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
+  background-position: center;   /* 追加：背景画像を中央寄せ */
+  text-align: center;
+  font-weight: bold;
+}
+    .catch{
+      font-size: 20px;
+    }
+
+    /* ==========================================
+   スマートフォン用の表示調整（画面幅768px以下）
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. 「はじめに」枠（#news）のスマホ最適化 */
+  #news {
+    width: 90% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+  }
+
+  .l_news {
+    width: 100% !important;       /* 300px固定から100%に変更 */
+    font-size: 20px !important;   /* タイトルを少し小さく */
+  }
+
+  /* 2. 作品カード一覧（.contents）のスマホ最適化 */
+  .contents {
+    padding-left: 0 !important;      /* リスト特有の左余白を完全にリセット */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-content: center !important; /* 全体を画面中央に寄せる */
+    width: 100% !important;
+  }
+
+  .contents li {
+    width: 90% !important;          /* カードの幅 */
+    font-size: 15px;
+    max-width: 400px !important;    /* 大きくなりすぎない上限 */
+    margin-left: auto !important;   /* 左右の余白を auto にして */
+    margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
+    padding: 0 !important;          /* 外枠の不要な余白をカット */
+  }
+
+  .contents li a img {
+    width: 100% !important;         /* 画像もカード幅いっぱいに収める */
+    height: auto !important;
+  }
+
+  /* 追加：スマホ表示時のカード背景画像＆テキスト最適化 */
+  .contents li a .work-title,
+  .contents li a .work-title01 {
+    padding: 40px 15px !important;   /* スマホ用に上下左右の余白を縮小 */
+    font-size: 18px !important;      /* 文字サイズを小さくして枠内に収める */
+    line-height: 1.6 !important;
+    background-size: cover !important; /* スマホの枠幅に合わせて画像を伸縮 */
+    background-position: center !important;
+  }
+
+  .catch {
+    font-size: 14px !important;      /* キャッチコピーもスマホ用に縮小 */
+    display: block;                  /* 確実に改行させる */
+    margin-top: 5px;
+  }
+}
