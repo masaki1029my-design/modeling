@@ -199,29 +199,37 @@ li{
     height: auto !important;
   }
 
-/* 3. スマホ表示時の背景画像とテキストエリアの強制保持 */
+/* 3. スマホ表示時の背景画像（右端優先表示）とテキストエリアの調整 */
   .contents li a .work-title {
     background-image: url("../img/title_standard.png") !important;
     background-size: cover !important;
-    background-position: center !important;
+    
+    /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
+    background-position: right center !important;
+    
     background-repeat: no-repeat !important;
-    padding: 50px 15px !important; /* スマホ用に余白を調整 */
-    min-height: 150px !important;  /* 高さを確保して画像の消失を防ぐ */
+    padding: 50px 15px !important;
+    min-height: 150px !important; /* 今の高さをしっかり維持 */
     box-sizing: border-box !important;
+    font-size: 18px;
   }
 
   .contents li a .work-title01 {
     background-image: url("../img/title_headmodel.png") !important;
     background-size: cover !important;
-    background-position: center !important;
+    
+    /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
+    background-position: right center !important;
+    
     background-repeat: no-repeat !important;
-    padding: 50px 15px !important; /* スマホ用に余白を調整 */
-    min-height: 150px !important;  /* 高さを確保して画像の消失を防ぐ */
+    padding: 50px 15px !important;
+    min-height: 150px !important; /* 今の高さをしっかり維持 */
     box-sizing: border-box !important;
+    font-size: 18px;
   }
 
   .catch {
-    font-size: 14px !important;
+    font-size: 12px !important;
     display: block;
     margin-top: 5px;
   }
