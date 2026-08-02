@@ -293,7 +293,7 @@ li{
 
   .slideshow {
     width: 100%;
-    height: 100vh;      /* スマホ用に高さを縮小 */
+    height: 100dvh;      /* スマホ用に高さを縮小 */
   }
 
   .slideshow-text h3{
