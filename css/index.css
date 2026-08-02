@@ -306,8 +306,7 @@ li{
   }
   .slideshow-text {
     position: absolute !important;
-    top: 30% !important;             /* 上から40%の位置に固定 */
-    left: 50% !important;
+    top: 80px !important;             /* 上から40%の位置に固定 */
     transform: none !important;      /* スクロール時の揺れの原因になるtranslateを解除 */
     width: 100% !important;
     text-align: center !important;
