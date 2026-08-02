@@ -139,8 +139,8 @@ li{
   position: relative;
   width: 100%;
   max-width: 900px;     /* カードの幅に合わせて調整 */
-  height: 600px;
-  margin: 20px auto;    /* 画面中央に配置 */
+  height: 900px;
+  margin: 0 auto 20px auto;    /* 画面中央に配置 */
   overflow: hidden;     /* はみ出た部分を隠す */
   border-radius: 0px;  /* 角丸 */
 }
@@ -233,14 +233,18 @@ li{
   }
 
     .slideshow {
-    width: 90%;
-    height: 220px;      /* スマホ用に高さを縮小 */
+    width: 100%;
+    height: 300px;      /* スマホ用に高さを縮小 */
   }
 
   .slideshow-text h3{
     font-size: 18px;
   }
   .slideshow-text p {
-    font-size: 13px;
+    font-size: 10px;
   }
+.slideshow-text {
+  top: 10%;
+  left: 50%;
+}
 }

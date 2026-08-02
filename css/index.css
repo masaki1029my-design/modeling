@@ -163,7 +163,7 @@ li{
   width: 100%;
   max-width: 900px;     /* カードの幅に合わせて調整 */
   height: 900px;
-  margin: 20px auto;    /* 画面中央に配置 */
+  margin: 0 auto 20px auto;    /* 画面中央に配置 */
   overflow: hidden;     /* はみ出た部分を隠す */
   border-radius: 0px;  /* 角丸 */
 }
