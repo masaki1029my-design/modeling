@@ -88,6 +88,108 @@ li{
   font-weight: bold;
 }
 
+    /* --- リンクの枠（カード）デザインの調整 --- */
+    .contents {
+      list-style: none; /* リストの点を消す */
+      padding: 0;
+      margin: 30px 0;   /* 見出しを消した分、上下の余白を少し広めに */
+      display: flex;    /* カードを横並びにする */
+      flex-wrap: wrap;  /* 画面幅に応じて折り返す */
+      gap: 10px;        /* カード同士のすき間を1.5倍に合わせて広く */
+    }
+    .contents li {
+      width: 400px; /* 【1.5倍サイズ】1列に2枚並ぶサイズに拡大 */
+      min-width: 280px;        /* 極端に小さくなるのを防ぐ */
+    }
+    .contents li a {
+      display: block;              /* 枠全体をクリックできるようにする */
+      text-decoration: none;       /* 文字の下線を消す */
+      color: whitesmoke;                 /* 文字の色 */
+      border: 3px solid grey;      /* 枠線 */
+      border-radius: 10px;          /* 枠の角を丸くする */
+      overflow: hidden;            /* はみ出た画像を丸角に合わせる */
+      background: #333;            /* 背景色 */
+      transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
+    }
+    /* マウスを乗せたときの動き */
+    .contents li a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    /* カード内の画像 */
+    .contents li a img {
+      width: 300px;   
+      height: 168.75px;            /* 【1.5倍サイズ】画像の高さも1.5倍ほどに拡大 */
+      object-fit: cover;           /* 縦横比を崩さずにトリミング */
+      display: block;
+      margin: 0 auto;   
+      margin-top: 15px;           /* 【重要】画像自体をカード内の横中央に配置 */
+    }
+    /* カード内のテキストエリア */
+    .contents li a .work-title {
+      padding: 18px;               /* 文字まわりの余白も拡大 */
+      font-size: 16px;             /* 文字を少し大きく */
+      line-height: 1.9;
+      text-align: center;          /* 文字を中央寄せ */
+      font-weight: bold;
+    }
+
+/* --- スライドショー全体の枠 --- */
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 900px;     /* カードの幅に合わせて調整 */
+  height: 600px;
+  margin: 20px auto;    /* 画面中央に配置 */
+  overflow: hidden;     /* はみ出た部分を隠す */
+  border-radius: 0px;  /* 角丸 */
+}
+
+/* スライド画像共通設定 */
+.slideshow .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* 枠に合わせてきれいに収める */
+  opacity: 0;           /* 通常時は透明 */
+  transition: opacity 1.5s ease-in-out; /* ふんわり切り替わるアニメーション（1.5秒） */
+}
+
+/* 表示中の画像 */
+.slideshow .slide.active {
+  opacity: 1;           /* 表示状態 */
+}
+
+/* --- スライドショー内の固定テキスト --- */
+.slideshow-text {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 上下左右中央に配置 */
+  z-index: 10;                        /* 画像（z-index未指定/0）より前面に配置 */
+  color: #ffffff;                    /* 文字色 */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  width: 90%;
+  pointer-events: none;              /* テキストがクリックイベントを邪魔しないようにする */
+  
+  /* 文字を読みやすくするための黒いシャドウ（お好みで調整可） */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.slideshow-text h3 {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  letter-spacing: 2px
+}
+
+.slideshow-text p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 2.2;
+}
 /* ==========================================
    スマートフォン用の表示調整（画面幅768px以下）
    ========================================== */
@@ -128,5 +230,17 @@ li{
   .contents li a img {
     width: 100% !important;         /* 画像もカード幅いっぱいに収める */
     height: auto !important;
+  }
+
+    .slideshow {
+    width: 90%;
+    height: 220px;      /* スマホ用に高さを縮小 */
+  }
+
+  .slideshow-text h3{
+    font-size: 18px;
+  }
+  .slideshow-text p {
+    font-size: 13px;
   }
 }

@@ -5,74 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>作品詳細</title>
   <link rel="stylesheet" href="css/standard_model.css"><link rel="stylesheet" href="css/common.css">
-  <style>
-    /* --- リンクの枠（カード）デザインの調整 --- */
-    .contents {
-      list-style: none; /* リストの点を消す */
-      padding: 0;
-      margin: 30px 0;   /* 見出しを消した分、上下の余白を少し広めに */
-      display: flex;    /* カードを横並びにする */
-      flex-wrap: wrap;  /* 画面幅に応じて折り返す */
-      gap: 10px;        /* カード同士のすき間を1.5倍に合わせて広く */
-    }
-    .contents li {
-      width: 400px; /* 【1.5倍サイズ】1列に2枚並ぶサイズに拡大 */
-      min-width: 280px;        /* 極端に小さくなるのを防ぐ */
-    }
-    .contents li a {
-      display: block;              /* 枠全体をクリックできるようにする */
-      text-decoration: none;       /* 文字の下線を消す */
-      color: whitesmoke;                 /* 文字の色 */
-      border: 3px solid grey;      /* 枠線 */
-      border-radius: 10px;          /* 枠の角を丸くする */
-      overflow: hidden;            /* はみ出た画像を丸角に合わせる */
-      background: #333;            /* 背景色 */
-      transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
-    }
-    /* マウスを乗せたときの動き */
-    .contents li a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    /* カード内の画像 */
-    .contents li a img {
-      width: 300px;   
-      height: 168.75px;            /* 【1.5倍サイズ】画像の高さも1.5倍ほどに拡大 */
-      object-fit: cover;           /* 縦横比を崩さずにトリミング */
-      display: block;
-      margin: 0 auto;   
-      margin-top: 15px;           /* 【重要】画像自体をカード内の横中央に配置 */
-    }
-    /* カード内のテキストエリア */
-    .contents li a .work-title {
-      padding: 18px;               /* 文字まわりの余白も拡大 */
-      font-size: 16px;             /* 文字を少し大きく */
-      line-height: 1.9;
-      text-align: center;          /* 文字を中央寄せ */
-      font-weight: bold;
-    }
-  </style>
 </head>
 <script src="jquery.js"></script>
 <script>
   $(function() {
-    // 1. パスワード制限の処理（既存のまま維持）
-    $('a[href="work_04.html"]').on('click', function(e) {
-      e.preventDefault(); // ページ遷移を一旦止める
-      
-      var password = prompt("閲覧にはパスワードが必要です。作者以外のアクセスを禁じます。");
-      var collect = "masaki20051029my"; // ←ここに設定したいパスワードを入力してください
 
-      if (password === collect) {
-        location.href = $(this).attr('href'); // 正解ならリンク先へ
-      } else {
-        alert("パスワードが違います。"); // 不正解なら何もしない
-      }
-    });
+    // --- ここから追加：自動スライドショー機能 ---
+    var slides = $('.slideshow .slide');
+    var currentIndex = 0;
+
+    setInterval(function() {
+      // 現在の画像を非表示（activeを外す）
+      slides.eq(currentIndex).removeClass('active');
+      
+      // 次の画像のインデックス番号を計算（最後まできたら0に戻る）
+      currentIndex = (currentIndex + 1) % slides.length;
+      
+      // 次の画像を表示（activeをつける）
+      slides.eq(currentIndex).addClass('active');
+    }, 4000); // 4000 = 4秒ごとに切り替え
   });
 </script>
 
 <body>
+<div class="slideshow">
+    <img src="slide_img/slide01.png" alt="スライド1" class="slide active">
+    <img src="slide_img/slide02.png" alt="スライド2" class="slide">
+    <img src="slide_img/slide03.png" alt="スライド3" class="slide">
+    <img src="slide_img/slide04.png" alt="スライド1" class="slide">
+    <img src="slide_img/slide05.png" alt="スライド2" class="slide">
+    <img src="slide_img/slide06.png" alt="スライド3" class="slide">
+  </div>
+<!-- ★ここに固定表示したいテキストを追加 -->
+  <div class="slideshow-text">
+    <h3>-　スタンダードフィギュア　-</h3>
+    <p>ハイクオリティと手軽さを両立させたフィギュアモデルです。
+      <br>    標準的なサイズであり、リアルな質感と肌触り、造形、重量感にこだわって制作しています。
+    </p>
+  </div>
+  <br>
   <br>
   <br>
   <br>
@@ -84,7 +55,7 @@
     <li>
       <a href="">
         <img src="img/noImage.png" alt="No image">
-        <div class="work-title">【　Coming Soon・・・　<span class="kaitei"></span>】
+        <div class="work-title">Vol.04【　Coming Soon・・・　<span class="kaitei"></span>】
           <br>制作年月：2026
           <br>販売予定価格：未定
         </div>
@@ -95,7 +66,7 @@
     <li>
       <a href="">
         <img src="img/noImage.png" alt="No image">
-        <div class="work-title">【　畏怖の眼差し　<span class="kaitei"></span>】
+        <div class="work-title">Vol.03【　畏怖の眼差し　<span class="kaitei"></span>】
           <br>制作年月：2026.08
           <br>販売予定価格：未定
         </div>
@@ -105,7 +76,7 @@
     <li>
       <a href="html/new_octopus.html">
         <img src="img/octpus_full.png" alt="No image">
-        <div class="work-title">【　陸に生きた蛸　<span class="kaitei"></span>】
+        <div class="work-title">Vol.02【　陸に生きた蛸　<span class="kaitei"></span>】
           <br>制作年月：2026.06
           <br>販売予定価格：800円
         </div>
@@ -115,7 +86,7 @@
     <li>
       <a href="html/ground-dwellingraptor.html">
         <img src="img/bw_image_01.png" alt="No image">
-        <div class="work-title">【　出立つ猛禽竜　<span class="kaitei"></span>】
+        <div class="work-title">Vol.01【　出立つ猛禽竜　<span class="kaitei"></span>】
           <br>制作年月：2026.03
           <br>販売予定価格：1000円
         </div>
