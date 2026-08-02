@@ -298,8 +298,19 @@ li{
 
   .slideshow-text h3{
     font-size: 23px;
+    margin: 0 !important;
+    padding: 0 10px !important;
   }
   .slideshow-text p {
     font-size: 10px;
+  }
+  .slideshow-text {
+    position: absolute !important;
+    top: 30% !important;             /* 上から40%の位置に固定 */
+    left: 50% !important;
+    transform: none !important;      /* スクロール時の揺れの原因になるtranslateを解除 */
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
   }
 }
