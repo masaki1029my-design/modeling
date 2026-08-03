@@ -1,3 +1,14 @@
+body{
+-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  /*background-image: url("../img/background_body.png");*/
+  background-position: center;
+}
+
 h2{
   font-size: 30px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -157,61 +168,82 @@ li{
       font-size: 20px;
     }
 
-/* --- スライドショー全体の枠 --- */
+/* --- スライドショー本体（PC用修正） --- */
 .slideshow {
-  position: relative;
-  width: 100%;
-  max-width: 900px;     /* カードの幅に合わせて調整 */
-  height: 900px;
-  margin: 0 auto 20px auto;    /* 画面中央に配置 */
-  overflow: hidden;     /* はみ出た部分を隠す */
-  border-radius: 0px;  /* 角丸 */
+  position: fixed;
+  top: 0;
+  left: 50%;                         /* 画面左から50%の位置へ */
+  transform: translateX(-50%);        /* 自身の幅の半分左に戻して中央揃え */
+  width: 900px;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
 }
 
-/* スライド画像共通設定 */
+/* スライド画像 */
 .slideshow .slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;    /* 枠に合わせてきれいに収める */
-  opacity: 0;           /* 通常時は透明 */
-  transition: opacity 1.5s ease-in-out; /* ふんわり切り替わるアニメーション（1.5秒） */
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
 
-/* 表示中の画像 */
 .slideshow .slide.active {
-  opacity: 1;           /* 表示状態 */
+  opacity: 1;
 }
 
-/* --- スライドショー内の固定テキスト --- */
+/* ★追加：白く切り替えるためのオーバーレイ（フィルム） */
+.slideshow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;                   /* 画像の上に配置 */
+  background-color: whitesmoke;
+  opacity: 0;                   /* 最初は透明 */
+  transition: opacity 0.8s ease;/* 0.8秒かけてふんわり白に変化 */
+  pointer-events: none;
+}
+
+/* ★スクロールした時に白くするアニメーションクラス */
+.slideshow.is-white .slideshow-overlay {
+  opacity: 1.0;              
+}
+
+/* スライドショー内の固定文字 */
 .slideshow-text {
   position: absolute;
-  top: 37%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* 上下左右中央に配置 */
-  z-index: 10;                        /* 画像（z-index未指定/0）より前面に配置 */
-  color: #ffffff;                    /* 文字色 */
+  transform: translate(-50%, -50%);
+  z-index: 2;                 /* 画像のすぐ上に配置 */
+  color: #ffffff;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   width: 90%;
-  pointer-events: none;              /* テキストがクリックイベントを邪魔しないようにする */
-  
-  /* 文字を読みやすくするための黒いシャドウ（お好みで調整可） */
+  pointer-events: none;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .slideshow-text h3 {
   font-size: 50px;
   margin: 0 0 10px 0;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
 
-.slideshow-text p {
-  font-size: 16px;
-  margin: 0;
-  line-height: 2.2;
+.main-content {
+  position: relative;
+  z-index: 10;               
+  margin-top: 100vh;        
+  padding-top: 40px;         
+  padding-bottom: 60px;
+  background-image: url("../img/background_body.png");
+  /*box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);*/
 }
 
     /* ==========================================
@@ -291,27 +323,31 @@ li{
     margin-top: 5px;
   }
 
+/* スマホ用の固定位置調整 */
   .slideshow {
     width: 100%;
-    height: 932px ;      /* スマホ用に高さを縮小 */
+    height: 100dvh;           /* スマホ全画面 */
   }
 
-  .slideshow-text h3{
+  .slideshow-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateY(-50%) !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .slideshow-text h3 {
     font-size: 23px;
     margin: 0 !important;
     padding: 0 10px !important;
   }
-  .slideshow-text p {
-    font-size: 10px;
-  }
-  .slideshow-text {
-    position: absolute !important;
-    top: 80px !important; 
-    left:0;
-    right:0;            /* 上から40%の位置に固定 */
-    transform: none !important;      /* スクロール時の揺れの原因になるtranslateを解除 */
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 auto !important;
+
+  /* スマホ時のメインコンテンツ切り替わり位置 */
+  .main-content {
+    margin-top: 100dvh;       /* スマホのファーストビュー直下に設定 */
   }
 }

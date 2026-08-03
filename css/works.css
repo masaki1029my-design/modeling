@@ -1,4 +1,15 @@
-/* #concept, #design, #modeling などの指定部分 */
+body{
+-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("../img/background_body.png");
+  background-position: center;
+}
+
+
 #concept, #design, #modeling, #rendering, #output, #painting, #painting02 {
   /* width: 710px; ← これを下記2行に変更 */
   max-width: 710px;

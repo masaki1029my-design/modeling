@@ -9,24 +9,37 @@
 <script src="jquery.js"></script>
 <script>
   $(function() {
-    // --- ここから追加：自動スライドショー機能 ---
+    // 1. 自動スライドショー
     var slides = $('.slideshow .slide');
     var currentIndex = 0;
 
     setInterval(function() {
-      // 現在の画像を非表示（activeを外す）
       slides.eq(currentIndex).removeClass('active');
-      
-      // 次の画像のインデックス番号を計算（最後まできたら0に戻る）
       currentIndex = (currentIndex + 1) % slides.length;
-      
-      // 次の画像を表示（activeをつける）
       slides.eq(currentIndex).addClass('active');
-    }, 4000); // 4000 = 4秒ごとに切り替え
+    }, 4000);
+
+    // 2. スクロール監視で背景を白く切り替える処理
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      
+      // スクロール量が100pxを超えたら（「はじめに」に差し掛かったら）白くする
+      if (scrollTop > 100) {
+        $('.slideshow').addClass('is-white');
+      } else {
+        // 一番上に戻ったら元の画像表示に戻す
+        $('.slideshow').removeClass('is-white');
+      }
+    });
   });
 </script>
 <body>
-<div class="slideshow">
+
+  <!-- 背面スライドショー（ここは外に出す） -->
+  <div class="slideshow">
+
+  <div class="slideshow-overlay"></div>
+
     <img src="slide_img/slide01.png" alt="スライド1" class="slide active">
     <img src="slide_img/slide02.png" alt="スライド2" class="slide">
     <img src="slide_img/slide03.png" alt="スライド3" class="slide">
@@ -38,58 +51,51 @@
     <img src="slide_img/slide003.png" alt="スライド9" class="slide">
     <img src="slide_img/slide004.png" alt="スライド10" class="slide">
   </div>
-<!-- ★ここに固定表示したいテキストを追加 -->
+
   <div class="slideshow-text">
-    <h3>-　ヨシキの造形工房　-</h3>
-    <p>
-    </p>
+    <h3>- ヨシキの造形工房 -</h3>
+    <p></p>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div id="news">
-  <p class="l_news">-　はじめに　-</p>
-    このサイトでは、私のこれまで制作してきた主に造形作品を取り上げています。
-    生き物の息遣いやリアルな質感を感じていただけるように細部までこだわって、作品制作に取り組んでいます。
-    ぜひ、このサイトを通じ作品から生き物の質感を感じていただければと思います。
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="month">
-    <h2>-　作品ジャンル一覧　-</h2>
 
-  <ul class="contents">    
-    <li>
-      <a href="standard_model.html">
-        <div class="work-title">スタンダードフィギュア
-          <br><span class="catch">〜　ハイクオリティと手軽さを両立させたモデル　〜</span>
-        </div>
-      </a>
-    </li>
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
 
-    <li>
-      <a href="head_model.html">
-        <div class="work-title01">ヘッドモデルフィギュア
-          <br><span class="catch">〜　手軽さを重視したモデル　〜</span>
-        </div>
-      </a>
-    </li>
-</div>
- <br>
-  <br>
-  <br>
-  <br>
-  <div id="news">
-  <p class="l_news">-　おわりに　-</p>
-    作品を見ていただき、ありがとうございました。
-    今後も、皆様に様々な作品・製品を届けられるよう鋭意製作中ですので、どうぞよろしくお願いいたします。
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
+    <div id="news">
+      <p class="l_news">- はじめに -</p>
+      このサイトでは、私のこれまで制作してきた主に造形作品を取り上げています。
+      生き物の息遣いやリアルな質感を感じていただけるように細部までこだわって、作品制作に取り組んでいます。
+      ぜひ、このサイトを通じ作品から生き物の質感を感じていただければと思います。
+    </div>
+    <br><br><br><br>
+
+    <div class="month">
+      <h2>- 作品ジャンル一覧 -</h2>
+      <ul class="contents">    
+        <li>
+          <a href="standard_model.html">
+            <div class="work-title">スタンダードフィギュア
+              <br><span class="catch">〜 ハイクオリティと手軽さを両立させたモデル 〜</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="head_model.html">
+            <div class="work-title01">ヘッドモデルフィギュア
+              <br><span class="catch">〜 手軽さを重視したモデル 〜</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <br><br><br><br>
+
+    <div id="news">
+      <p class="l_news">- おわりに -</p>
+      作品を見ていただき、ありがとうございました。
+      今後も、皆様に様々な作品・製品を届けられるよう鋭意製作中ですので、どうぞよろしくお願いいたします。
+    </div>
+
+  </div> <!-- /.main-content おわり -->
+
 </body>
 </html>
