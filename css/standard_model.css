@@ -278,6 +278,7 @@ li{
   .contents li {
     width: 90% !important;          /* カードの幅 */
     max-width: 400px !important;    /* 大きくなりすぎない上限 */
+    margin-bottom: 10px;
     margin-left: auto !important;   /* 左右の余白を auto にして */
     margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
     padding: 0 !important;          /* 外枠の不要な余白をカット */
@@ -314,8 +315,7 @@ li{
     padding: 50px 15px !important;
     min-height: 150px !important; /* 今の高さをしっかり維持 */
     box-sizing: border-box !important;
-    font-size: 15px;
-    margin-bottom: 10px;                                                                                                    
+    font-size: 15px;                                                                                                   
   }
 
   .catch {

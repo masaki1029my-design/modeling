@@ -280,6 +280,7 @@ li{
     max-width: 400px !important;    /* 大きくなりすぎない上限 */
     margin-left: auto !important;   /* 左右の余白を auto にして */
     margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
+    margin-bottom: 10px;
     padding: 0 !important;          /* 外枠の不要な余白をカット */
   }
 
