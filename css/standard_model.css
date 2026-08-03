@@ -315,6 +315,7 @@ li{
     min-height: 150px !important; /* 今の高さをしっかり維持 */
     box-sizing: border-box !important;
     font-size: 15px;
+    margin-bottom: 10px;                                                                                                    
   }
 
   .catch {
