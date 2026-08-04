@@ -147,7 +147,7 @@ li{
   padding: 60px 20px;            /* 左右の余白を均等に */
   font-size: 25px;
   line-height: 1.9;
-  background-image: url("../img/vol01.png");
+  background-image: url("../background_img/vol01.png");
   background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
   background-position: center;   /* 追加：背景画像を中央寄せ */
   text-align: center;
@@ -158,7 +158,7 @@ li{
   padding: 60px 20px;            /* 左右の余白を均等に */
   font-size: 25px;
   line-height: 1.9;
-  background-image: url("../img/vol02.png");
+  background-image: url("../background_img/vol02.png");
   background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
   background-position: center;   /* 追加：背景画像を中央寄せ */
   text-align: center;
@@ -291,7 +291,7 @@ li{
 
 /* 3. スマホ表示時の背景画像（右端優先表示）とテキストエリアの調整 */
   .contents li a .work-title {
-    background-image: url("../img/vol01.png") !important;
+    background-image: url("../background_img/vol01.png") !important;
     background-size: cover !important;
     
     /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
@@ -305,7 +305,7 @@ li{
   }
 
   .contents li a .work-title01 {
-    background-image: url("../img/vol02.png") !important;
+    background-image: url("../background_img/vol02.png") !important;
     background-size: cover !important;
     
     /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */

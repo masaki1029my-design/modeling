@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="css/3dcg.css"><link rel="stylesheet" href="css/common.css">
+</head>
+<script src="jquery.js"></script>
+<script>
+  $(function() {
+    // 1. 自動スライドショー
+    var slides = $('.slideshow .slide');
+    var currentIndex = 0;
+
+    setInterval(function() {
+      slides.eq(currentIndex).removeClass('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides.eq(currentIndex).addClass('active');
+    }, 4000);
+
+    // 2. スクロール監視で背景を白く切り替える処理
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      
+      // スクロール量が100pxを超えたら（「はじめに」に差し掛かったら）白くする
+      if (scrollTop > 100) {
+        $('.slideshow').addClass('is-white');
+      } else {
+        // 一番上に戻ったら元の画像表示に戻す
+        $('.slideshow').removeClass('is-white');
+      }
+    });
+  });
+</script>
+<body>
+
+  <!-- 背面スライドショー（ここは外に出す） -->
+  <div class="slideshow">
+
+  <div class="slideshow-overlay"></div>
+
+    <img src="slide_img/slide_11.png" alt="スライド1" class="slide active">
+    <img src="slide_img/slide_12.png" alt="スライド2" class="slide">
+    <img src="slide_img/slide_13.png" alt="スライド" class="slide">
+  </div>
+
+  <div class="slideshow-text">
+    <h3>- 3DCG表現 -</h3>
+    <p></p>
+  </div>
+
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
+    <br><br><br><br>
+
+    <div class="month">
+      <h2>- 作品一覧 -</h2>
+      <ul class="contents">   
+        <br>
+        <li>
+          <a href="html/eagle_head.html">
+            <div class="work-title">Vol.01【 価値あるものは価値無きものから 】
+              <br><span class="catch">〜 価値あるものの成り立ちの表現 〜
+              <br>制作年月：2025.08
+              </span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="head_model.html"><!--背景画像寸法：890px*300px-->
+            <div class="work-title01">Vol.00【 価値あるものは価値無きものから 試作 】
+              <br><span class="catch">〜 初めての3dcg表現の試行錯誤 〜
+              <br>制作年月：2025.07  
+              </span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <br><br><br><br>
+    <p class="backhome"><a href="index.html">Topへ</a></p>
+<br><br><br><br><br><br><br>
+  </div>
+
+</body>
+</html>
