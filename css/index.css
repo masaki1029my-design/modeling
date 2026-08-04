@@ -85,20 +85,6 @@ li{
   color: #333333;
 }
 
-#normal{
-  width: 750px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 37px;
-  color: #333333;
-  padding: 30px;
-  padding-bottom: 30px;
-  font-weight: bold;
-}
-
     /* --- リンクの枠（カード）デザインの調整 --- */
 /* --- リンクの枠（カード）デザインの調整 --- */
 .contents {
@@ -126,6 +112,8 @@ li{
       border-radius: 5px;          /* 枠の角を丸くする */
       overflow: hidden;            /* はみ出た画像を丸角に合わせる */
       background-color: #333333;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px whitesmoke;
       transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
     }
     /* マウスを乗せたときの動き */
@@ -158,7 +146,7 @@ li{
   padding: 60px 20px;            /* 左右の余白を均等に */
   font-size: 25px;
   line-height: 1.9;
-  background-image: url("../background_img/vol001.png");
+  background-image: url("../background_img/title_headmodel.png");
   background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
   background-position: center;   /* 追加：背景画像を中央寄せ */
   text-align: center;
@@ -317,7 +305,7 @@ li{
   }
 
   .contents li a .work-title01 {
-    background-image: url("../background_img/vol001.png") !important;
+    background-image: url("../background_img/title_headmodel.png") !important;
     background-size: cover !important;
     
     /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
