@@ -259,7 +259,7 @@ li{
 
   /* 1. 「はじめに」枠（#news）のスマホ最適化 */
   #news {
-    width: 90% !important;        /* 750px固定から画面幅の90%に変更 */
+    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
     padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
