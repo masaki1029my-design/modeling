@@ -174,15 +174,6 @@ p{
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
   }
 
-  /* 2. 作品カード一覧（.contents）のスマホ最適化 */
-  .contents {
-    padding-left: 0 !important;      /* リスト特有の左余白を完全にリセット */
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    justify-content: center !important; /* 全体を画面中央に寄せる */
-    width: 100% !important;
-  }
-
   .catch {
     font-size: 12px !important;
     display: block;
