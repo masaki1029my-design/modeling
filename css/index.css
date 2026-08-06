@@ -11,51 +11,13 @@ body{
 
 h2{
   font-size: 30px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 50px;
   padding-bottom: 10px;
   /*background-color: whitesmoke;*/
-  color: #333333;
+  color: white;
 }
-
-li{
-  color: #333333;
-  padding: 8px;
-  margin-left: 20px; 
-  font-size: 20px;
-}
-
-.sub{
-  color: tomato;
-  font-size: 15px;
-}
-
-.kaitei{
-  color: tomato;
-}
-
-.shisaku{
-  color: cornflowerblue;
-}
-
-.eng{
-  font-size: 35px;
-}
-
-.red{
-  color: tomato;
-}
-/*#news{
-  width: 600px;
-  margin-top: 10px;
-  text-align: justify;
-  margin: 0 auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 13px;
-  line-height: 37px;
-  color: whitesmoke;
-}*/
 
 #news{
   width: 780px;
@@ -66,109 +28,55 @@ li{
   font-size: 18px;
   font-weight: 500;
   line-height: 37px;
-  color: #333333;
-  background: radial-gradient(circle at center, white 50%, transparent 100%);
+  color: white;
+  /*background: radial-gradient(circle at center, white 50%, transparent 100%);*/
   padding-top: 15px;
   padding-left:60px;
   padding-right: 60px;
   padding-bottom: 40px;
   border-radius: 5px; 
+  line-height: 50px;
 }
-.l_news{
-  width:300px ;
+/*ーcontents関連css スタンダードモデル・ヘッドモデルー*/
+.work_link{
+  width: 250px;
   text-align: center;
-  font-size: 25px;
-  font-weight: 600;
+  background-color: white;
+  padding-top: 10px;
+  margin-top: 80px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  font-size: 20px;
+}
+p{
+  font-size: 30px;
+  font-weight: bold;
+}
+.message{
+  width: 600px;
+  line-height: 30px;
+}
+.contents_00{
+  width: 840px;
+  margin: 0 auto;
+  background-color: brown;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  padding-top: 0px;
-  padding-bottom: 5px;
+  color: white;
+}
+.contents_01{
+  width: 840px;
   margin: 0 auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  color: #333333;
+  background-color: goldenrod;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 60px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
 }
-
-    /* --- リンクの枠（カード）デザインの調整 --- */
-/* --- リンクの枠（カード）デザインの調整 --- */
-.contents {
-  list-style: none; /* リストの点を消す */
-  padding: 0;
-  margin: 0 auto;
-  max-width: 950px;
-  width: 100%;
-  justify-content: center;
-    background: radial-gradient(circle at center, white 50%, transparent 100%);
-  border-radius: 5px;
-  display: flex;    /* カードを横並びにする */
-  flex-wrap: wrap;  /* 画面幅に応じて折り返す */
-}
-
-.contents li {
-  width: 100%;
-  max-width: 900px;
-  min-width: 280px;        /* 極端に小さくなるのを防ぐ */
-    margin: 0 auto;
-}
-    .contents li a {
-      display: block;              /* 枠全体をクリックできるようにする */
-      text-decoration: none;       
-      color: #333333;      
-      font-weight:bold;           
-      border: 3px solid #333333;   
-      border-radius: 5px;         
-      overflow: hidden;            /* はみ出た画像を丸角に合わせる */
-      background-color: #333333;
-      letter-spacing: 1.5px;
-      text-shadow: 0 2px 8px whitesmoke;
-      transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
-    }
-    /* マウスを乗せたときの動き */
-    .contents li a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    /* カード内の画像 */
-    .contents li a img {
-      width: 300px;   
-      height: 168.75px;            /* 【1.5倍サイズ】画像の高さも1.5倍ほどに拡大 */
-      object-fit: cover;           /* 縦横比を崩さずにトリミング */
-      display: block;
-      margin: 0 auto;   
-      margin-top: 15px;           /* 【重要】画像自体をカード内の横中央に配置 */
-    }
- /* カード内のテキストエリア（共通修正） */
-.contents li a .work-title {
-  padding: 60px 20px;            /* 左右の余白を均等に */
-  font-size: 25px;
-  line-height: 1.9;
-  background-image: url("../background_img/title_standard_pc.png");
-  background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
-  background-position: center;   /* 追加：背景画像を中央寄せ */
-  text-align: center;
-  font-weight: bold;
-}
-
-.contents li a .work-title01 {
-  padding: 60px 20px;            /* 左右の余白を均等に */
-  font-size: 25px;
-  line-height: 1.9;
-  background-image: url("../background_img/title_headmodel.png");
-  background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
-  background-position: center;   /* 追加：背景画像を中央寄せ */
-  text-align: center;
-  font-weight: bold;
-}
-
-.contents li a .work-title02 {
-  padding: 60px 20px;            /* 左右の余白を均等に */
-  font-size: 25px;
-  line-height: 1.9;
-  background-image: url("../background_img/3dcg_01.png");
-  background-size: cover;        /* 追加：背景画像を枠いっぱいに収める */
-  background-position: center;   /* 追加：背景画像を中央寄せ */
-  text-align: center;
-  font-weight: bold;
-}
+/*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 
 .catch{    
   font-size: 20px;
@@ -210,15 +118,14 @@ li{
   width: 100%;
   height: 100%;
   z-index: 2;                   /* 画像の上に配置 */
-  background-color: #333333;
+  background-color: black;
   opacity: 0;                   /* 最初は透明 */
   transition: opacity 0.8s ease;/* 0.8秒かけてふんわり白に変化 */
   pointer-events: none;
 }
 
-/* ★スクロールした時に白くするアニメーションクラス */
 .slideshow.is-white .slideshow-overlay {
-  opacity: 0.5;              
+  opacity: 0.8;              
 }
 
 /* スライドショー内の固定文字 */
@@ -267,11 +174,6 @@ li{
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
   }
 
-  .l_news {
-    width: 100% !important;       /* 300px固定から100%に変更 */
-    font-size: 20px !important;   /* タイトルを少し小さく */
-  }
-
   /* 2. 作品カード一覧（.contents）のスマホ最適化 */
   .contents {
     padding-left: 0 !important;      /* リスト特有の左余白を完全にリセット */
@@ -279,63 +181,6 @@ li{
     margin-right: 0 !important;
     justify-content: center !important; /* 全体を画面中央に寄せる */
     width: 100% !important;
-  }
-
-  .contents li {
-    width: 90% !important;          /* カードの幅 */
-    max-width: 400px !important;    /* 大きくなりすぎない上限 */
-    margin-left: auto !important;   /* 左右の余白を auto にして */
-    margin-right: auto !important;  /* 確実に左右中央揃え（中央軸）にする */
-    margin-bottom: 10px;
-    padding: 0 !important;          /* 外枠の不要な余白をカット */
-  }
-
-  .contents li a img {
-    width: 100% !important;         /* 画像もカード幅いっぱいに収める */
-    height: auto !important;
-  }
-
-/* 3. スマホ表示時の背景画像（右端優先表示）とテキストエリアの調整 */
-  .contents li a .work-title {
-    background-image: url("../background_img/title_standard_phone.png") !important;
-    background-size: cover !important;
-    
-    /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
-    background-position: right center !important;
-    
-    background-repeat: no-repeat !important;
-    padding: 50px 15px !important;
-    min-height: 150px !important; /* 今の高さをしっかり維持 */
-    box-sizing: border-box !important;
-    font-size: 15px;
-  }
-
-  .contents li a .work-title01 {
-    background-image: url("../background_img/title_headmodel.png") !important;
-    background-size: cover !important;
-    
-    /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
-    background-position: right center !important;
-    
-    background-repeat: no-repeat !important;
-    padding: 50px 15px !important;
-    min-height: 150px !important; /* 今の高さをしっかり維持 */
-    box-sizing: border-box !important;
-    font-size: 15px;
-  }
-
-  .contents li a .work-title02 {
-    background-image: url("../background_img/3dcg_01.png") !important;
-    background-size: cover !important;
-    
-    /* ↓ 中央寄せから「右寄せ・上下中央」に変更 */
-    background-position: right center !important;
-    
-    background-repeat: no-repeat !important;
-    padding: 50px 15px !important;
-    min-height: 150px !important; /* 今の高さをしっかり維持 */
-    box-sizing: border-box !important;
-    font-size: 15px;
   }
 
   .catch {
