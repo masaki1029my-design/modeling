@@ -193,6 +193,9 @@ p{
   p{
     font-size: 20px;
   }
+  .message{
+    width: 300px;
+  }
 
 
   .catch {
