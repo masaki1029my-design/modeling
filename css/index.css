@@ -56,7 +56,7 @@ p{
   width: 600px;
   line-height: 30px;
 }
-.contents_02{
+.contents_00{
   width: 840px;
   margin: 0 auto;
   background-color: blueviolet;
@@ -65,8 +65,9 @@ p{
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
+  border-top: 5px solid blueviolet;
 }
-.contents_00{
+.contents_01{
   width: 840px;
   margin: 0 auto;
   background-image: url("../background_img/title_01.png");
@@ -75,18 +76,37 @@ p{
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
+  border-top: 5px solid red;
 }
-.contents_01{
+.contents_02{
   width: 840px;
   margin: 0 auto;
-  background-color: goldenrod;
+  background-image: url("../background_img/title_02.png");
   padding-top: 40px;
   padding-bottom: 80px;
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
+  border-top: 5px solid goldenrod;
+}
+.contents_03{
+  width: 840px;
+  margin: 0 auto;
+  background-image: url("../background_img/title_03.png");
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 60px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  border-top: 5px solid green;
 }
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
+.work_link{
+  background-color: gold;
+}
+.work_link a {
+  color: #333333;
+}
 
 .catch{    
   font-size: 20px;
@@ -184,14 +204,6 @@ p{
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
   }
 
-  .contents_02{
-    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
-    max-width: 100% !important;
-    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
-    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
-    line-height: 1.8 !important;  /* 行間を調整 */
-    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-  }
   .contents_00{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
@@ -199,7 +211,6 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/title_01_phone.png");
   }
   .contents_01{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
@@ -208,6 +219,25 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    background-image: url("../background_img/title_01_phone.png");
+  }
+  .contents_02{
+    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    background-image: url("../background_img/title_02_phone.png");
+  }
+  .contents_03{
+    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    background-image: url("../background_img/title_03_phone.png");
   }
   p{
     font-size: 20px;
