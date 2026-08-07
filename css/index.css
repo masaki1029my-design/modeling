@@ -59,7 +59,7 @@ p{
 .contents_00{
   width: 840px;
   margin: 0 auto;
-  background-color: brown;
+  background-image: url("../background_img/title_01.png");
   padding-top: 40px;
   padding-bottom: 80px;
   padding-left: 60px;
@@ -181,6 +181,7 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    background-image: url("../background_img/title_01_phone.png");
   }
   .contents_01{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
