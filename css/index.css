@@ -69,6 +69,7 @@ p{
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
+  font-weight: bold;
   border-top: 5px solid red;
 }
 .contents_01{
@@ -98,12 +99,13 @@ p{
 .contents_03{
   width: 840px;
   margin: 0 auto;
-  background-image: url("../background_img/title_03.png");
+  background-image: url("../background_img/title_04.png");
   padding-top: 40px;
   padding-bottom: 80px;
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
+  font-weight: bold;
   border-top: 5px solid green;
 }
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
@@ -248,7 +250,7 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/title_03_phone.png");
+    background-image: url("../background_img/title_04_phone.png");
   }
   p{
     font-size: 20px;
