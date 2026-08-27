@@ -51,19 +51,25 @@ h2{
   padding-bottom: 10px;
   border-radius: 50px;
   font-size: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+
 }
 p{
   font-size: 30px;
   font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+
 }
 .message{
   width: 600px;
   line-height: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+
 }
 .contents_00{
   width: 840px;
   margin: 0 auto;
-  background-image: url("../background_img/title_03.png");
+  background-image: url("../background_img/title_00.png");
   padding-top: 40px;
   padding-bottom: 80px;
   padding-left: 60px;
@@ -223,7 +229,7 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/title_03_phone.png");
+    background-image: url("../background_img/title_00_phone.png");
   }
   .contents_01{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */

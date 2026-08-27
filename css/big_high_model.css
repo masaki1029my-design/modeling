@@ -60,27 +60,17 @@ p{
   line-height: 30px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
-.contents_00{
-  width: 840px;
-  margin: 0 auto;
-  background-image: url("../background_img/standard_title_03.png");
-  padding-top: 40px;
-  padding-bottom: 80px;
-  padding-left: 60px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: white;
-  border-top: 5px solid skyblue;
-}
+
 .contents_01{
   width: 840px;
   margin: 0 auto;
-  background-image: url("../background_img/standard_title_02.png");
+  background-image: url("../background_img/bighigh_title_01.png");
   padding-top: 40px;
   padding-bottom: 80px;
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 5px solid skyblue;
+  border-top: 5px solid red;
 }
 .contents_02{
   width: 840px;
@@ -93,17 +83,7 @@ p{
   color: white;
   border-top: 5px solid skyblue;
 }
-.contents_03{
-  width: 840px;
-  margin: 0 auto;
-  background-image: url("../background_img/title_03.png");
-  padding-top: 40px;
-  padding-bottom: 80px;
-  padding-left: 60px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: white;
-  border-top: 5px solid green;
-}
+
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 .work_link{
   background-color: gold;
@@ -181,7 +161,7 @@ p{
   font-size: 50px;
   margin: 0 0 10px 0;
   letter-spacing: 2px;
-  color: skyblue;
+  color: brown;
 }
 
 .main-content {
@@ -225,25 +205,7 @@ p{
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/standard_title_02_phone.png");
-  }
-  .contents_02{
-    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
-    max-width: 100% !important;
-    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
-    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
-    line-height: 1.8 !important;  /* 行間を調整 */
-    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/standard_title_01_phone.png");
-  }
-  .contents_03{
-    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
-    max-width: 100% !important;
-    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
-    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
-    line-height: 1.8 !important;  /* 行間を調整 */
-    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/title_03_phone.png");
+    background-image: url("../background_img/bighigh_title_01_phone.png");
   }
   p{
     font-size: 20px;
