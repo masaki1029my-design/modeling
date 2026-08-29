@@ -58,6 +58,7 @@ p{
   font-size: 30px;
   font-weight: bold;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  color: skyblue;
 
 }
 .message{
@@ -88,7 +89,7 @@ p{
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   font-weight: bold;
-  border-top: 5px solid skyblue;
+  border-top: 10px solid skyblue;
 }
 .contents_02{
   width: 840px;

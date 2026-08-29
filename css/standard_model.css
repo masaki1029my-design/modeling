@@ -59,6 +59,7 @@ p{
   width: 600px;
   line-height: 30px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  font-weight: bold;
 }
 .contents_00{
   width: 840px;
@@ -80,7 +81,7 @@ p{
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 5px solid skyblue;
+  border-top: 10px solid skyblue;
 }
 .contents_02{
   width: 840px;
@@ -91,7 +92,7 @@ p{
   padding-left: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 5px solid skyblue;
+  border-top: 10px solid skyblue;
 }
 .contents_03{
   width: 840px;
