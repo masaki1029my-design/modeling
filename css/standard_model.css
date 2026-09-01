@@ -71,10 +71,11 @@ img{
   background-color: #333333;
   padding-top: 40px;
   padding-bottom: 80px;
-  padding-left: 60px;
+  padding: 60px 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   border-top: 10px solid skyblue;
+  text-align: justify;
 }
 .contents_02{
   width: 840px;
@@ -82,10 +83,11 @@ img{
   background-color: #333333;
   padding-top: 40px;
   padding-bottom: 80px;
-  padding-left: 60px;
+  padding: 60px 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   border-top: 10px solid skyblue;
+  text-align: justify;
 }
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 .work_link{
@@ -195,7 +197,7 @@ img{
   img{
     width: 100%;
     max-width: 100%;
-    padding:20px 20px ;
+    margin: 0 auto;
   }
 
   .contents_01{
@@ -222,7 +224,7 @@ img{
   }
   .message{
     width: 300px;
-    line-height: 25px;
+    line-height: 35px;
   }
 
 
