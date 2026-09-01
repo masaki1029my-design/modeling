@@ -26,7 +26,7 @@ h2{
   margin: 0 auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 37px;
   color: white;
   /*background: radial-gradient(circle at center, white 50%, transparent 100%);*/
@@ -56,11 +56,11 @@ p{
 }
 
 img{
-  width: 780px;
+  width: 825px;
 }
 
 .message{
-  width: 780px;
+  width: 825px;
   line-height: 40px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
@@ -190,7 +190,7 @@ img{
     max-width: 100% !important;
     padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
-    line-height: 1.8 !important;  /* 行間を調整 */
+    line-height: 35px;
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
   }
 
