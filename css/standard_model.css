@@ -189,7 +189,8 @@ img{
   #news {
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
-    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
+    padding-left: 20px;
+    padding-right: 15px;
     padding-bottom: 80px;
     font-size: 15px !important;    /* スマホで見やすい文字サイズに */
     line-height: 35px;
