@@ -80,6 +80,7 @@ p{
   color: white;
   font-weight: bold;
   border-top: 10px solid skyblue;
+  border-bottom: 10px solid white;
   text-align: justify;
 }
 .contents_02{

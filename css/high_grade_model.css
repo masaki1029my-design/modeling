@@ -76,7 +76,7 @@ img{
   padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 10px solid skyblue;
+  border-top: 10px solid mediumpurple;
   text-align: justify;
 }
 .contents_02{
@@ -89,7 +89,8 @@ img{
   padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 10px solid skyblue;
+  border-top: 10px solid mediumpurple;
+  border-bottom: 10px solid white;
   text-align: justify;
 }
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
@@ -169,7 +170,7 @@ img{
   font-size: 50px;
   margin: 0 0 10px 0;
   letter-spacing: 2px;
-  color: skyblue;
+  color: mediumpurple;
 }
 
 .main-content {

@@ -1,0 +1,133 @@
+html{
+-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  min-height: 100vh;
+}
+
+li{
+  color: #333333;
+  padding: 8px;
+  margin-left: 20px; 
+  font-size: 20px;
+}
+
+h1 {
+  margin-top: 0; /* ← これを追加してブラウザの初期マージンを消す */
+  padding-top: 30px;
+  padding-bottom: 40px;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #333333;
+  text-align: center;
+  border-bottom: solid 5px #333333;
+}
+
+.contents a {
+  font-size: 20px;
+  color: #333333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+
+.contents a:hover {
+  color: tomato;
+  /*background-color: tomato;*/
+}
+
+.backhome{
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 100px;
+  margin: 0 auto;
+}
+
+.backhome a {
+  color: whitesmoke;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  transition: color 0.2s;
+  background-color: #333333;
+  border: 3px solid #333;
+  border-radius: 20px;
+}
+
+
+.backhome a:hover {
+  color:whitesmoke;
+  background-color: gray;
+  border: 3px solid white;
+  /*background-color: tomato;*/
+}
+
+.line{
+  border-top:  3px dashed #333333;
+}
+
+.lines{
+  border-top:  2px solid #333333;
+}
+
+/* ==========================================
+   スマートフォン用の表示調整（画面幅768px以下）
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. タイトル（h1）の文字サイズをスマホ用に自動縮小 */
+  h1 {
+    font-size: 24px !important;    /* 50pxから24pxに縮小 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    word-break: break-word;        /* はみ出さずに自然に改行する */
+  }
+
+  h2 {
+    font-size: 20px !important;    /* 50pxから20pxに縮小 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    word-break: break-word;        /* はみ出さずに自然に改行する */
+  }
+
+  /* 2. 小見出し（.m）や本文のテキストサイズ調整 */
+  .m {
+    font-size: 20px !important;    /* 25pxから20pxに微調整 */
+    width: 100% !important;
+  }
+
+  .l1 {
+    font-size: 22px !important;
+    height: auto !important;
+  }
+
+  /* 3. コンテンツ枠（#concept, #design 等）のテキストと改行調整 */
+  .concept-section {
+    font-size: 15px !important;    /* 本文を少し小さくして読みやすく */
+    line-height: 1.8 !important;   /* 行間を適切に */
+    word-break: break-word;        /* 単語や長文の枠外突き出しを防ぐ */
+    overflow-wrap: break-word;
+    padding: 5px 15px 30px 15px !important;      /* 枠内の余白をスマホ用に調整 */
+  }
+
+  /* 4. 画像が枠からはみ出ないようにする */
+  .concept-section img {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* 5. ホームへ戻るボタンのサイズ調整 */
+  .backhome a {
+    font-size: 18px !important;
+    padding: 15px 25px !important;
+  }
+}
