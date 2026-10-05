@@ -57,35 +57,37 @@ p{
 }
 
 img{
-  width: 825px;
+  width: 780px;
 }
 
 .message{
-  width: 825px;
+  width: 780px;
   line-height: 40px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
 
 .contents_01{
-  width: 840px;
+  width: 780px;
   margin: 0 auto;
   background-color: #333333;
   padding-top: 40px;
-  padding-bottom: 80px;
-  padding: 60px 60px;
+  padding-bottom: 120px;
+  padding-left: 60px;
+  padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   border-top: 10px solid mediumpurple;
-  border-bottom: 10px solid white;
+  /*border-bottom: 10px solid white;*/
   text-align: justify;
 }
 .contents_02{
-  width: 840px;
+  width: 780px;
   margin: 0 auto;
   background-color: #333333;
   padding-top: 40px;
-  padding-bottom: 80px;
-  padding: 60px 60px;
+  padding-bottom: 120px;
+  padding-left: 60px;
+  padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   border-top: 10px solid mediumpurple;
