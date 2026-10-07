@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="../work_css/eagle_wyvern.css"><link rel="stylesheet" href="../work_css/common.css">
+</head>
+<script src="jquery.js"></script>
+<script>
+  $(function() {
+    // 1. 自動スライドショー
+    var slides = $('.slideshow .slide');
+    var currentIndex = 0;
+
+    setInterval(function() {
+      slides.eq(currentIndex).removeClass('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides.eq(currentIndex).addClass('active');
+    }, 4000);
+
+    // 2. スクロール監視で背景を白く切り替える処理
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      
+      // スクロール量が100pxを超えたら（「はじめに」に差し掛かったら）白くする
+      if (scrollTop > 100) {
+        $('.slideshow').addClass('is-white');
+      } else {
+        // 一番上に戻ったら元の画像表示に戻す
+        $('.slideshow').removeClass('is-white');
+      }
+    });
+  });
+</script>
+<body>
+
+  <!-- 背面スライドショー（ここは外に出す） -->
+  <div class="slideshow">
+
+  <div class="slideshow-overlay"></div>
+
+    <img src="../slide_img/3dprinter.png" alt="スライド1" class="slide active">
+  </div>
+
+  <div class="slideshow-text">
+    <h3>STANDARD MODEL C
+    <br><span class="theme">Vol.01 ー 出立つ猛禽竜 ー</span></h3>
+    <p></p>
+  </div>
+
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
+
+    <div id="news">
+    <h2>ー　概要　ー</h2>
+    ２０２５年度から制作を開始し、翌年３月にかけて制作。
+    猛禽類を爬虫類とのハイブリッド生物として新たにデザインしました。
+    竜という架空性がありながらも、外見や体色を含め、既存の鷲やトカゲを思わせるものとなっています。
+    視力が完全に退化しつつも、その土地に根付く強靭な生物として猛禽竜を新たな生物として描いています。
+    本造形工房フィギュアシリーズの最初の全身造形作品となります。
+    ぜひ、細部までご覧下さい。
+    <br>
+    </div>
+    <br><br><br><br><br><br>
+
+    <div class="contents_01"> 
+      <p>ー　造形　ー</p>
+      <div class="message">
+        <img src="../product_image/eagle_wyvern.png" alt="1" class="product">
+      <br>本作品は、猛禽類を爬虫類とのハイブリッド生物である猛禽竜という新たな生物として描いています。
+      初の全身造形作品ということもあり、全体的に探り探りで作業を進めました。
+      全身を覆う鷲のような羽の造形は、どのようにすれば立体物として成立する形状になるか・羽の質感が伝わるものになるかの2点をよく考え造形しました。
+      また、背面や頭部を覆う甲殻や脚の鱗のディテールは、細部までこだわりパターンを使用することなく全て一つ一つ手彫りで作業を行いました。
+      自然界に生息する生物として、機械的ではなくより自然的で生物らしさを追求することを重視していたため、パターンを敢えて使用せず、
+      鱗の一枚一枚や甲殻のひび割れ等を丁寧に造形していきました。
+      </div>
+    </div>
+    <div class="contents_02"> 
+      <p>ー　造形からデザインへ　ー</p>
+      <div class="message">
+        <img src="" alt="2" class="product">
+      <br>近日更新予定です。続報をお待ちください。
+      </div>
+    </div>
+    <br><br><br><br>
+    <p class="backhome"><a href="../standard_model.html">戻る</a></p>
+  </div>
+
+</body>
+</html>
