@@ -80,7 +80,7 @@ img{
   padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 10px solid mediumpurple;
+  border-top: 10px solid teal;
   /*border-bottom: 10px solid white;*/
   text-align: justify;
 }
@@ -94,7 +94,7 @@ img{
   padding-right: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
-  border-top: 10px solid mediumpurple;
+  border-top: 10px solid teal;
   border-bottom: 10px solid white;
   text-align: justify;
 }
@@ -175,7 +175,7 @@ img{
   font-size: 50px;
   margin: 0 0 10px 0;
   letter-spacing: 2px;
-  color: mediumpurple;
+  color: teal;
 }
 
 .main-content {

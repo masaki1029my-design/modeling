@@ -80,7 +80,6 @@ p{
   color: white;
   font-weight: bold;
   border-top: 10px solid royalblue;
-  border-bottom: 10px solid white;
   text-align: justify;
 }
 .contents_02{
@@ -93,7 +92,8 @@ p{
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   font-weight: bold;
-  border-top: 10px solid mediumslateblue;
+  border-top: 10px solid teal;
+  border-bottom: 10px solid white;
 }
 .contents_03{
   width: 840px;
