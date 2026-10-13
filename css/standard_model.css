@@ -93,6 +93,19 @@ img{
   border-bottom: 10px solid white;
   text-align: justify;
 }
+.contents_03{
+  width: 780px;
+  margin: 0 auto;
+  background-color: #333333;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 60px;
+  padding-right: 60px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  border-top: 10px solid royalblue;
+  text-align: justify;
+}
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 .work_link{
   background-color: gold;
@@ -216,6 +229,15 @@ img{
     text-align: justify;
   }
   .contents_02{
+    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding: 20px 20px !important;/* 左右50pxの余白を15pxに縮小 */
+    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    line-height: 1.8 !important;  /* 行間を調整 */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    text-align: justify;
+  }
+  .contents_03{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
     padding: 20px 20px !important;/* 左右50pxの余白を15pxに縮小 */
