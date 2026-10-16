@@ -200,6 +200,7 @@ h1 {
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   border-bottom: 1px solid whitesmoke;
   transition: background-color 0.3s;
@@ -207,6 +208,59 @@ h1 {
 
 .nav-menu ul li a:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
+   アコーディオン（サブメニュー）用 CSS
+   ========================================== */
+.submenu-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.submenu-toggle a {
+  border-bottom: none !important; /* 親枠線をクリア */
+  flex-grow: 1;
+}
+
+/* 矢印ボタン（▶） */
+.arrow-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  outline: none;
+}
+
+/* クリック時に矢印を90度回転（下向き ▼） */
+.arrow-btn.open {
+  transform: rotate(90deg);
+}
+
+/* サブメニュー（初期状態は非表示） */
+.nav-menu ul .submenu {
+  display: none;
+  background-color: #333333;
+  padding-left: 15px;
+}
+
+.nav-menu ul .submenu li a {
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: normal;
+  padding: 12px 20px;
+  color: #dddddd;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-menu ul .submenu li a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ==========================================

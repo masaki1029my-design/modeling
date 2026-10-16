@@ -19,10 +19,9 @@
       slides.eq(currentIndex).addClass('active');
     }, 4000);
 
-    // 2. スクロール監視で背景を白く切り替える処理
+    // 2. スクロール監視
     $(window).on('scroll', function() {
       var scrollTop = $(this).scrollTop();
-      
       if (scrollTop > 100) {
         $('.slideshow').addClass('is-white');
       } else {
@@ -30,10 +29,17 @@
       }
     });
 
-    // ★追加: ハンバーガーメニューの開閉処理
+    // 3. ハンバーガーメニュー開閉
     $('.hamburger-btn').on('click', function() {
       $(this).toggleClass('active');
       $('.nav-menu').toggleClass('active');
+    });
+
+    // ★追加: アコーディオンメニュー開閉処理
+    $('.arrow-btn').on('click', function(e) {
+      e.stopPropagation(); // 親要素へのクリック伝播を防止
+      $(this).toggleClass('open');
+      $(this).closest('.has-submenu').find('.submenu').slideToggle(300);
     });
   });
 </script>
@@ -52,14 +58,37 @@
   </button>
 
   <!-- ★追加: ナビゲーションメニュー（ハンバーガーで開くメニュー） -->
+<!-- ナビゲーションメニュー（ハンバーガーで開くメニュー） -->
   <nav class="nav-menu">
     <ul>
       <li><a href="../index.html">HOME</a></li>
-      <li><a href="../standard_model.html">STANDARD MODEL C</a></li>
-      <li><a href="../high_grade_model.html">OTHERS MODEL C</a></li>
-      <li><a href="">MY DIARY</a></li>
+      
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="../standard_model.html">STANDARD MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="">・Vol.04 11月公開予定</a></li>
+          <li><a href="">・Vol.03 大空架ける噴射竜</a></li>
+          <li><a href="">・Vol.02 地上に生きた蛸</a></li>
+          <li><a href="../work_html02/eagle_wyvern.html">・Vol.01 出立つ猛禽竜</a></li>
+        </ul>
+      </li>
+
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="../high_grade_model.html">OTHERS MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="re_eagle_wyvern.html">・Vol.01 RE：猛禽竜</a></li>
+        </ul>
+      </li>
     </ul>
-  </nav>  
+  </nav>
 
   <!-- 背面スライドショー（ここは外に出す） -->
   <div class="slideshow">
