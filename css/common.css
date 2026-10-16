@@ -1,5 +1,5 @@
-html{
--webkit-text-size-adjust: 100%;
+html {
+  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   margin: 0;
   padding: 0;
@@ -7,7 +7,8 @@ html{
   min-height: 100vh;
 }
 
-li{
+/* リセットスタイル（一般的なリスト項目の基本スタイル） */
+li {
   color: #333333;
   padding: 8px;
   margin-left: 20px; 
@@ -15,7 +16,7 @@ li{
 }
 
 h1 {
-  margin-top: 0; /* ← これを追加してブラウザの初期マージンを消す */
+  margin-top: 0;
   padding-top: 30px;
   padding-bottom: 40px;
   font-size: 50px;
@@ -37,10 +38,9 @@ h1 {
 
 .contents a:hover {
   color: tomato;
-  /*background-color: tomato;*/
 }
 
-.backhome{
+.backhome {
   margin-top: 100px;
   text-align: center;
   margin-bottom: 100px;
@@ -52,37 +52,161 @@ h1 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 30px;
   text-decoration: none;
-  padding: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
-  transition: color 0.2s;
+  padding: 30px 50px;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
   background-color: #333333;
   border: 3px solid #333;
   border-radius: 20px;
 }
 
-
 .backhome a:hover {
-  color:whitesmoke;
+  color: whitesmoke;
   background-color: gray;
   border: 3px solid white;
-  /*background-color: tomato;*/
 }
 
-.line{
-  border-top:  3px dashed #333333;
+.line {
+  border-top: 3px dashed #333333;
 }
 
-.lines{
-  border-top:  2px solid #333333;
+.lines {
+  border-top: 2px solid #333333;
 }
 
-.em{
+.em {
   color: red;
 }
 
-.lm{
+.lm {
   color: orange;
+}
+
+/* ==========================================
+   戻るボタン（左上固定）
+   ========================================== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 矢印（＜）の描画 */
+.back-btn span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  transform: rotate(-45deg);
+  margin-left: 3px;
+}
+
+/* ==========================================
+   ハンバーガーボタン（右上固定）
+   ========================================== */
+.hamburger-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+  z-index: 100;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s;
+}
+
+.hamburger-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #ffffff;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* 開いたときの「✕」アニメーション */
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================
+   ハンバーガー展開メニュー
+   ========================================== */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 99;
+  padding-top: 80px;
+  transition: right 0.4s ease;
+  box-sizing: border-box;
+}
+
+.nav-menu.active {
+  right: 0;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* メニュー内の li スタイルをリセット（上位の li スタイル干渉を防止） */
+.nav-menu ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li a {
+  display: block;
+  padding: 18px 30px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid whitesmoke;
+  transition: background-color 0.3s;
+}
+
+.nav-menu ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================
@@ -90,24 +214,24 @@ h1 {
    ========================================== */
 @media screen and (max-width: 768px) {
 
-  /* 1. タイトル（h1）の文字サイズをスマホ用に自動縮小 */
+  /* 1. タイトル（h1・h2）の文字サイズをスマホ用に自動縮小 */
   h1 {
-    font-size: 24px !important;    /* 50pxから24pxに縮小 */
+    font-size: 24px !important;
     padding-top: 20px;
     padding-bottom: 20px;
-    word-break: break-word;        /* はみ出さずに自然に改行する */
+    word-break: break-word;
   }
 
   h2 {
-    font-size: 20px !important;    /* 50pxから20pxに縮小 */
+    font-size: 20px !important;
     padding-top: 20px;
     padding-bottom: 20px;
-    word-break: break-word;        /* はみ出さずに自然に改行する */
+    word-break: break-word;
   }
 
   /* 2. 小見出し（.m）や本文のテキストサイズ調整 */
   .m {
-    font-size: 20px !important;    /* 25pxから20pxに微調整 */
+    font-size: 20px !important;
     width: 100% !important;
   }
 
@@ -116,13 +240,13 @@ h1 {
     height: auto !important;
   }
 
-  /* 3. コンテンツ枠（#concept, #design 等）のテキストと改行調整 */
+  /* 3. コンテンツ枠のテキストと改行調整 */
   .concept-section {
-    font-size: 15px !important;    /* 本文を少し小さくして読みやすく */
-    line-height: 1.8 !important;   /* 行間を適切に */
-    word-break: break-word;        /* 単語や長文の枠外突き出しを防ぐ */
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    word-break: break-word;
     overflow-wrap: break-word;
-    padding: 5px 15px 30px 15px !important;      /* 枠内の余白をスマホ用に調整 */
+    padding: 5px 15px 30px 15px !important;
   }
 
   /* 4. 画像が枠からはみ出ないようにする */

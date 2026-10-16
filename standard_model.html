@@ -23,17 +23,43 @@
     $(window).on('scroll', function() {
       var scrollTop = $(this).scrollTop();
       
-      // スクロール量が100pxを超えたら（「はじめに」に差し掛かったら）白くする
       if (scrollTop > 100) {
         $('.slideshow').addClass('is-white');
       } else {
-        // 一番上に戻ったら元の画像表示に戻す
         $('.slideshow').removeClass('is-white');
       }
+    });
+
+    // ★追加: ハンバーガーメニューの開閉処理
+    $('.hamburger-btn').on('click', function() {
+      $(this).toggleClass('active');
+      $('.nav-menu').toggleClass('active');
     });
   });
 </script>
 <body>
+
+  <!-- ★追加: 画面左上 戻るボタン -->
+  <a href="javascript:history.back();" class="back-btn" aria-label="前のページに戻る">
+    <span></span>
+  </a>
+
+  <!-- ★追加: 画面右上 ハンバーガーボタン -->
+  <button type="button" class="hamburger-btn" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- ★追加: ナビゲーションメニュー（ハンバーガーで開くメニュー） -->
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="standard_model.html">STANDARD MODEL C</a></li>
+      <li><a href="high_grade_model.html">OTHERS MODEL C</a></li>
+      <li><a href="">MY DIARY</a></li>
+    </ul>
+  </nav>
 
   <!-- 背面スライドショー（ここは外に出す） -->
   <div class="slideshow">
