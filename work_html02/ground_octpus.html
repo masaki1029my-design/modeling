@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="../work_css/eagle_wyvern.css"><link rel="stylesheet" href="../work_css/common.css">
+</head>
+<script src="../jquery.js"></script>
+<script>
+  $(function() {
+    // 1. 自動スライドショー
+    var slides = $('.slideshow .slide');
+    var currentIndex = 0;
+
+    setInterval(function() {
+      slides.eq(currentIndex).removeClass('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides.eq(currentIndex).addClass('active');
+    }, 4000);
+
+    // 2. スクロール監視
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      if (scrollTop > 100) {
+        $('.slideshow').addClass('is-white');
+      } else {
+        $('.slideshow').removeClass('is-white');
+      }
+    });
+
+    // 3. ハンバーガーメニュー開閉
+    $('.hamburger-btn').on('click', function() {
+      $(this).toggleClass('active');
+      $('.nav-menu').toggleClass('active');
+    });
+
+    // ★追加: アコーディオンメニュー開閉処理
+    $('.arrow-btn').on('click', function(e) {
+      e.stopPropagation(); // 親要素へのクリック伝播を防止
+      $(this).toggleClass('open');
+      $(this).closest('.has-submenu').find('.submenu').slideToggle(300);
+    });
+  });
+</script>
+<body>
+
+  <!-- ★追加: 画面左上 戻るボタン -->
+  <a href="javascript:history.back();" class="back-btn" aria-label="前のページに戻る">
+    <span></span>
+  </a>
+
+  <!-- ★追加: 画面右上 ハンバーガーボタン -->
+  <button type="button" class="hamburger-btn" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+<!-- ナビゲーションメニュー（ハンバーガーで開くメニュー） -->
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="../index.html">HOME</a></li>
+      
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="../standard_model.html">STANDARD MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="">・Vol.04 11月公開予定</a></li>
+          <li><a href="">・Vol.03 大空架ける噴射竜</a></li>
+          <li><a href="ground_octpus.html">・Vol.02 地上に生きた蛸</a></li>
+          <li><a href="eagle_wyvern.html">・Vol.01 出立つ猛禽竜</a></li>
+        </ul>
+      </li>
+
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="../high_grade_model.html">OTHERS MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="../work_html01/re_eagle_wyvern.html">・Vol.01 RE：猛禽竜</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- 背面スライドショー（ここは外に出す） -->
+  <div class="slideshow">
+
+  <div class="slideshow-overlay"></div>
+
+    <img src="../slide_img/3dprinter.png" alt="スライド1" class="slide active">
+  </div>
+
+  <div class="slideshow-text">
+    <h3>STANDARD MODEL
+    <br><span class="theme">Vol.02 ー 地上に生きた蛸 ー</span></h3>
+    <p></p>
+  </div>
+
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
+
+    <div id="news">
+    <h2>ー　概要　ー</h2>
+    本作品は、２０２６年５月に制作を開始し、同年７月に完成しました。
+    本来、”水生生物として生きる彼らがもし陸上での活動に適応したらどうなるのか”をコンセプトに製作しました。
+    蛸（頭足類）特有の触腕の表現には、特に力を入れました。
+    また、外見は蛸の知能の高さや生物の未知の恐怖を感じられるようなものに仕上げています。
+    <br>
+    </div>
+    <br><br><br><br><br><br>
+
+    <div class="contents_01"> 
+      <p>ー　造形　ー</p>
+      <div class="message">
+        <img src="../product_image/ground_octpus.png" alt="1" class="product">
+      <br>近日更新予定です。続報をお待ちください。
+      </div>
+    </div>
+    <div class="contents_02"> 
+      <p>ー　造形からデザインへ　ー</p>
+      <div class="message">
+        <img src="" alt="2" class="product">
+      <br>近日更新予定です。続報をお待ちください。
+      </div>
+    </div>
+    <br><br><br><br>
+    <p class="backhome"><a href="../standard_model.html">戻る</a></p>
+  </div>
+
+</body>
+</html>
