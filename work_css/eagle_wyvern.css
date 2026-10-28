@@ -219,6 +219,7 @@ img{
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
     text-align: justify;
+    padding-bottom: 200px;
   }
   .contents_02{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
@@ -228,6 +229,7 @@ img{
     line-height: 1.8 !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
     text-align: justify;
+    padding-bottom: 200px;
   }
 
   p{
