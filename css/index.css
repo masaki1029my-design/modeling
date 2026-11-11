@@ -236,6 +236,17 @@ p{
     text-align: justify;
   }
 
+  .title-focus{
+    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
+    max-width: 100% !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 70px;
+    font-size: 20px !important;    /* スマホで見やすい文字サイズに */
+    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
+    text-align: justify;
+  }
+
   .logo{
     width: 350px;
   }
