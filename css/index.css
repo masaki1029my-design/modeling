@@ -42,7 +42,7 @@ h2{
   line-height: 50px;
   border-top:5px solid white;
   border-bottom:5px solid white;
-  background-color: rgb(36, 62, 140);
+  background-image: url("../background_img/tate_sozai_wafu_black-1.png");
 }
 /*ーcontents関連css スタンダードモデル・ヘッドモデルー*/
 .work_link{
@@ -72,11 +72,13 @@ p{
 }
 
 .title-focus{
-  background-color: rgb(36, 62, 140);
+  max-width: 820px;
+  width: 100%;
+  background-image: url("../background_img/tate_sozai_wafu_black-1.png");
   font-family:Georgia, 'Times New Roman', Times, serif;
-  text-align: center;
+  text-align: justify;
   color: gold;
-  padding: 20px;
+  padding: 20px 20px 20px 60px;
   font-size: 35px;
   border-top:solid 5px white;
   font-weight: bold;
@@ -176,7 +178,7 @@ p{
 }
 
 .slideshow.is-white .slideshow-overlay {
-  opacity: 0.8;              
+  opacity: 0.5;              
 }
 
 /* スライドショー内の固定文字 */
@@ -195,7 +197,7 @@ p{
 }
 
 .slideshow-text h3 {
-  font-size: 50px;
+  font-size: 70px;
   margin: 0 0 10px 0;
   letter-spacing: 2px;
 }
@@ -222,7 +224,7 @@ p{
 @media screen and (max-width: 768px) {
 
   /* 1. 「はじめに」枠（#news）のスマホ最適化 */
-  #news {
+  #profile {
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
     padding-left: 20px;
