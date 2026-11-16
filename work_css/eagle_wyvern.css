@@ -70,7 +70,7 @@ img{
 }
 
 .theme{
-  color: rgb(252, 238, 160);
+  color: white;
 }
 
 .contents_01{
@@ -156,7 +156,7 @@ img{
 }
 
 .slideshow.is-white .slideshow-overlay {
-  opacity: 0.8;              
+  opacity: 0.5;              
 }
 
 /* スライドショー内の固定文字 */
