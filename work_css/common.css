@@ -192,7 +192,7 @@ h1 {
 
 .nav-menu ul li a {
   display: block;
-  padding: 18px 30px;
+  padding: 25px 30px;
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
@@ -242,16 +242,16 @@ h1 {
 .nav-menu ul .submenu {
   display: none;
   background-color: #333333;
-  padding-left: 15px;
+  padding-left: 0;
 }
 
 .nav-menu ul .submenu li a {
   font-size: 14px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: normal;
-  padding: 12px 20px;
+  padding: 20px 20px;
   color: #dddddd;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 0.5px solid whitesmoke;
 }
 
 .nav-menu ul .submenu li a:hover {
