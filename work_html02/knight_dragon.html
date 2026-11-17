@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="../work_css/eagle_wyvern.css"><link rel="stylesheet" href="../work_css/common.css">
+</head>
+<script src="../jquery.js"></script>
+<script>
+  $(function() {
+    // 1. 自動スライドショー
+    var slides = $('.slideshow .slide');
+    var currentIndex = 0;
+
+    setInterval(function() {
+      slides.eq(currentIndex).removeClass('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides.eq(currentIndex).addClass('active');
+    }, 4000);
+
+    // 2. スクロール監視
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop();
+      if (scrollTop > 100) {
+        $('.slideshow').addClass('is-white');
+      } else {
+        $('.slideshow').removeClass('is-white');
+      }
+    });
+
+    // 3. ハンバーガーメニュー開閉
+    $('.hamburger-btn').on('click', function() {
+      $(this).toggleClass('active');
+      $('.nav-menu').toggleClass('active');
+    });
+
+    // ★追加: アコーディオンメニュー開閉処理
+    $('.arrow-btn').on('click', function(e) {
+      e.stopPropagation(); // 親要素へのクリック伝播を防止
+      $(this).toggleClass('open');
+      $(this).closest('.has-submenu').find('.submenu').slideToggle(300);
+    });
+  });
+</script>
+<body>
+
+  <!-- ★追加: 画面左上 戻るボタン -->
+  <a href="javascript:history.back();" class="back-btn" aria-label="前のページに戻る">
+    <span></span>
+  </a>
+
+  <!-- ★追加: 画面右上 ハンバーガーボタン -->
+  <button type="button" class="hamburger-btn" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+<!-- ナビゲーションメニュー（ハンバーガーで開くメニュー） -->
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="../index.html">HOME</a></li>
+      
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="high_grade_model.html">BASIC MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="">・ー ？？？ ー</a></li>
+        </ul>
+      </li>
+
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="standard_model.html">STANDARD MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="standard_model.html#vol04">・Vol.04　ー ？？？ ー</a></li>
+          <li><a href="knight_dragon.html">・Vol.03　ー 騎龍 ー</a></li>
+          <li><a href="horn_wyvern.html">・Vol.02　ー 甲角竜 ー</a></li>
+          <li><a href="eagle_wyvern.html">・Vol.01　ー 猛禽竜 ー</a></li>
+        </ul>
+      </li>
+
+      <!-- アコーディオン付きメニュー項目 -->
+      <li class="has-submenu">
+        <div class="submenu-toggle">
+          <a href="high_grade_model.html">PREMIUM MODEL</a>
+          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
+        </div>
+        <ul class="submenu" style="display: block;">
+          <li><a href="">・ー ？？？ ー</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- 背面スライドショー（ここは外に出す） -->
+  <div class="slideshow">
+
+  <div class="slideshow-overlay"></div>
+    <img src="../background_img/5480e8e1-210c-4235-93ff-a5c100eaa89b.png" alt="スライド1" class="slide active">
+  </div>
+
+  <div class="slideshow-text">
+    <h3>STANDARD MODEL C
+    <br><span class="theme">Vol.03 ー 騎龍 ー</span></h3>
+    <p></p>
+  </div>
+
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
+
+    <div id="news">
+    <br>
+    <img src="../img/noImage.png" alt="1" class="product">
+    <h2>ー　基本情報　ー</h2>
+    ・作品名：「　騎龍　」<br>
+    ・作者名：由貴（よしき）<br>
+    ・制作年：２０２６年１２月<br>
+    ・技法/素材/仕様：デジタル造形/ABS<br>
+    ・寸法（サイズ）：未定×未定×未定mm
+    <h2>ー　概要　ー</h2>
+    製作中です。
+    <br>
+    </div>
+    <br><br><br><br><br><br>
+
+    <div class="contents_01"> 
+      <p>ー　造形　ー</p>
+      <div class="message">
+      ▶︎　製品モデル映像<br>
+      <!--<video src="../video/ScreenRecording_10-30-2026 23-21-42_1.mov" controls width="100%"></video>
+      <br>本作品は、猛禽類を爬虫類とのハイブリッド生物である猛禽竜という新たな生物として描いています。
+      初の全身造形作品ということもあり、全体的に探り探りで作業を進めました。
+      全身を覆う鷲のような羽の造形は、どのようにすれば立体物として成立する形状になるか・羽の質感が伝わるものになるかの2点をよく考え造形しました。
+      また、背面や頭部を覆う甲殻や脚の鱗のディテールは、細部までこだわりパターンを使用することなく全て一つ一つ手彫りで作業を行いました。
+      自然界に生息する生物として、機械的ではなくより自然的で生物らしさを追求することを重視していたため、パターンを敢えて使用せず、
+      鱗の一枚一枚や甲殻のひび割れ等を丁寧に造形していきました。-->
+      </div>
+    </div>
+    <div class="contents_02"> 
+      <p>ー　造形からデザインへ　ー</p>
+      <div class="message">
+        <!--作品を制作するにあたり、まず基本的には造形するもののデザインを決定する必要があると思います。
+        しかし、私は敢えて造形からデザインを考えていく手法をとりました。
+        個人的に実際に造形で様々な形をラフにとり、そこから良いと感じたものをデザインとして詰めていくという
+        手法がやりやすく、また立体物としての映えるアングルや実際のイメージが想像しやすいと感じたためです。
+        <br>▶︎　デザイン（決定案）<br>
+        <img src="../work_img/birdwyvern_full_color.png" alt="2" class="product">
+      <br>
+      上図はラフ造形から良い案を抜粋し、それを2D上でトレースし、ブラッシュアップしたデザイン画になります。
+      トレース時はもちろん、簡素な形状でしたがそれを元に足りない部分やあった方が良いものをトレース画に追記していき、
+      現在の正式なデザインへと至りました。また、この段階で彩色も決まりました。
+      没案として、閉塞感を全面に押し出したような暗い彩色のものもありましたが、生物としての馴染み深さや実在感といった点で
+      あまりにも現実離れしすぎているように見えると感じたため、図のような鷲のような彩色になりました。
+
+      <br>-->
+      </div>
+    </div>
+    <br><br><br><br>
+    <p class="backhome"><a href="../standard_model.html">戻る</a></p>
+  </div>
+
+</body>
+</html>
