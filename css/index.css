@@ -133,7 +133,7 @@ p{
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 70px;
-    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
+    font-size: 10px !important;    /* スマホで見やすい文字サイズに */
     line-height: 35px !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
     text-align: justify;
@@ -163,6 +163,7 @@ p{
   }
   .message{
     width: 300px;
+    font-size: 10px;
   }
 
 
