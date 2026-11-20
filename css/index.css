@@ -68,7 +68,7 @@ p{
 }
 
 .standard_title{
-  color: royalblue;
+  color: steelblue;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -136,17 +136,9 @@ p{
     font-size: 10px !important;    /* スマホで見やすい文字サイズに */
     line-height: 35px !important;  /* 行間を調整 */
     box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    text-align: justify;
-  }
-
-  .contents_00{
-    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
-    max-width: 100% !important;
-    padding: 20px 15px !important;/* 左右50pxの余白を15pxに縮小 */
-    font-size: 15px !important;    /* スマホで見やすい文字サイズに */
-    line-height: 1.8 !important;  /* 行間を調整 */
-    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    background-image: url("../background_img/title_00_phone.png");
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bold;
   }
   .contents_01{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
@@ -164,6 +156,7 @@ p{
   .message{
     width: 300px;
     font-size: 10px;
+    font-weight: bold;
   }
 
 
@@ -225,7 +218,7 @@ p{
   overflow: hidden;
   color: white;
   text-decoration: none;
-  background-color: #333333;
+  background-color: whitesmoke;
   background-image:
     linear-gradient(rgba(10, 15, 25, 0.1), rgba(10, 15, 25, 0.2)),
     var(--card-bg);
@@ -246,10 +239,10 @@ p{
 }
 
 .work-card-volume {
-  color: #d5e0ff;
+  color: black;
   font-size: 12px;
   letter-spacing: 1.5px;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0);
 }
 
 .work-card-title {
@@ -269,8 +262,15 @@ p{
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
+/*作品カードの背景画像設定*/
 .eagle-card {
   --card-bg: url("../card_background/eaglewyvern_midashi.png");
+}
+.eagle-card2 {
+  --card-bg: url("../card_background/eaglewyvern_midashi2.png");
+}
+.galacta-card {
+  --card-bg: url("../card_background/galactabird_midashi.png");
 }
 
 @media screen and (max-width: 768px) {
@@ -313,7 +313,14 @@ p{
     min-height: 230px;
   }
 
+  /*iphone用作品カードの背景画像設定*/
   .eagle-card {
     --card-bg: url("../card_background/eaglewyvern_midashi_iphone.png");
+  }
+  .eagle-card2 {
+    --card-bg: url("../card_background/eaglewyvern_midashi2_iphone.png");
+  }
+  .galacta-card {
+    --card-bg: url("../card_background/galactabird_midashi_iphone.png");
   }
 }
