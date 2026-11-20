@@ -9,38 +9,20 @@
 <script src="jquery.js"></script>
 <script>
   $(function() {
-    // 1. 自動スライドショー
-    var slides = $('.slideshow .slide');
-    var currentIndex = 0;
 
-    setInterval(function() {
-      slides.eq(currentIndex).removeClass('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides.eq(currentIndex).addClass('active');
-    }, 4000);
-
-    // 2. スクロール監視
-    $(window).on('scroll', function() {
-      var scrollTop = $(this).scrollTop();
-      if (scrollTop > 100) {
-        $('.slideshow').addClass('is-white');
-      } else {
-        $('.slideshow').removeClass('is-white');
-      }
-    });
-
-    // 3. ハンバーガーメニュー開閉
+    // ハンバーガーメニュー開閉
     $('.hamburger-btn').on('click', function() {
       $(this).toggleClass('active');
       $('.nav-menu').toggleClass('active');
     });
 
-    // ★追加: アコーディオンメニュー開閉処理
+    // アコーディオンメニュー開閉
     $('.arrow-btn').on('click', function(e) {
-      e.stopPropagation(); // 親要素へのクリック伝播を防止
+      e.stopPropagation();
       $(this).toggleClass('open');
       $(this).closest('.has-submenu').find('.submenu').slideToggle(300);
     });
+
   });
 </script>
 <body>
@@ -61,17 +43,6 @@
   <nav class="nav-menu">
     <ul>
       <li><a href="index.html">HOME</a></li>
-      
-      <!-- アコーディオン付きメニュー項目 -->
-      <li class="has-submenu">
-        <div class="submenu-toggle">
-          <a href="high_grade_model.html">BASIC MODEL</a>
-          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
-        </div>
-        <ul class="submenu" style="display: block;">
-          <li><a href="">・ー ？？？ ー</a></li>
-        </ul>
-      </li>
 
       <!-- アコーディオン付きメニュー項目 -->
       <li class="has-submenu">
@@ -82,74 +53,65 @@
         <ul class="submenu" style="display: block;">
           <li><a href="standard_model.html#vol04">・Vol.04　ー ？？？ ー</a></li>
           <li><a href="work_html02/knight_dragon.html">・Vol.03　ー 騎龍 ー</a></li>
-          <li><a href="work_html02/horn_wyvern.html">・Vol.02　ー 甲角竜 ー</a></li>
-          <li><a href="work_html02/eagle_wyvern.html">・Vol.01　ー 猛禽竜 ー</a></li>
-        </ul>
-      </li>
-
-      <!-- アコーディオン付きメニュー項目 -->
-      <li class="has-submenu">
-        <div class="submenu-toggle">
-          <a href="high_grade_model.html">PREMIUM MODEL</a>
-          <button type="button" class="arrow-btn open" aria-label="サブメニューを開く">▶</button>
-        </div>
-        <ul class="submenu" style="display: block;">
-          <li><a href="">・ー ？？？ ー</a></li>
+          <li><a href="work_html02/horn_wyvern.html">・standard model　ー 甲角竜 ー</a></li>
+          <li><a href="work_html02/eagle_wyvern.html">・standard model　ー 猛禽竜 ー</a></li>
         </ul>
       </li>
     </ul>
   </nav>
 
-  <!-- 背面スライドショー（ここは外に出す） -->
-  <div class="slideshow">
-    <div class="slideshow-overlay"></div>
-    <img src="background_img/Z29B0SnE4vU8JjWyCRML.png" alt="スライド1" class="slide active">
-  </div>
-
-  <div class="slideshow-text">
-    <h3>ー　由貴の部屋　ー</h3>
-    <p>のんびり作業中・・・</p>
-  </div>
-
   <!-- ★ここから下を <div class="main-content"> で囲む -->
   <div class="main-content">
     <div id="profile">
-    <h2>ー プロフィール ー</h2>
-      ・名前：由貴（よしき）<br>
-      ・職種：学生<br>
-      ・所属：SCU大学 デザイン学部 人間情報デザイン<br>
+    <p>ー <span class="standard_title">PROFILE</span> ー</p>
+    <img src="card_background/eaglewyvern_midashi.png" alt="">
+  <br>・名前：由貴（よしき）<br>
+      ・職種：大学生<br>
+      ・所属：SCU大学 デザイン学部 人間情報デザインコース<br>
+      ・趣味：デジタルスカルプト造形
     </div>
     <br><br><br><br><br><br>
 
-    <div class="title-focus">
-      ー　作品ジャンル一覧　ー
-    </div>
-    <div class="contents_00"> 
-      <p>- <span class="premier_title">PREMIER MODEL</span> -</p>
-      <div class="message">
-      <br>リアルな造形・質感表現とクオリティに最も優れたフィギュアモデルです。
-      台座の背景と細部の造形に一つ一つこだわり抜いたハイエンドシリーズです。
-      </div>
-      <p class="work_link"><a href="">準備中</a></p>
-    </div>
-
     <div class="contents_01"> 
-      <p>- <span class="standard_title">STANDARD MODEL</span> -</p>
+      <p>ー <span class="standard_title">WORK LIST</span> ー</p>
       <div class="message">
-      <br>手軽なサイズ感を担保し、ハイクオリティな造形表現を目指したフィギュアモデルです。
-      比較的コレクションもしやすく、手に取るのにおすすめのシリーズです。
+      <br>本作品集では、デジタル造形による立体作品を多く取り上げています。
+      <br>生物的かつ実在感のある質感・造形表現を目指して日々制作に取り組んでいます。
+      <br>立体造形作品以外にも、数多くの作品を取り上げているのでぜひご覧ください。
       </div>
-      <p class="work_link"><a href="standard_model.html">作品一覧へ</a></p>
+      <div class="work-card-grid">
+        <!-- 各カードの画像パスを style の url(...) で個別に指定します -->
+
+        <a class="work-card" href=""
+           style="--card-bg: url('img/work_knight_dragon.jpg');">
+          <span class="work-card-volume">DESKTOP MODEL</span>
+          <span class="work-card-title">？？？</span>
+          <span class="work-card-more">VIEW WORK　→</span>
+        </a>
+
+        <a class="work-card" href=""
+           style="--card-bg: url('/card_background/eaglewyvern_midashi2.png');">
+          <span class="work-card-volume">DESKTOP MODEL</span>
+          <span class="work-card-title"></span>
+          <span class="work-card-more">VIEW WORK　→</span>
+        </a>
+
+        <a class="work-card" href="work_html02/eagle_wyvern.html"
+           style="--card-bg:url('/card_background/eaglewyvern_midashi.png');">
+          <span class="work-card-volume">STANDARD MODEL</span>
+          <span class="work-card-title"></span>
+          <span class="work-card-more">VIEW WORK　→</span>
+        </a>
+
+        <a class="work-card" href=""
+           style="--card-bg:url('/card_background');">
+          <span class="work-card-volume">MINI COLLECTION MODEL</span>
+          <span class="work-card-title">？？？</span>
+          <span class="work-card-more">VIEW WORK　→</span>
+        </a>
+      </div>
     </div>
 
-    <div class="contents_02"> 
-      <p>- <span class="basic_title">BASIC MODEL</span> -</p>
-      <div class="message">
-      <br>手軽さと一定のクオリティ担保を念頭に置いたフィギュアモデルです。
-      コレクション性や入手のしやすさに優れ、最初に手に取るのにおすすめのシリーズです。
-      </div>
-      <p class="work_link"><a href="">準備中</a></p>
-    </div>
 
     <br><br><br><br>
   </div>
