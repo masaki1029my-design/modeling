@@ -4,7 +4,7 @@ html {
   margin: 0;
   padding: 0;
   background-color: black;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 /* リセットスタイル（一般的なリスト項目の基本スタイル） */
