@@ -139,19 +139,6 @@ p{
     text-align: justify;
   }
 
-  .title-focus{
-    width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
-    max-width: 100% !important;
-    padding:20px ;
-    font-size: 20px !important;    /* スマホで見やすい文字サイズに */
-    box-sizing: border-box !important; /* 枠線と余白を内側に含める */
-    text-align: center;
-  }
-
-  .logo{
-    width: 350px;
-  }
-
   .contents_00{
     width: 100% !important;        /* 750px固定から画面幅の90%に変更 */
     max-width: 100% !important;
@@ -183,11 +170,6 @@ p{
     font-size: 12px !important;
     display: block;
     margin-top: 5px;
-  }
-
-  /* スマホ時のメインコンテンツ切り替わり位置 */
-  .main-content {
-    margin-top: 100dvh;       /* スマホのファーストビュー直下に設定 */
   }
 }
 
