@@ -269,6 +269,10 @@ p{
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
+.eagle-card {
+  --card-bg: url("../card_background/eaglewyvern_midashi.png");
+}
+
 @media screen and (max-width: 768px) {
   .contents_01 {
     padding: 30px 20px 60px !important;
@@ -307,5 +311,9 @@ p{
 
   .work-card {
     min-height: 230px;
+  }
+
+  .eagle-card {
+    --card-bg: url("../card_background/eaglewyvern_midashi_iphone.png");
   }
 }
