@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="../work_css/eagle_wyvern.css"><link rel="stylesheet" href="../work_css/common.css">
+</head>
+<script src="jquery.js"></script>
+<script>
+  $(function() {
+
+    // ハンバーガーメニュー開閉
+    $('.hamburger-btn').on('click', function() {
+      $(this).toggleClass('active');
+      $('.nav-menu').toggleClass('active');
+    });
+
+    // アコーディオンメニュー開閉
+    $('.arrow-btn').on('click', function(e) {
+      e.stopPropagation();
+      $(this).toggleClass('open');
+      $(this).closest('.has-submenu').find('.submenu').slideToggle(300);
+    });
+
+  });
+</script>
+<body>
+
+  <!-- ★追加: 画面左上 戻るボタン -->
+  <a href="javascript:history.back();" class="back-btn" aria-label="前のページに戻る">
+    <span></span>
+  </a>
+
+  <!-- ★ここから下を <div class="main-content"> で囲む -->
+  <div class="main-content">
+    <div id="profile">
+    <p>ー <span class="standard_title">BASIC INFORMATION</span> ー</p>
+    <img src="../product_image/eagle_wyvern.png" alt="eaglewyvern"><br>
+    ・作品名：「　猛禽竜　」（英名：「Eagle Wyvern」）<br>
+    ・作者名：由貴（よしき）<br>
+    ・制作年月：２０２５年１０月〜２０２６年３月<br>
+    ・技法 / 素材 / 仕様：デジタル造形 / ABS / 全身彫刻<br>
+    ・寸法（本体サイズ）：１４９×１１１×８３mm
+    </div>
+
+    <div class="contents_01"> 
+      <p>ー <span class="standard_title">WORK SUMMARY</span> ー</p>
+      <div class="message">
+    <br>２０２５年１０月から制作を開始し、翌年３月にかけて制作。<br>
+    猛禽類を爬虫類とのハイブリッド生物として新たにデザインしました。
+    竜という架空性がありながらも、外見や体色を含め、既存の鷲やトカゲを思わせるものとなっています。
+    視力が完全に退化しつつも、その土地に根付く強靭な生物として猛禽竜を新たな生物として描いています。
+    私の手掛ける最初の全身造形作品となります。<br>
+    ぜひ、細部までご覧下さい。
+      </div>
+    </div>
+
+    <div class="contents_01"> 
+      <p>ー <span class="standard_title">SCULPT</span> ー</p>
+      <div class="message">
+      <img src="../work_img/bw_image_01.png" alt="2" class="product">
+      <br>本作品は、猛禽類を爬虫類とのハイブリッド生物である猛禽竜という新たな生物として描いています。
+      初の全身造形作品ということもあり、全体的に探り探りで作業を進めました。
+      全身を覆う鷲のような羽の造形は、どのようにすれば立体物として成立する形状になるか・羽の質感が伝わるものになるかの2点をよく考え造形しました。
+      また、背面や頭部を覆う甲殻や脚の鱗のディテールは、細部までこだわりパターンを使用することなく全て一つ一つ手彫りで作業を行いました。
+      自然界に生息する生物として、機械的ではなくより自然的で生物らしさを追求することを重視していたため、パターンを敢えて使用せず、
+      鱗の一枚一枚や甲殻のひび割れ等を丁寧に造形していきました。
+      </div>
+    </div>
+
+    <div class="contents_01"> 
+      <p>ー <span class="standard_title">FROM SCULPTURE TO DESIGN</span> ー</p>
+      <div class="message">
+      <br>作品を制作するにあたり、まず基本的には造形するもののデザインを決定する必要があると思います。
+      しかし、私は敢えて造形からデザインを考えていく手法をとりました。
+      個人的に実際に造形で様々な形をラフにとり、そこから良いと感じたものをデザインとして詰めていくという
+      手法がやりやすく、また立体物としての映えるアングルや実際のイメージが想像しやすいと感じたためです。
+      <img src="../work_img/birdwyvern_full_color.png" alt="2" class="product">
+      <br>
+      上図はラフ造形から良い案を抜粋し、それを2D上でトレースし、ブラッシュアップしたデザイン画になります。
+      トレース時はもちろん、簡素な形状でしたがそれを元に足りない部分やあった方が良いものをトレース画に追記していき、
+      現在の正式なデザインへと至りました。また、この段階で彩色も決まりました。
+      没案として、閉塞感を全面に押し出したような暗い彩色のものもありましたが、生物としての馴染み深さや実在感といった点で
+      あまりにも現実離れしすぎているように見えると感じたため、図のような鷲のような彩色になりました。
+      <br>
+      </div>
+    </div>
+
+    <div class="contents_01"> 
+      <p>ー <span class="standard_title">COMING SOON ・・・</span> ー</p>
+      <div class="message">
+      </div>
+    </div>
+
+
+    <br><br><br><br>
+  </div>
+
+</body>
+</html>
