@@ -41,7 +41,9 @@ h2{
 img{
   margin-top: 20px;
   margin-bottom: 5px;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
+
 }
 
 .work_link{
