@@ -159,6 +159,9 @@ p{
     font-size: 10px;
     font-weight: bold;
   }
+  img{
+    width: 250px;
+  }
 
 
   .catch {
